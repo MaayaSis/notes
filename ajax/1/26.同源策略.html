@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		同源策略是一种安全策略,即协议域名端口号必须完全相同,即当前打开的页面和ajax请求的页面必须完全相同
+		更简单的来说就是网页和ajax请求来自于同服务
+		违背同源策略就是跨域
+		 */
+		window.onload = function () {
+			const btn = document.querySelector('button')
+			btn.onclick = function () {
+				const xmr = new XMLHttpRequest
+				xmr.open('get', '/data')
+				xmr.send()
+				xmr.onreadystatechange = function () {
+					if (xmr.readyState === 4) {
+						if(xmr.status >=200 && xmr.status<300){
+							console.log(xmr.response)
+						}
+					}
+				}
+			}
+		}
+	</script>
+
+<body>
+	<!-- 
+		
+	-->
+	<h1>尚硅谷</h1>
+	<button>点击获取用户数据</button>
+</body>
+
+</html>

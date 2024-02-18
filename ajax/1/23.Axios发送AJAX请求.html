@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.js"></script>
+	<style type='text/css'>
+		/*
+		axios是ajax的请求库,在react和vue中都在推荐使用,比起原生的ajax有许多优点
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			const btns = document.querySelectorAll('button')
+			axios.defaults.baseURL = 'http://127.0.0.1:8000';//配置baseURL,可以简化url的请求
+			btns[0].onclick = function () {
+				axios.get('/axios-server', {//原url;http://127.0.0.1:8000
+					params: {//设置请求参数
+						id: 100,
+						vip: 7
+					},
+					headers: {//设置请求头信息
+						name: 'Maaya',
+						age: 20
+					}
+				}).then(value => {//对响应结果进行处理使用then
+					console.log(value);
+				});
+			}
+			btns[1].onclick = function () {
+				axios.post('/axios-server', {//url,请求体,其他参数
+					username: 'admin',
+					password: 'admin'
+				}, {
+					params: {//设置url参数
+						id: 200,
+						vip: 10
+					},
+					headers: {//请求头参数
+						width: 100,
+						height: 100
+					},
+				})
+			}
+		}
+	</script>
+
+<body>
+	<!-- 
+		
+	-->
+	<button>GET</button>
+	<button>POST</button>
+	<button>AJAX</button>
+</body>
+
+</html>

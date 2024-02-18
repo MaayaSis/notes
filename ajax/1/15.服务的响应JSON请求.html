@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#result {
+			width: 200px;
+			height: 100px;
+			border: solid 1px #89b;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			const result = document.getElementById('result');
+			window.onkeydown = function () {//绑定键盘按下事件
+				const xhr = new XMLHttpRequest();//发送请求
+				xhr.responseType = 'json';//设置响应体数据的类型
+				xhr.open('GET', 'http://127.0.0.1:8000/json-server');//初始化
+				xhr.send();//发送
+				xhr.onreadystatechange = function () {//事件绑定
+					if (xhr.readyState === 4) {
+						if (xhr.status >= 200 && xhr.status < 300) {
+							// 1. 手动对数据转化
+							// let data = JSON.parse(xhr.response);
+							// console.log(data);
+							// result.innerHTML = data.name;
+							// 2. 自动转换,依靠的是29行
+							console.log(xhr.response);
+							result.innerHTML = xhr.response.name;
+						}
+					}
+				}
+			}
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+	<div id="result"></div>
+</body>
+
+</html>

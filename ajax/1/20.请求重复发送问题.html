@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		当用户重复发送ajax请求时,保证只有最新的一个可以起效,起到了节流的作用
+		 */
+		window.onload = function () {
+			const btns = document.querySelectorAll('button');//获取元素对象
+			let x = null;
+			let isSending = false; //标识变量,是否正在发送AJAX请求
+			btns[0].onclick = function () {
+				if (isSending) x.abort();//判断标识变量,如果正在发送,则取消该请求,创建一个新的请求
+				x = new XMLHttpRequest();
+				isSending = true;
+				x.open("GET", 'http://127.0.0.1:8000/delay');
+				x.send();
+				x.onreadystatechange = function () {
+					if (x.readyState === 4) {
+						//修改标识变量
+						isSending = false;
+					}
+				}
+			}
+		}
+	</script>
+
+<body>
+	<!-- 
+		
+	-->
+	<button>点击发送</button>
+</body>
+
+</html>

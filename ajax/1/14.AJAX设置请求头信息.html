@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		#result {
+			width: 200px;
+			height: 100px;
+			border: solid 1px #903;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			const result = document.getElementById("result")//获取元素
+			result.addEventListener('mouseover', function () {//添加事件
+				const xhr = new XMLHttpRequest()//创建对象
+				xhr.open('POST', 'http://127.0.0.1:8000/server')//初始化,设置类型与URL
+				xhr.setRequestHeader('Content-Type', 'Maaya')//设置默认请求头,单词不能错
+				xhr.setRequestHeader('name', 'Maaya')//可以设置自定义请求头,只是这样还不行,还得依靠9,10.AJAX案例准备.js中第16行
+				xhr.send('a=100&b=200&c=300')
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState === 4) {
+						if (xhr.status >= 200 && xhr.status < 300) {
+							result.innerHTML = xhr.response
+						}
+					}
+				}
+			})
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+	<div id="result"></div>
+</body>
+
+</html>

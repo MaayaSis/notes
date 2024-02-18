@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#result {
+			width: 200px;
+			height: 100px;
+			border: solid 1px #90b;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			const btn = document.getElementsByTagName('button')[0];//获取button元素
+			const result = document.getElementById("result");//const是声明一个常量
+			btn.onclick = function () {//绑定事件
+				const xhr = new XMLHttpRequest();//创建对象
+				xhr.open('GET', 'http://127.0.0.1:8000/server');//初始化 设置请求的方法和url
+				xhr.send();//发送
+				//事件绑定 处理服务器端返回的结果,readystateh会改变4次
+				xhr.onreadystatechange = function () {//onreadystatechange表示在状态变化时触发该事件
+					//readystate:是xhr对象中的属性,表示状态,0是open未初始化 1open调用完毕 2send调用完毕 3服务端返回部分结果 4完全返回结果					
+					if (xhr.readyState === 4) {//判断现在是什么状态(服务端返回了所有的结果)
+						if (xhr.status >= 200 && xhr.status < 300) { //判断响应状态码200,404,403,401,500,以2开头的都是成功的
+							//处理结果顺序为响应行,头,空行,体
+							console.log(xhr.status);//状态码
+							console.log(xhr.statusText);//状态字符串
+							console.log(xhr.getAllResponseHeaders());//所有响应头
+							console.log(xhr.response);//响应体
+							result.innerHTML = xhr.response;//设置result的文本
+						} else {
+						}
+					}
+				}
+			}
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+	<button>点击发送请求</button>
+	<div id="result"></div>
+</body>
+
+</html>

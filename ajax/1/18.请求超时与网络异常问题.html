@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#result {
+			width: 200px;
+			height: 100px;
+			border: solid 1px #90b;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		在项目运行过程中可能会出现网络超时的情况,这时候可以出一个提醒,让用户明白当前情况
+		 */
+		window.onload = function () {
+			const btn = document.getElementsByTagName('button')[0];
+			const result = document.querySelector('#result');
+
+			btn.addEventListener('click', function () {
+				const xhr = new XMLHttpRequest();
+				xhr.timeout = 2000;//超时设置2s
+				xhr.ontimeout = function () {//超时回调
+					alert("网络异常, 请稍后重试!!");
+				}
+				xhr.onerror = function () {//网络异常回调,即断网等情况时
+					alert("你的网络似乎出了一些问题!");
+				}
+				xhr.open("GET", 'http://127.0.0.1:8000/delay');
+				xhr.send();
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState === 4) {
+						if (xhr.status >= 200 && xhr.status < 300) {
+							result.innerHTML = xhr.response;
+						}
+					}
+				}
+			})
+		}
+	</script>
+
+<body>
+	<!-- 
+		
+	-->
+	<button>点击发送请求</button>
+	<div id="result"></div>
+</body>
+
+</html>

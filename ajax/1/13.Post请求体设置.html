@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		#result{
+            width:200px;
+            height:100px;
+            border:solid 1px #903;
+        }
+	</style>
+	<script type='text/javascript'>
+		/*
+		 */
+		window.onload = function () {
+			const result = document.getElementById("result")
+			result.addEventListener('mouseover',function(){
+				const xhr = new XMLHttpRequest()
+				xhr.open('POST','http://127.0.0.1:8000/server')
+				xhr.send('a=100&b=200')//post设置请求参数,在括号内添加即可,可以随便写,但是对应的服务端要有能够处理才行
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState === 4){
+						if(xhr.status >=200 && xhr.status < 300){
+							result.innerHTML = xhr.response
+						}
+					}
+				}
+			})
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+	<div id="result"></div>
+</body>
+
+</html>

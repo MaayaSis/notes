@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		 */
+		window.onload = function () {
+			const input = document.querySelector('input')//用的为什么是querySelector
+			const p = document.querySelector('p');
+			function handle(data){//声明handle函数
+				input.style.border = 'solid 1px red';//调用handle函数后修改input的边框颜色
+				p.innerHTML = data.msg//修改p的文本
+			}
+			
+			input.onblur = function(){//绑定鼠标聚焦事件
+				let username = this.value//获取用户的输入值
+				const script = document.createElement('script')//
+				script.src = 'http://127.0.0.1:8000/check-username'
+				document.body.appendChild(script);
+			}
+		}
+	</script>
+</head>
+<body>
+	<!-- 
+	-->
+	用户名:<input type="text" id='username'>
+	<p></p>
+</body>
+
+</html>

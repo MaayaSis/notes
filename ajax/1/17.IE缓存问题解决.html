@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#result {
+			width: 200px;
+			height: 100px;
+			border: solid 1px #258;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		IE浏览器在第一次获取ajax缓存之后,在下一次得到ajax请求之后会直接走本地ajax
+		 */
+		window.onload = function () {
+			const btn = document.getElementsByTagName('button')[0];
+			const result = document.querySelector('#result');
+			btn.addEventListener('click', function () {
+				const xhr = new XMLHttpRequest();
+				xhr.open("GET", 'http://127.0.0.1:8000/ie?t=' + Date.now());//给出一个时间戳,让每一次的请求都不同
+				xhr.send();
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState === 4) {
+						if (xhr.status >= 200 && xhr.status < 300) {
+							result.innerHTML = xhr.response;
+						}
+					}
+				}
+			})
+		}
+	</script>
+
+<body>
+	<!-- 
+		
+	-->
+	<button>点击发送请求</button>
+	<div id="result"></div>
+</body>
+
+</html>

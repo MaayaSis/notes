@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		手动取消ajax请求
+		 */
+		window.onload = function () {
+			const btns = document.querySelectorAll('button');//获取元素对象
+			let x = null;
+			btns[0].onclick = function () {
+				x = new XMLHttpRequest();
+				x.open("GET", 'http://127.0.0.1:8000/delay');
+				x.send();
+			}
+			btns[1].onclick = function () {//abort
+				x.abort();
+			}
+		}
+	</script>
+
+<body>
+	<!-- 
+		
+	-->
+	<button>点击发送</button>
+	<button>点击取消</button>
+</body>
+
+</html>
