@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 */
+		window.onload = function () {
+			//只是运行顺序不同,但是结果都是输出ok
+			let p = new Promise((resolve, reject) => {
+				//resolve("ok")//同步任务
+				setTimeout(()=>{//异步任务
+					resolve("ok")
+				},1000)
+			})
+			//可以给then方法加一个延时更长的回调函数就能先改变状态,再指定回调
+			p.then(value => {//改变状态的是同步任务时,先改变状态,再指定回调
+				console.log(value)
+			},reason=>{
+				console.log(value)//改变状态的是异步任务时,先指定回调,再改变状态
+			})
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

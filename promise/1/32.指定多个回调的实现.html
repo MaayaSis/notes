@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+	</style>
+	<script src="./32.指定多个回调的实现.js"></script>
+	<script type='text/javascript'>
+		/*
+		 */
+		window.onload = function () {
+			let p = new Promise((resolve, reject) => {
+				setTimeout(() => {
+					//resolve("ok")
+					reject("error")
+				}, 2000);
+			})
+			p.then(value => {
+				console.log(value)
+			}, reason => {
+				console.warn(reason)
+			})
+			p.then(value => {
+				alert(value)
+			}, reason => {
+				alert(reason)
+			})
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 */
+		window.onload = function () {
+			const p = new Promise((resolve,reject)=>{
+				//1.resolve
+				resolve("ok")//state:pending -> fulfilled
+				//2.reject
+				reject("err")//state:pending -> rejected
+				//3.throw:抛出错误
+				throw "出问题了"//state:pending -> rejected
+
+			})
+			console.log(p)
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

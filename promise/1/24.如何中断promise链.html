@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 */
+		window.onload = function () {
+			let p = new Promise((resolve,reject)=>{
+				setTimeout(() => {
+					resolve("ok")
+				},1000);
+			})
+			p.then(value=>{
+				return new Promise(()=>{})//中断promise链有且只有一个方法:返回一个state:pending的promise对象
+			}).then(value=>{
+				console.log(value)
+			}).then(value=>{
+				console.log(value)
+			})
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

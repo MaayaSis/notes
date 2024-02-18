@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+	</style>
+	<script src="./30.then方法执行回调.js"></script>
+	<script type='text/javascript'>
+		/*
+		 */
+		window.onload = function () {
+			let p = new Promise((resolve, reject) => {
+				//resolve("ok")
+				reject("error")
+				//throw "error"
+			})
+			console.log(p)
+			p.then(value=>{
+				console.log(value)
+			},reason=>{
+				console.warn(reason)
+			})
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

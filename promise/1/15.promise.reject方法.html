@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 */
+		window.onload = function () {
+			//返回一个成功/失败的promise对象
+			let p = Promise.reject(521)//.传入的参数为非promise类型的对象,则返回的结果为失败的promise对象;是promise对象,返回的结果仍是失败的
+			console.log(p)//此时,State:rejected,value:521
+			let p1 = Promise.reject(new Promise((resolve, reject) => {
+				resolve("ok")
+			}))
+			console.log(p1)//state:rejected,value:ok
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

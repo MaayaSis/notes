@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+	</style>
+	<script src="./29.promise对象状态只能修改一次.js"></script>
+	<script type='text/javascript'>
+		/*
+		 */
+		window.onload = function () {
+			let p = new Promise((resolve, reject) => {
+				resolve("ok")
+				reject("error")//state:rejected,正常来说state应该为resolve
+				//throw "error"
+			})
+			console.log(p)
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

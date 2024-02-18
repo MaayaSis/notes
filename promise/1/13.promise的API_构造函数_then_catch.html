@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 */
+		window.onload = function () {
+			//1
+			let p = new Promise((resolve, reject) => {//Promise()传入的参数只能是函数,可以是匿名函数和箭头函数
+				console.log(222)//new Promise()是一个同步调用,即在声明事即执行代码,222会先与111输出
+				reject("error")
+			})
+			console.log(111)
+			//2.只捕获错误的结果,并进行回调
+			p.catch(reason => {
+				console.log(reason)
+			})
+
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

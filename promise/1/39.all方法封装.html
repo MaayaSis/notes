@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 */
+		window.onload = function () {
+			//传入一个包含多个promise对象的数组,只要有一个失败了就直接失败,全部promise成功才能成功
+			let p1 = new Promise((resolve,reject)=>{
+				resolve("ok")
+			})
+			let p2 = Promise.resolve("success")
+			let p3 = Promise.resolve("right")
+			const result = Promise.all([p1,p2,p3])//且结果值包含三个promise成功的结果值.如有一个失败则value只包括失败的结果
+			console.log(result)
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

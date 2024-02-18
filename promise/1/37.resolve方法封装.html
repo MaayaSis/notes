@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 */
+		window.onload = function () {
+			const p = Promise.resolve("ok")
+			const p1 = Promise.resolve(new Promise((resolve,reject)=>{
+				resolve("ok")
+			}))
+			const p2 = Promise.resolve(new Promise((resolve,reject)=>{
+				reject("ok")
+			}))
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 */
+		window.onload = function () {
+			let p = new Promise((resolve, reject) => {
+				resolve("ok")
+			})
+			let result = p.then(value => {
+				//1.抛出错误
+				throw "error"//state:rejected; result:"error"
+				//2.返回一个非prosmie类型的对象,不return相当于return undefined
+				return 123//state:fulfilled; result:123
+				//3.返回结果是Promise对象
+				return new Promise((resolve,reject)=>{
+					resolve("ok")//则then方法的state和result,跟随返回的Promise对象的state和result
+				})
+			}, reason => {
+				console.log(resson)
+			})
+			console.log(result)
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

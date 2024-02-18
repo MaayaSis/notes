@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 */
+		window.onload = function () {
+			function rand(m, n) {
+				return Math.ceil(Math.random() * (n - m + 1)) + m - 1;
+			}
+			const btn = document.querySelector('#btn');
+			/* 1.点击按钮显示2s后是否中奖
+			btn.addEventListener("click", function () {//绑定单击事件
+				setTimeout(() => {
+					let n = rand(1, 100)
+					if (n < 30) {
+						alert("恭喜中奖")
+					} else (
+						alert("没有中奖")
+					)
+				}, 1000)
+			}) */
+			//2.Promise形式实现
+			btn.addEventListener('click', function () {
+				const p = new Promise((resolve, reject) => {
+					setTimeout(() => {
+						let n = rand(1, 100);
+						if (n <= 30) resolve("n")
+						reject("n")
+					}, 100);
+				});
+				console.log(p);
+				p.then((value) => {//value和reason的名字可以是任意
+					alert("中奖,您的中奖数字为" + value);
+				}, (reason) => {
+					alert("再接再厉,您的号码为" + reason);
+				});
+
+			});
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+	<button id="btn">抽奖</button>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 */
+		window.onload = function () {
+			let p = new Promise((resolve,reject)=>{
+				setTimeout(() => {
+					resolve("ok")
+				},1000);
+			})
+			p.then(value=>{
+				return new Promise((resolve,reject)=>{
+					resolve("success")
+				})
+			}).then(value=>{//无return,相当于return undefined,即state:fulfilled; result:undefiend
+				console.log(value)
+			}).then(value=>{//判断[27]的输出结果
+				console.log(value)//undefined
+			})
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		在最后指定一个catch(reason=>{}),即可捕获所有环节中失败的回调
+		 */
+		window.onload = function () {
+			let p = new Promise((resolve, reject) => {
+				setTimeout(() => {
+					resolve("ok")
+				}, 1000);
+			})
+			p.then(value => {
+				throw "error"
+			}).then(value => {
+				console.log(1)
+			}).then(value => {
+				console.log(2)
+			}).catch(reason => {
+				console.warn(reason)
+			})
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

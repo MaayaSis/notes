@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+	</style>
+	<script src="./31.异步任务回调的执行.js"></script>
+	<script type='text/javascript'>
+		/*
+		 */
+		window.onload = function () {
+			let p = new Promise((resolve, reject) => {
+				setTimeout(() => {
+					//resolve("ok")
+					reject("error")
+				}, 2000);
+			})
+			p.then(value => {
+				console.log(value)
+			}, reason => {
+				console.warn(reason)
+			})
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>
