@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+	</style>
+	<script type="text/javascript" src="./vue.js"></script>
+
+<body>
+	<!--
+	-->
+	<div id="root">
+		<h2 v-if="a">你好啊</h2>
+		<h2 :style="{opacity}">欢迎学习Vue</h2>
+		<!-- 在解析时,调用change函数,又因为change函数的返回值为undefined,
+		所以页面不显示,但因为change()调用后,opacity一直在改变,
+		而vue中当被使用的属性改变时,模板就会重新解析,导致调用change()函数无限循环下去 -->
+		<h2>{{change}}</h2>
+	</div>
+	<!-- 
+		生命周期：
+			1.又名：生命周期回调函数、生命周期函数、生命周期钩子。
+			2.是什么：Vue在关键的时间点帮我们调用的一些特殊名称的函数。
+			3.生命周期函数的名字不可更改，但函数的具体内容是程序员根据需求编写的。
+			4.生命周期函数中的this指向是vm或组件实例对象。
+	 -->
+	<script type='text/javascript'>
+		Vue.config.productionTip = false //阻止vue在启动时生成生产提示
+		new Vue({
+			el: '#root',
+			data: {
+				a: false,
+				opacity: 1
+			},
+			methods: {
+				change() {
+					setInterval(() => {
+						this.opacity -= 0.01
+						if (this.opacity <= 0) this.opacity = 1
+					}, 16)
+				}
+			},
+			//Vue完成模板的解析并把初始的真实DOM元素放入页面后(即页面中第一次开始渲染DOM元素的时候,再之后页面修改DOM元素只是更新页面不会重新再调用挂载)（挂载完毕）调用mounted;
+			mounted() {
+				console.log('mounted', this)
+				setInterval(() => {
+					this.opacity -= 0.01
+					if (this.opacity <= 0) this.opacity = 1
+				}, 16)
+			},
+		})
+		//通过外部的定时器实现DOM虚化循环（不推荐）
+		/* setInterval(() => {
+			vm.opacity -= 0.01
+			if(vm.opacity <= 0) vm.opacity = 1
+		},16) */
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+	</style>
+	<script type="text/javascript" src="./vue.js"></script>
+
+<body>
+	<!--
+	-->
+	<div id="root">
+		<h2 v-cloak>{{name}}</h2>
+	</div>
+	<script type="text/javascript" src="http://localhost:8080/resource/5s/vue.js"></script><!-- 除了在<head>中可以引入script标签外,还可以在body中的最后一行引入 -->
+	<!-- 
+		v-cloak指令（没有值）：
+						1.本质是一个特殊属性，Vue实例创建完毕并接管容器后，会删掉v-cloak属性。
+						2.使用css配合v-cloak可以解决网速慢时页面展示出{{xxx}}的问题。
+	 -->
+	<script type='text/javascript'>
+		Vue.config.productionTip = false //阻止vue在启动时生成生产提示
+		new Vue({
+			el:'#root',
+			data:{ 
+				name:'尚硅谷'
+			}
+		})
+	</script>
+</body>
+</html>

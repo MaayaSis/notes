@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+	</style>
+	<script type="text/javascript" src="./vue.js"></script>
+
+<body>
+	<!--
+	-->
+	
+	<!-- 
+		Actions;Mutations,State三者都是Obj对象,以及诸多API都属于Store管理
+		工作流程:
+		1.Vuecomponents调用Store的API_dispatch将组件想要进行的行为(Actions)和想要改变的状态(State)发送给Actions
+		2.如果是能执行的简单行为和已知的数据则可以跳过Actions通过API_Commit向Mutatios直接交流,否则就需要通过Actions向后端服务器(Backend API)请求方法或数据
+		3.Mutations收到行为和数据后直接修改State中的状态
+	 -->
+	<script type='text/javascript'>
+		Vue.config.productionTip = false //阻止vue在启动时生成生产提示
+		
+	</script>
+</body>
+</html>

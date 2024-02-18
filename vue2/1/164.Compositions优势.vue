@@ -1,0 +1,2 @@
+vue2:Options配置项式API,缺点是功能数据分散,不利于后期管理
+vue3:Compositions组合式API

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		*/
+	</style>
+	<script type="text/javascript" src="./vue.js"></script>
+
+<body>
+	<!-- 
+	-->
+	<div class="root">
+		<h1>Hello, {{name.toUpperCase()}}, {{address}}</h1><!-- {{}}中的代码必须写成JS类的表达式 -->
+	</div>
+	<script type="text/javascript">
+		/*
+		1.容器与Vue实例之间只能是一对一的对应关系
+		2.注意区分JS表达式和JS代码(语句):JS表达式是一种特殊的JS代码
+			(1).表达式:一个表达式会产生一个值,可以放在任何一个需要值的地方
+				1)a
+				2)a+b
+				3)demo(1)
+				4)x === y ? 'a' : 'b'
+			(2).js代码(语句)
+				1)if(){}
+				2)for(){}
+		*/
+		Vue.config.productionTip = false
+		new Vue({
+			el:".root",
+			data:{
+				name:"Maaya",
+				address:"厦门"
+			}
+		})
+	</script>
+</body>
+
+</html>
