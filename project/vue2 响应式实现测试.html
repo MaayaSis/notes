@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="button">姐姐</button>
+  <script type="text/javascript">
+    // 依赖收集系统
+    class Dep {
+      // 设置初始收集者
+      constructor() {
+        this.subscriber = new Set()
+      }
+      // 手动添加依赖
+      depend() {
+        if (activeEffect) {
+          this.subscriber.add(activeEffect)
+        }
+      }
+      // 通知依赖更新
+      notify() {
+        this.subscriber.forEach(effect => {
+          effect()
+        })
+      }
+    }
+
+    // watchEffect 监听者
+    let activeEffect = null
+    function watchEffect(effect) {
+      activeEffect = effect // 进入 addEffect 的添加判断中
+      effect() // 执行原本的操作
+      activeEffect = null // 清空判断
+    }
+
+    const targetMap = new WeakMap()
+    // 创建获取指定对象的属性的依赖收集对象 dep, 保证任意属性被更改时,只会触发对这个属性有依赖的方法去更新
+    function getDep(target, key) {
+      let depsMap = targetMap.get(target) // 拿到 target 对象的所有深层依赖 map
+      if (!depsMap) { // 如果 target 的深层依赖不存在, 则新建一个
+        depsMap = new Map()
+        targetMap.set(target, depsMap) // 以 target 对象为键名, depsMap 深层依赖为键值存入
+      }
+      let dep = depsMap.get(key)
+      if (!dep) {
+        dep = new Dep()
+        depsMap.set(key, dep)
+      }
+      return dep
+    }
+    // 实现 vue2 的响应式对象, 默认前提 raw 是对象
+    function reactive(raw) {
+      Object.keys(raw).forEach(key => {
+        const dep = getDep(raw, key)
+        let value = raw[key]
+        Object.defineProperty(raw, key, {
+          get() {
+            dep.depend() // 使用指定值时,将使用者收集到指定 dep 依赖中
+            return value
+          },
+          set(newValue) {
+            value = newValue
+            dep.notify()
+          }
+        })
+      })
+      return raw
+    }
+
+    // 测试依赖收集函数 dep 及响应式对象创建函数 reactive
+    const info = reactive({ name: 'Maaya', age: 17 })
+    watchEffect(() => {
+      console.log('effect1:', info.name + '1')
+    })
+    watchEffect(() => {
+      console.log('effect2:', info.name + '2')
+    })
+    watchEffect(() => {
+      console.log('effect3:', info.age + 1)
+    })
+    watchEffect(() => {
+      console.log('effect4:', info.age * info.age)
+    })
+
+    // 挂载点击方法
+    const button = document.getElementById('button')
+    button.onclick = function () {
+      console.log('click触发')
+      info.name = '姐姐'
+      info.age = 10
+    }
+  </script>
+</body>
+
+</html>
