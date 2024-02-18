@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 * 1. 所有代码分类
+		 *  -初始化执行代码(同步代码):包含绑定DOM事件监听,设置定时器,发送ajax请求的代码
+		 *  -回调执行代码(异步代码):处理回调逻辑
+		 * 2. JS引擎中执行代码的基本流程
+		 *  -初始化代码 → 回调代码
+		 * 3. 模型的两个重要组成部分
+		 *  -事件(定时器/DOM)管理模块
+		 *  -回调队列
+		 * 4. 
+		 * 
+		 */
+		function fun1(){
+			console.log('fun1(')
+		}
+		fun1()
+		document.getElementById('btn').onclcik = function(){
+			console.log('按钮')
+		}
+		setTimeout(function(){
+			console.log('定时器')
+		},2000)
+		function fun2(){
+			console.log('fun2(')
+		}
+		fun2()
+	</script>
+<body>
+	<!-- 
+		-->
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 * IIFE:Immediately-Invoked Funciton Expression 立即调用函数表达式
+		 * -又名匿名函数自调用
+		 * 作用：
+		 *  -1、隐藏实现
+		 *  -2、不会污染外部（全局）命名空间
+		 *  -3、用它来编码JS模块
+		 * 
+		 */
+		//匿名函数自调用
+		(function (){
+			var a = 3;
+			console.log(a + 3)
+		})()
+		var a = 4;
+		console.log(a);
+		
+		(function(){
+			var a = 1
+			function test(){
+				console.log(a++);
+			}
+			function test1(){
+				console.log(a++);
+			}
+			window.$ = function(){//向外暴露一个全局函数
+				return{
+					test:test
+				}
+			}
+		})()
+		$().test();//$是一个函数，$执行后返回的是一个对象
+	</script>
+<body>
+	<!-- 
+		-->
+</body>
+</html>

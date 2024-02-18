@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 * 一、
+		 * 1、依次输出了什么
+		 * gb：undefined
+		 * gb：1，2，3
+		 * ge：3，2，1
+		 * ge：1
+		 * 2、整个执行过程中产生了几个执行上下文？
+		 * 5个
+		 * 二、
+		 * 先执行变量提升，在执行函数提升 这是贯穿本节的核心
+		 * 
+		 * 
+		 */
+		//测试题一
+		console.log('gb'+i)
+		var i = 1
+		foo(1)
+		function foo(i){
+			if(i == 4){
+				return;//打破递归循环
+			}
+			console.log('fb'+i)
+			foo(i+1) //递归调用：在函数中调用自己
+			console.log('fe'+i)
+		}
+		console.log('ge'+i)
+		//二、先执行函数提升还是变量提升
+		function a(){}
+		var a;
+		console.log(typeof a)//function
+		//三、
+		if(!(b in window)){
+			var b = 1
+		} 
+		console.log(b) //undefined
+		//四、
+		var c = 1
+		function c(c){
+			console.log(c)
+		}
+		c(2) // 报错
+		
+	</script>
+<body>
+	<!-- 
+		-->
+</body>
+</html>

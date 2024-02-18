@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 * 实例：实例对象
+		 * 类型：类型对象
+		 * undefined：是已定义，但是未赋值；
+		 * null：是已定义已赋值，但是值是null，null是Object
+		 * 什么时候给变量赋值为null呢？
+		 *  -初始赋值，表明将要赋值为对象；
+		 *  -结束前，让指向的对象成为垃圾对象（被垃圾回收器回收）
+		 * 数据的类型：基本类型，对象类型
+		 * 变量的类型（变量内存值的类型）：
+		 *  -基本类型：保存就是基本类型的数据
+		 *  -引用类型：保存的是地址值（堆内存的地址） 
+		 * 
+		 */
+		//构造函数，类型
+		 function Person(name,age){
+			 this.name = name;
+			 this.age = age;
+			 console.log(this.name)
+		 }
+		 //根据类型创建的实例对象
+		 var p = new Person('maaya',17);
+		 //从语法上来说是合理的，但因为创建的是一个构造函数，但是用法确实调用一个方法，从逻辑上来说不是很好
+		 Person('Maaya',18)
+		 //null和undefined
+		 var a 
+		 console.log(a);
+		 a = null;
+		 console.log(a);
+		 console.log(typeof a);
+		 //初始赋值是因为typeof检查null是Object，初始赋值为null，表明将要赋值为对象；
+		 var o = null;
+		 //确定对象就是赋值
+		 o = ['Maaya',12];
+		 //当对象o无人使用的时候，使用null让b指向的对  象成为垃圾对象（被垃圾回收器回收）
+		 o = null;
+		 //本质是，将函数的内存值地址给b，这样就可以用由b指向函数
+		 var b = function(){
+
+		 }
+		 //返回的是function，是console.log获得了赋值给C的内存地址值，再由console.log通过地址值找到了函数，从而知道了类型
+		 console.log(b);
+	</script>
+<body>
+	<!-- 
+		-->
+</body>
+</html>

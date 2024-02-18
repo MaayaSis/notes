@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 * 1、使函数内部的变量在函数执行后，仍然存活在内存中（延长了局部变量的声明周期）
+		 * 2、让函数外部可以操作（读写）到函数内部的数据（变量、函数）
+		 * 问题：
+		 *  1、函数执行完后，函数内部声明的局部变量是否还存在？一般是不存在，存在与闭包中的变量才有可能存在
+		 *  2、在函数外部能直接访问函数内部的局部变量吗？ 不能，但我们可以通过闭包让外部操作他
+		 * 
+		 * 
+		 * 
+		 */
+		 function fun1(){
+			 var a = 2 // 函数执行完后还存在，存活函数对象中的闭包中
+			 function fun2() { //fun2不存在
+				 a++
+				 console.log(a)
+			 }
+			 function fun3() { //fun3变量不存在,但是fun3变量指向的这个函数对象还在,被变量f接手,由f指向所以会一直存在
+				 a--
+				 console.log(a)
+			 }
+			 return fun3
+		 }
+		 var f = fun1() // 
+		 f()
+	</script>
+<body>
+	<!-- 
+		-->
+</body>
+</html>

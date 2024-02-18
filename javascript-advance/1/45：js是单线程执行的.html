@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 * 1. 代码分类
+		 *  -初始化代码 : 优先执行
+		 *  -回调代码(回调函数的代码) : 初始化代码执行完后才可能会执行
+		 * 2. js引擎执行代码的基本流程
+		 *  -先执行初始化代码:包含一些特别的代码 回调函数(异步执行)
+		 *  -定时器 , 绑定时间监听 , 发送ajax请求
+		 *  -后面某个时刻才会执行
+		 * 3. 为什么JS要用单线程模式,而不用多线程模式?
+		 *  -JS的单线程,与他的用途有关
+		 *  -作为浏览器脚本语言,JS的主要用途是与用户互动,以及操作DOM
+		 *  -这决定了它只能是单线程,否则会带来很复杂的同步问题
+		 * 
+		 */
+		setTimeout(function(){
+			alert('Maaya 2')
+		},5000)
+		setTimeout(function(){
+			alert('Maaya 1')
+		},2500)
+		//异步执行的代码,
+		setTimeout(function(){
+			alert('Maaya 0')
+		},0)
+		function fun(){
+			console.log('fun()')
+		}
+		fun()
+		console.log('alert之前')
+		alert('alert之前') // 暂停但是主线程的执行,同时暂停计时,点击确认后,恢复程序执行和计时
+		console.log('alert之后')
+	</script>
+<body>
+	<!-- 
+		-->
+</body>
+</html>

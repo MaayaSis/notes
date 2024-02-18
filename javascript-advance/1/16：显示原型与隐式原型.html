@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 * 总结
+		 *  -1、函数的prototype属性：在定义函数时自动添加的，默认值时一个空Object对象
+		 *  -2、对象的__proto__属性：创建对象时自动添加的，默认值为构造函数的prototype属性值
+		 *  -3、程序员能直接操作显示原型，但不能直接操作隐式原型（ES6之前）
+		 * 
+		 * 
+		 * 
+		 * 
+		 */
+		 //每个函数function都有一个prototype，即显式原型（属性），默认指向一个空的Object对象
+		 function Fun(){
+			 //内部语句 this.prototype = {}
+		 }
+		 console.log(Fun.prototype)
+		 //每个实例对象都有一个__proto__，可称为隐式原型
+		 var fun = new Fun()//内部语句 this.__proto__ = Fn.prototype
+		 console.log(fun.__proto__)
+		 //对象的隐式原型的值为其对应构造函数的显示原型的值
+		 console.log(Fun.prototype === fun.__proto__);
+		 Fun.prototype.test = function(){
+			 console.log('Maaya')
+		 }
+		 //通过实例对象调用原型的方法
+		 fun.test();//通过实例对象找某个方法或者属性，现在本身属性找如果没有的话，就会去隐式原型找
+	</script>
+<body>
+	<!-- 
+		-->
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 *
+		 */
+	</script>
+<body>
+	<!-- 
+		-->
+		<button id="btn">测试点击事件</button>
+		<script type='text/javascript'>
+			/*
+			 * 什么是回调函数？
+			 *  -1、你定义的
+			 *  -2、你没有调
+			 *  -3、但最终它执行了（在某个时刻，某个条件下）
+			 * 
+			 * 常见的回调函数
+			 *  -1、dom事件回调函数 → this是发生事件的dom元素
+			 *  -2、定时器回调函数 → window
+			 *  -3、
+			 *  -、Ajax请求回调函数（后面的内容）
+			 *  -、生命周期回调函数（后面的内容）
+			 * 
+			 */
+			//dom事件回调函数，
+			document.getElementById('btn').onclick = function() {
+				alert(this.innerHmtl)
+			}
+			setTimeout(function(){
+				alert('Maaya')
+			},2000)
+		</script>
+</body>
+</html>

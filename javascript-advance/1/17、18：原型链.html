@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 * 1、原型链（图解）
+		 *  -访问一个对象的属性时
+		 *    -先在自身属性中查找，找到返回
+		 *    -如果没有，再沿着_proto_这条链向上查找，找到返回
+		 *    -如果最终没找到，返回undefined
+		 *  -别名：隐式原型链
+		 *  -作用：查找对象的属性（方法）
+		 * 2、构造函数/原型/实体对象的关系（图解）
+		 * 3、
+		 * 
+		 * 重点：即使是一个函数对象，它其实也是有 Function 的实例
+		 * 
+		 */
+		function Fun(){
+			this.test = function(){
+				console.log('test')
+			}
+		}
+		Fun.prototype.test1 = function(){
+			console.log('test1')
+		}
+		var fun = new Fun()
+		fun.test()
+		fun.test1()
+		console.log(fun.toString())
+		/*
+		 * 1、函数的显示原型指向的对象默认是空Object实例对象（但是Object不满足）
+		 * 2、所哟函数都是是Function的实例（包括Function）
+		 * 3、Object的原型对象的__proto__
+		 * 
+		 */
+		console.log(Fun.prototype instanceof Object) 
+		console.log(Object.prototype instanceof Object);//false
+		console.log(Function.prototype instanceof Object);//true
+		
+		console.log(Function.prototype === Function.__proto__);//true
+
+		console.log(Object.prototype.__proto__)//null
+	</script>
+<body>
+	<!-- 
+		-->
+</body>
+</html>

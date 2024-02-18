@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 * 3、JS中调用函数时传递变量参数时，是值传递还是引用传递
+		 *  -理解一：都是值（基本/地址值）传递
+		 *  -理解二：可能是值传递，也可能是引用传递（地址值）
+		 * 
+		 * 4、JS引擎如何管理内存
+		 *  -内存生命周期
+		 *   -分配小内存空间，得到它的使用权
+		 *   -存储数据，可以反复进行操作
+		 *   -释放小内存空间
+		 * 
+		 *  -释放内存
+		 *   -局部变量：函数执行完自动释放
+		 *   -对象：成为垃圾对象 → 垃圾回收器回收（null）
+		 *   -全局变量不会被释放
+ 		 * 
+		 */
+		var a = 3;
+		function fn(a) {
+			a = a + 1;
+		}
+		fn(a);
+		console.log(a)
+		//理解1、obj把自己的内存内容（可以理解成是传递字符串？）传给函数中的obj
+		//理解2、obj把自己的地址（是个基本数据的时候传的就是基本数据，是引用数据类型的时候，就直接把name：'maaya'传入了）传给函数中的obj
+		function fn1(obj){
+			console.log(obj.name)
+		}
+		var obj = {name:'Maaya'};
+		fn1(obj);
+
+		//4.1、占了几个空间？
+		var b = 3; 
+		var obj = {};
+		var obj = null;
+		//只有在被执行的时候fn2才会占两个空间，因为是局部变量，所以执行完之后等待垃圾回收器某个时候自动释放回收
+		function fn2(){
+			var c = {}
+		}
+		fn2();
+	</script>
+<body>
+	<!-- 
+		-->
+</body>
+</html>

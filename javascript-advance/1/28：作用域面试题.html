@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 * 
+		 */
+		//
+		var x = 10
+		function fun() {
+			console.log(x)
+		}
+		function show(f) {
+			var x = 20
+			f()
+		}
+		show(fun)
+		//
+		var fun = function () {
+			console.log(fun)
+		}
+		fun()
+		var obj = {
+			fun1: function () {
+				console.log(obj.fun1)
+			}
+		}
+		obj.fun1()
+	</script>
+
+<body>
+	<!-- 
+		-->
+</body>
+
+</html>

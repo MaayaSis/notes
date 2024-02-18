@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 * 1、读取对象的属性值时：会自动到原型链中查找
+		 * 2、设置对象的属性值时：不会查找原型链，如果当前对象中没有此属性，直接添加此属性并设置其值
+		 * 3、方法一般定义在原型中，属性一般通过构造函数定义在对象本身上
+		 * 
+		 */
+		function Fun() {
+			
+		}
+		Fun.prototype.a = 'xxx'
+		var fun1 = new Fun()
+		console.log(fun1.a,fun1)
+		var fun2 = new Fun()
+		fun2.a = 'yyy'
+		console.log(fun1.a,fun2.a,fun2)
+
+		function Person(name,age) {
+			this.name = name;
+			this.age = age;
+		}
+		Person.prototype.set = function (name,age) {
+			this.name = name
+			this.age = age
+		}
+		var p1 = new Person("姐姐",1)
+		p1.set('爱情','18')
+		console.log(p1)
+		var p2 = new Person("如月",15)
+		p1.set('Kisaragi','17')
+		console.log(p2)
+		console.log(p2.__proto__ === p1.__proto__)//true
+	</script>
+<body>
+	<!-- 
+		-->
+</body>
+</html>

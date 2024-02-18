@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 * 
+		 */
+		//父类型
+		function Supper(){
+			this.supProp = 'Supper property'
+		}
+		Supper.prototype.showSupperProp = function(){
+			console.log(this.supProp)
+		}
+		//子类型的原型为父类型的一个实例对象
+		Sub.prototype = new Supper()
+		//让子类型的原型的constructor指向子类型
+		Sub.prototype.constructor = Sub
+		function Sub(){
+			this.subProp = 'Sub property'
+		}
+		Sub.prototype.showSubProp = function(){
+			console.log(this.subProp)
+		}
+		var sub = new Sub()
+		sub.showSupperProp()
+		/*
+		 * 方式二：借用构造函数继承（假的）
+		 *  1、套路
+		 *    -定义夫类型构造函数
+		 * 
+		 */
+		function Person(name,age){
+			this.name = name
+			this.age = age
+		}
+		function Student(name,age,price){
+			Person.call(this,name,age) //相当于this.person(name.age)
+			this.price = price
+		}
+		var a = new Student('Maaya',18,100000)
+		console.log(a.name,a.age,a.price)
+		/*
+		 * 方式三：原型链 + 借用构造函数继承的组合继承
+		 *  1、利用原型链实现对夫类型对象的方法继承
+		 *  2、利用super()借用父类型构建函数初始化相同属性
+		 * 
+		 */
+		 function Person(name,age){
+			this.name = name
+			this.age = age
+		}
+		Person.prototype.setName = function(){
+			this.name = name
+		}
+		function Student(name,age,price){
+			Person.call(this,name,age)
+			this.price = price
+		}
+		Student.prototype = new Person()
+		Student.prototype.constructor = Student
+		Student.prototype.setPrice = function(){
+			this.price = price
+		}
+		var a = new Student('Maaya',18,5000)
+		console.log(a.name,a.age,a.price)
+	</script>
+<body>
+	<!-- 
+		-->
+</body>
+</html>

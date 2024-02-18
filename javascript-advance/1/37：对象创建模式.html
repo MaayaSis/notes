@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 * 方法一、Object构造函数模式
+		 *  -套路：先创建空Object对象，再动态添加属性/方法
+		 *  -使用场景：起始时不确定对象内部数据
+		 *  -问题：语句太多
+		 * 方法二：对象字面量模式
+		 *  -套路：使用{}创建对象，同时指定属性/方法
+		 *  -使用场景：起始时对象内部数据是确定的
+		 *  -问题：如果创建多个对象，有重复代码
+		 * 方法三：工厂模式
+		 *  -套路：通过工厂函数动态创建
+		 *  -适用场景：需要创建多个对象
+		 *  -问题：没有一个具体的类型，都是Object类型
+		 * 方法四：自定义构造函数模式
+		 *  -套路：
+		 *  -套路：
+		 *  -套路：
+		 * 方法五：构造函数 + 原型 模式
+		 * 
+		 */
+		//多条赋值语句
+		var a = new Object()
+		p.name = 'tom'
+		p.age = 12
+		p.setName = function (name) {
+			this.name = name
+		}
+		//一条赋值语句，
+		var b = {
+			name: 'Tom',
+			age: 12,
+			setName: function (name) {
+				this.name = name
+			}
+		}
+		//工厂模式
+		function createPerson(name, age) {
+			var c = {
+				name: name,
+				age: age,
+				setName: function (name) {
+					this.name = name
+				}
+			}
+		}
+		var p1 = createPerson('Maaya',18)
+		var p1 = createPerson('Maaya',19)
+		//自定义构造函数模式
+		function Person(name,age){
+			this.name = name,
+			this.age = age,
+			this.setName = function(name){
+				this.name = name
+			}
+		}
+		var person = new Person('人',90)
+		console.log(person instanceof Person)
+
+		function Student(name ,age){
+			this.name = name,
+			this.age = age,
+			this.setName = function(name){
+				this.name = name
+			}
+		}
+		var student = new Student('学生',90)
+		console.log(student instanceof Student)
+
+		//构造函数 + 原型 模式
+		function Person(name,age){
+			this.name = name,
+			this.age = age
+		}
+		Person.prototype.setName = function(name){
+				this.name = name
+			}
+	</script>
+
+<body>
+	<!-- 
+		-->
+</body>
+
+</html>

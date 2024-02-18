@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 * 1、如何产生闭包
+		 *  -当一个嵌套的内部（子函数）引用了嵌套的外部（父）函数的变量（函数）时，产生了闭包
+		 * 2、闭包到底是什么
+		 *  -理解一：闭包是嵌套的内部函数（大多数人的理解）
+		 *  -理解二：包含被引用变量（函数）的对象（少数人理解）
+		 * 3、产生闭包的条件
+		 *  -函数嵌套
+		 *  -内部函数引用了外部函数的数据（变量/函数）
+		 * 
+		 */
+		 function fun1() {
+			 var a = 2
+			 function fun2() { //执行函数定义就会产生闭包（不需要调用内部函数）var b = 不会产生闭包
+				 console.log(a)
+			 }
+			 fun2()
+			 return fun2//因为新版chrome内核默认不展示fun2,需要添加本行才会展示
+		 }
+		 fun1()
+	</script>
+<body>
+	<!-- 
+		-->
+</body>
+</html>

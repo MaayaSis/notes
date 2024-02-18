@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 * 1. H5规范提供了Web Workers,这是一个JS提供的多线程解决方案
+		 * 2.分线程中的全局对象不再是window,所以在分线程中不可能更新界面
+		 * 
+		 * Web Workers不足:
+		 *  -慢,不能跨域加载JS,Worker内代码不能访问DOM(更新UI),不是每个浏览器都支持这个新特性
+		 * 
+		 * 
+		 */
+		window.onload = function () {
+			var input = document.getElementById('number')
+			document.getElementById('btn').onclick = function () {
+				var number = input.value
+				//创建一个Worker对象
+				var worker = new Worker('47：H5 Web Workers1.js')//加载在分线程中的JS代码
+				worker.onmessage = function (event) {//worker.onmessage是一个监听,当worker接受刀数据时调用回调函数,所以可以放在postMessage前
+					console.log('主收分')
+					alert(event.data)//返回的数据
+				}
+				worker.postMessage(number)//向分线程中发送number数据
+				console.log('主发分')
+			}
+		}
+
+
+	</script>
+
+<body>
+	<!-- 
+		-->
+	<input type="text" placeholder="数值" id="number">
+	<button id="btn">计算</button>
+	<input type="checkbox" value="1" checked>
+</body>
+
+</html>

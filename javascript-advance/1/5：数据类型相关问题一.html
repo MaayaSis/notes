@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 * 1、 var a = xxx 时，a内存中保存的是什么？
+		 * 
+		 * 2、关于引用变量赋值问题
+		 * 
+		 */
+		//1.1、xxx是基本数据时，保存的就是这个数据
+		var a = 3;
+		//1.2、xx是对象，保存的是对象的地址值
+		var a = function(){
+
+		}
+		//1.3、xxx是一个变量时，保存的就是xxx的内存内容（可能是基本数据，也可能是地址值）
+		var b = 'abc';
+		a = b;
+		b = {};
+		a = b;
+
+		//2.1、是将obj的内存内容保存给obj1，只是这个内容恰好是地址值
+		var obj = {name:'Maaya'};
+		var obj1 = obj;
+		//2.2、多个变量引用同一个对象，那么一个变量修改了对象的数据后，其它所有变量看到的是修改之后的数据
+		obj.name = 'Kisaragi';
+		console.log(obj1.name);
+		//2.3、 
+		function fun(obj2){
+			obj2.name = 'D';
+		}
+		fun(obj1);
+		console.log(obj1.name)
+		//2.4、思考最后输出的值
+		var o = {age:'18'};
+		var o1 = o;
+		o = {age:'1',name:'1'};
+		console.log(b.age,a.age,a.name);
+		//2.5、首先是将o赋值给o2，这时候o2保存的是o的地址值，
+		//然后在函数中，又重新给o2赋值一个地址，这个时候a就已经和obj没有关系了，因为两个变量指向的不是同一个对象，o就变成一个新的函数中的局部变量。
+		function fun1(o2){
+			o2 = {age:'15'}
+		}
+		fun1(o);
+		console.log(o.age);
+	</script>
+<body>
+	<!-- 
+		-->
+</body>
+</html>

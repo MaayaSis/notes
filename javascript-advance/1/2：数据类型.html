@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/* 
+		 *数据类型：
+		 * 1、基本（值）类型：
+		 *  -string（任意的字符串） 
+		 *  -number（任意的数字） 
+		 *  -boolean（true，false） 
+		 *  -null（null） 
+		 *  -undefined（undefined）
+		 * 2、对象（引用）类型：
+		 *  -Object（任意对象，内部的数据是无序的） 
+		 *  -Function（一种特别的对象，可以执行，封装了一串可执行代码的对象） 
+		 *  -Array（一种特别的对象，有数值下标，内部数据是有序的） 
+		 *判断数据类型
+		 * typeof：返回数据类型的字符串表达
+		 *  -可以判断：undefined，数值，字符串，布尔值，function
+		 *  -不能判断：null，undefined，Object，Array
+		 * instanceof：判断对象的具体类型
+		 *  - A instanceof B 实例A ， 不能判断null与Object，Object和Array
+		 * ===：undefined，null
+		 * 
+		 * 没有一个引用指向的对象就是垃圾对象
+		 * 
+		 */
+		 var a ;
+		 console.log(a,typeof a === undefined,undefined === 'undefined');
+		 var b = 3;
+		 console.log(typeof b === 'number');
+		 var c = 'Maaya';
+		 console.log(typeof c === 'string');
+		 var d = true ;
+		 console.log(typeof d === 'boolean');
+		 var a1 = {
+			 number:'Maaya',
+			 b1:[1,2,console.log],
+			 c1:function (){
+				 console.log('1');
+				 return function(){
+					 return 'Maaya'
+				 }
+			 }
+		 }
+		 console.log(a1 instanceof Object,a1.b1 instanceof Array,a1.c1 instanceof Function);
+		 console.log(a1.b1 instanceof Array,a1.b1 instanceof Object);
+		 console.log(a1.c1 instanceof Function,a1.c1 instanceof Object);
+		 console.log(typeof a1.c1 === 'function');
+		 console.log(typeof a1.b1[2] === 'function');//console.log 也是一个函数，所以可以直接加括号执行
+		 a1.b1[2](4);
+		 console.log(a1.c1()());//调用返回值中的函数
+	</script>
+<body>
+	<!-- 
+		-->
+</body>
+</html>

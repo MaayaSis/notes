@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 * 
+		 */
+		//父类型
+		function Supper() {
+			this.supProp = 'Supper property'
+		}
+		Supper.prototype.showSupperProp = function () {
+			console.log(this.supProp)
+		}
+		//子类型的原型为父类型的一个实例对象
+		Sub.prototype = new Supper()
+		function Sub() {
+			this.subProp = 'Sub property'
+		}
+		Sub.prototype.showSubProp = function () {
+			console.log(this.subProp)
+		}
+		var sub = new Sub()
+		sub.showSupperProp()
+
+		function F() { }
+		F.prototype.showFather = function () {
+			console.log("father")
+		}
+		S.prototype = new F()
+		function S() { }
+		
+		var son = new S()
+		son.showFather()
+	</script>
+
+<body>
+	<!-- 
+		-->
+</body>
+
+</html>

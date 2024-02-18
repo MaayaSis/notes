@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*
+		 * 
+		 * 
+		 * 
+		 *  
+		 */
+		window.onload = function () {
+			var btns = document.getElementsByTagName('button')
+			for (var i = 0,length = btns.length; i < length; i++) {//因为每一次for循环的时候,都会重复计算btns.length,所以可以通过赋值的方法固定下来
+				var btn = btns[i];
+				btn.index = i
+				console.log(btn)
+				btn.onclick = function() {
+					alert('第' + (this.index + 1) + '个 ')
+				}
+			}
+			console.log(btn)
+			console.log(i)
+		}
+	</script>
+
+<body>
+	<!-- 
+		-->
+	<button>342424</button>
+	<button>2423423432</button>
+	<button>2321321321</button>
+</body>
+
+</html>
