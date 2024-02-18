@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			function Phone(brand, price) {//手机
+				this.brand = brand;
+				this.price = price;
+			}
+			Phone.prototype.call = function () {//添加方法
+				console.log("我可以打电话!!");
+			}
+			let Huawei = new Phone('华为', 5999);//实例化对象
+			Huawei.call();
+			console.log(Huawei);
+
+			class Phone1 {//创建一个类
+				constructor(brand,price) {//构造方法,名字必须是constructor,在新建一个Phone1的类名时,会调用本方法创建对应属性
+					this.brand = brand;//如果要加属性,在这里直接添加即可
+					this.price = price;
+				}
+				call(){//如果要加的是方法,在constructor外面一个作用域添加方法,格式参照本行
+					console.log("我是一个方法")
+				}
+			}
+
+			let oneplus = new Phone1("1",1999)
+			console.log(oneplus)
+			oneplus.call()
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			//模拟获取,用户数据,订单数据,商品数据 
+			function getUsers() {
+				setTimeout(() => {
+					let data = '用户数据';
+					iterator.next(data);//第二次调用的next方法上传的参数会变成第一个yield返回的值
+				}, 3000);
+			}
+			function getOrders() {
+				setTimeout(() => {
+					let data = '订单数据';
+					iterator.next(data);
+				}, 3000)
+			}
+			function getGoods() {
+				setTimeout(() => {
+					let data = '商品数据';
+					iterator.next(data);
+				}, 3000)
+			}
+			function* gen() {
+				console.log("我最先执行")
+				let users = yield getUsers();
+				console.log(users)
+				let orders = yield getOrders();
+				console.log(orders)
+				let goods = yield getGoods();
+				console.log(goods)
+			}
+			//调用生成器函数
+			let iterator = gen();
+			iterator.next();
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

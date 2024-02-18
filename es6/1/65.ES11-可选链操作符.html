@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			//如果不做层次判断的话,用户如果不上传 db参数那么一开始就会报错,而用了可选链操作之后,没传的话只会报undefined
+			function main(config) {//现在想获取到db即数据库中的 host属性
+				// const dbHost = config && config.db && config.db.host; 本来是需要层层判断是否有这个值的
+				const dbHost = config?.db?.host; //?.即判断是否有?.前面的这个属性是否存在,如果存在再继续向后调用
+				console.log(dbHost);
+			}
+
+			main({//在main函数中传入的参数如下 , 这是一个多层次的对象参数
+				db: {
+					host: '192.168.1.100',
+					username: 'root'
+				},
+				cache: {
+					host: '192.168.1.200',
+					username: 'admin'
+				}
+			})
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

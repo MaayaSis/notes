@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			function* gen(arg) {
+				console.log(arg);
+				let one = yield 111;//这一段和下面的console.log(one)代码算是第一个yield语句
+				console.log(one);
+				let two = yield 222;//这一段和下面的console.log(one)代码算是第二个yield语句
+				console.log(two);
+				let three = yield 333;
+				console.log(three);
+			}
+			//执行获取迭代器对象
+			let iterator = gen('AAA');
+			console.log(iterator.next());
+			//next方法可以传入实参
+			console.log(iterator.next('BBB'));//在next语句传入一个实参时,相当于在gen("")中传入实参
+			console.log(iterator.next('CCC'));//第一次在next方法中传入实参后,必定会执行第一段代码+第一个yield语句
+			console.log(iterator.next('DDD'));//第二次在在next方法中传入实参后,必定会执行第一段代码+第二个yield语句
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

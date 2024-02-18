@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			const school = {
+				name: "尚硅谷",
+				cities: ['北京', '上海', '深圳'],
+				xueke: ['前端', 'Java', '大数据', '运维']
+			}
+			console.log(Object.keys(school));//获取对象所有的键
+			console.log(Object.values(school));//获取对象所有的值
+			console.log(Object.entries(school));//entries,返回的是一个两个值的数组,每个数组里的第一个值是键第二个值是值
+
+			const result = Object.entries(school)//将一个对象转化为二维数组
+			console.log(result)
+			const m = new Map(result);//将一个二维数组转化为map
+			console.log(m);
+
+			console.log(Object.getOwnPropertyDescriptors(school));//对象属性的描述对象
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+console.log(globalThis);//在js中执行的也是global,即全局对象

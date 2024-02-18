@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		ES6引入了一种新的原始数据类型 Symbol，表示独一无二的值。它是JavaScript 语言的第七种数据类型，是一种类似于字符串的数据类型。
+		1) Symbol 的值是唯一的,用来解决命名冲突的问题
+		2) Symbol 值不能与其他数据进行运算
+		3) Symbol 定义的对象属 性 不能 使 用 for…in 循 环遍 历 ，但 是可 以 使 用Reflect.ownKeys 来获取对象的所有键名
+		 */
+		window.onload = function () {
+			//创建Symbol,在本部分中symbol是作为函数
+			let s = Symbol()
+			console.log(s,typeof s)
+			let s1 = Symbol('描述字符串')//可以传一个描述字符串,意义等于注释
+			let s2 = Symbol('描述字符串')//和上面的s1不同
+			console.log(s1 === s2)
+			//Symbol.for 创建
+			let s3 = Symbol.for('姐姐')//在本部分中symbol作为对象,被称为函数对象
+			let s4 = Symbol.for('maaya')//
+			console.log(s3,typeof s3)
+			console.log(s4,typeof s4)
+			console.log(s3 === s4)//结果是true,就像同名的两个人,身份证号码不同
+			//不能与其他数据进行运算
+			let Sis = s + 100
+			console.log(Sis)
+			//输出七种数据类型
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

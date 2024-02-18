@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			class Phone {
+				get price() {//可以没有构造函数,即constructor(){}
+					console.log("价格属性被读取了")
+					return "我是一个返回值"
+				}
+				set price(newVal) {
+					console.log('价格属性被修改了');
+				}
+			}
+			let s = new Phone();
+			s.price = 'free';//可以直接读取 price,并且读取之后获得的值就是是它的return值
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

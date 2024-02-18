@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		扩展运算符（spread）也是三个点（...）,它好比rest参数的逆运算,将一个数组转为用逗号分隔的参数序列，对数组进行解包
+		 */
+		window.onload = function () {
+			//
+			const name = ['如','月','真','绫']//要变成 '如','月','真','绫'
+			function sister(){
+				console.log(arguments[0])
+			}
+			sister(name)//输出的会是一个数组
+			sister(...name)//相当于sister('如','月','真','绫')
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		大整形 BigInt
+
+		大整形的值只能和大整形的值进行运算
+		 */
+		window.onload = function () {
+			let n = 5213n
+			console.log(n, typeof n)
+			console.log(BigInt(n));//可以将一个值转化为大整形的值,不能使用浮点型数字
+
+			let max = Number.MAX_SAFE_INTEGER
+			console.log(max);
+			console.log(max + 1);
+			console.log(max + 2);//在这边+2的值等于+1的值 表明有问题
+			//大整形是用来作为大数字的运算
+			console.log(BigInt(max))
+			console.log(BigInt(max) + BigInt(1))
+			console.log(BigInt(max) + BigInt(2))
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

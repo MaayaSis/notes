@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			//声明两个promise对象
+			const p1 = new Promise((resolve, reject) => {
+				setTimeout(() => {
+					resolve('商品数据 - 1');
+				}, 1000)
+			});
+			const p2 = new Promise((resolve, reject) => {
+				setTimeout(() => {
+					resolve('商品数据 - 2');
+					// reject('出错啦!');
+				}, 1000)
+			});
+
+			//allsettled方法和all方法,传入的参数都是一个promise数组
+			const result = Promise.allSettled([p1, p2]);//调用promise.allsettled()方法
+			const res = Promise.all([p1, p2]);
+			console.log(result);//区别是allSettled方法最后返回的状态永远是成功,返回的值就是promise数组的中参数的 状态和值
+			console.log(res);//区别是all方法最后返回的由数组中的参数的状态决定,只有当两个状态都是成功时才会成功,返回的值就是promise数组的中参数的 状态和值
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

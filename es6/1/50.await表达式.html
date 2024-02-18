@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			const p = new Promise((resolve, reject) => {//创建一个promise对象
+				// resolve("用户数据");
+				reject("失败啦!");
+			})
+			async function main() {
+				try {
+					let result = await p
+					console.log(result)
+				} catch (e) {//catch得到失败的结果，e参数就是
+					console.log(e)
+				}
+			}
+			main()
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

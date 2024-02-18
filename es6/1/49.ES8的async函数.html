@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		async和await两种语法结合可以让异步代码像同步代码一样
+		 */
+		window.onload = function () {
+			async function fn() {//声明一个 async 函数
+				return '尚硅谷';//返回的结果不是一个 Promise 类型的对象时, 那么返回的结果会变成一个成功的 Promise 对象
+				throw new Error('出错啦!');//抛出错误, 返回的结果是一个失败的 Promise
+				return new Promise((resolve, reject) => {//返回的结果如果是一个 Promise 对象,那么它的状态就是async的状态
+					resolve('成功的数据');//即这里的promise返回的时resolve,那么上面的async获得的就是一个resolve结果
+					// reject("失败的错误");
+				});
+			}
+			const result = fn();
+			//调用 then 方法
+			result.then(value => {//这里会直接调用value,因为async获得的是成功resolve的状态
+				console.log(value);
+			}, reason => {
+				console.warn(reason);
+			})
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

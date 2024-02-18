@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			let str = `<ul>
+            <li>
+                <a>肖生克的救赎</a>
+                <p>上映日期: 1994-09-10</p>
+            </li>
+            <li>
+                <a>阿甘正传</a>
+                <p>上映日期: 1994-07-06</p>
+            </li>
+        </ul>`;
+
+			const reg = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/sg//声明正则 , 
+			//其中 .*?的作用:.*是为了匹配空格换行符,?是为了禁止贪婪         (.*?)中(.*)是为了通配,?是为了禁止贪婪
+
+			//调用方法
+			const result = str.matchAll(reg); //最后能得到一个可迭代对象,里面next()方法
+			for (let v of result) {//使用 let of 进行遍历结果
+				console.log(v);
+			}
+			const arr = [...result];//也可以使用扩展运算符达到一个数组
+			console.log(arr);
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

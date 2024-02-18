@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			const p = new Promise((resolve, reject) => {
+				const xhr = new XMLHttpRequest()
+				xhr.open("GET", "https://api.apiopen.top/getJoke")
+				xhr.send()
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState === 4) {
+						if (xhr.status >= 200 && xhr.status < 300) {
+							resolve(xhr.response)
+						} else {
+							reject(xhr.status)
+						}
+					}
+				}
+			})
+
+			p.then((value)=>{
+				console.log(value)
+			},(reason)=>{
+				console.log(reason)
+			})
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			let arr = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+			//console.log([...new Set(arr)])//数组去重
+			let arr2 = [4, 5, 6, 5, 6];
+			let result = [...new Set(arr)].filter(item => new Set(arr2).has(item));//测试数组的交集,filter是过滤函数
+
+
+			let union = [...new Set([...arr, ...arr2])];//3. 并集
+			console.log(union);
+			
+			let diff = [...new Set(arr)].filter(item => !(new Set(arr2).has(item)));//4. 差集
+        console.log(diff);
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

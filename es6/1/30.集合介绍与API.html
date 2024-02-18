@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		set是一个集合,和数组类似,但本质还是一个对象?,可以使用iterator接口
+		 */
+		window.onload = function () {
+			let s = new Set()
+			let s2 = new Set(["1","2","1","2"])//会自动去重
+			console.log(s2,typeof s)
+			s2.add("3")//添加元素
+			console.log(s2)
+			s2.delete("2")//删除
+			console.log(s2)
+			console.log(s2.has("2"))//检测
+			//s2.clear()//清空
+			console.log(s2)
+			for(let v of s2){
+				console.log(v)
+			}
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

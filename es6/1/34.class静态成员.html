@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			function Phone() {//这是一个构造函数
+
+			}
+			Phone.name = "手机"//但是构造函数本身也是一个对象,所以可以给他添加属性
+			phone.change = function () {
+				console.log("我可以改变世界");
+			}
+
+			Phone.prototype.size = "5.5yc"
+
+			let nokia = new Phone();//创建一个phone的实例对象
+			console.log(nokia.name);//但是Phone实例对象的属性无法指向Phone函数对象的属性,所以会报错 这就是静态属性
+			nokia.change();//但是Phone实例对象的方法无法指向Phone函数对象的方法,所以会报错 这就是静态属性
+			nokia.size//但是原型对象上添加是可以解决这个问题的
+
+
+			class Phone {
+				static name = '手机';//静态属性
+				static change() {//静态方法
+					console.log("我可以改变世界");
+				}
+			}
+			let nokia = new Phone();
+			console.log(nokia.name);
+			console.log(Phone.name);
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			//生成器其实就是一个特殊的函数,是专门针对异步编程的解决方案
+			//异步编程  纯回调函数  node fs  ajax mongodb
+			function* gen() {
+				console.log(111)
+				console.log("姐姐我爱你")
+				yield '一只没有耳朵'//生成器函数可以出现yield语句,作为函数代码的分隔符
+				console.log(222)
+				yield '一只没有尾部'
+				console.log(333)
+				yield '真奇怪'
+				console.log(444)
+			}
+			let iterator = gen();
+			console.log(typeof iterator); //无法直接执行生成器函数
+			console.log(iterator.next());
+			console.log(iterator.next());
+			//遍历
+			for (let v of gen()) {
+				console.log(v);
+			}
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

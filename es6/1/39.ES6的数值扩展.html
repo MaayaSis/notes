@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		1. Number.EPSILON 是 JavaScript 表示的最小精度
+		当两个数的差值小于  EPSILON属性的值2.2204460492503130808472633361816E-16时,可以认为这两个数相等
+		2. Number.isFinite()  检测一个数值是否为有限数
+		3. Number.isNaN() 检测一个数值是否为 NaN 
+		4. Number.parseInt() Number.parseFloat字符串转整数
+		5. Number.isInteger() 判断一个数是否为整数
+		6. Math.trunc() 将数字的小数部分抹掉  
+		7. Math.sign() 判断一个数到底为正数 负数 还是零    
+
+		都会返回一个boolean值
+		 */
+		window.onload = function () {
+			console.log(0.1 + 0.3 === 0.4)//用于浮点数的运算,但是现在好像0.1+0.3 就是等于 0.4,老师视频里是等于 0.400000000004的
+			function equal(a,b){
+				if(Math.abs(a-b) < Number.EPSILON){//利用数学方法进行计算
+					return true
+				}else{
+					return false
+				}
+			}
+			let b = 0b1010;//二进制 0b开头
+			let o = 0o777;//八进制 0o开头
+			let x = 0xff;//16进制 0x
+
+			console.log(Number.isFinite(100));
+
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

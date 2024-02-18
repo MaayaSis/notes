@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			import * as m1 from "./src/js/m1.js";//1. 通用的导入方式
+
+			import {school, teach} from "./src/js/m1.js";//用解构赋值的形式 引入 分别暴露的模块代码
+
+			//但是因为和上面的school变量重名,所以使用as 代码将其改名为guigu
+        	import {school as guigu, findJob} from "./src/js/m2.js";//用解构赋值的形式 引入 统一暴露的模块代码
+
+			import {default as m3} from "./src/js/m3.js";//用解构赋值的形式 引入 默认暴露
+
+			//3. 简便形式  只针对默认暴露
+			import m3 from "./src/js/m3.js";
+			console.log(m3);
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

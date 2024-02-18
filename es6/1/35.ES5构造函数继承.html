@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			function Phone(brand, price) {//假设为父类构造方法,父类和子类只是我们随意定义关系
+				this.brand = brand;
+				this.price = price;
+			}
+			Phone.prototype.call = function () {
+				console.log("我可以打电话");
+			}
+			function SmartPhone(brand, price, color, size) {//假设为子类构造方法
+				Phone.call(this, brand, price);//万一父类的属性变了,这里直接写this.brand到时候也要变,所以用call
+				this.color = color;
+				this.size = size;
+			}
+			//设置子级构造函数的原型
+			SmartPhone.prototype = new Phone;//调用父类的方法
+			SmartPhone.prototype.constructor = SmartPhone;//这一行可以不要,老师说的
+
+			//声明子类的方法
+			SmartPhone.prototype.photo = function () {
+				console.log("我可以拍照")
+			}
+			const chuizi = new SmartPhone('锤子',2499,'黑色','5.5inch');
+			console.log(chuizi);
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

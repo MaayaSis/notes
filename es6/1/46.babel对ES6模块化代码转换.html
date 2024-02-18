@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script src="引入本js代码" type="module"></script><!-- 实际开发中不会用这种方式引入,因为IE等默写浏览器不支持ES6 -->
+	<script type='text/javascript'>
+		/*
+		1.安装工具 babel-cli babel-preset-env browserify(webpack)
+
+		安装好后
+		1. 在cmd中  npx(npm) babel src/js -d dist/js --preset=babel-preset-env    (src/js是源文件路径和dist/js是编码后文件要存储的路径)
+		2. 打包npc  borwserify dist/js/app.js -o dist/bundle.js  (最后一个也是存储路径)
+		3.最后在script中只要引入bundle.js就行了,而且不用加module 
+		 */
+		window.onload = function () {
+			
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

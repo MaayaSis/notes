@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		Promise 是 ES6 引入的异步编程的新解决方案。语法上 Promise 是一个构造函数，用来封装异步操作并可以获取其成功或失败的结果。
+		 */
+		window.onload = function () {
+			//实例化 Promise 对象
+			const p = new Promise(function (resolve, reject) {
+				setTimeout(function () {
+					//成功是resolve
+					let data = '数据库中的用户数据'
+					reject(data);
+					//失败是reject
+				}, 1000)
+			})
+			p.then(function (resolve) {
+				console.log(resolve)
+			}, function (reject) {//参数reject可以是任意名字
+				console.log(reject)
+			})
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

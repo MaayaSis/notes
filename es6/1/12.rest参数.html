@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		ES6引入rest参数,用于获取函数的实参,用来代替arguments
+		 */
+		window.onload = function () {
+			//ES5获取实参的方式
+			function date(){
+				console.log(arguments)
+			}
+			date('maaya','sister')//获取之后得到的是对象
+			//ES6获取实参的方式
+			function date1(a,...maaya){//可以自定义参数名
+				console.log(maaya)
+			}
+			date1('maaya','sister')//获得的是一个数组,这样就可以使用filter,some,every,map等方式都可以使用
+			//rest参数必须要放到参数最后
+			function fn(a,b,...tab){//fn(a,...tab,b)不行
+				console.log(a)
+				console.log(b)
+				console.log(tab)
+			}
+			fn(1,2,3,4,5,6)
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

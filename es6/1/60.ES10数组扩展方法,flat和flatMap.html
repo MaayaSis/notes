@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		flat有平的意思
+		它将多维数组转化为低位数组
+		 */
+		window.onload = function () {
+			const arr = [1, 2, 3, 4, [5, 6]]; // flat方法
+			const arr1 = [1, 2, 3, 4, [5, 6, [7, 8, 9]]];
+			console.log(arr.flat());//将二维数组转化为一维数组
+			console.log(arr1.flat(2));//将三维数组转化为一维数组
+
+
+			const arr2 = [1, 2, 3, 4];
+			const result = arr2.map(item => item * 10); //Map方法
+			const result1 = arr2.flatMap(item => [item * 10]); //flatMap方法,当map方法返回的是一个多维数组,那么flat将会起效将多维转换为一维
+			console.log(result);
+			console.log(result1);
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

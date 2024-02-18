@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			const p = new Promise((resolve,reject)=>{
+				setTimeout(()=>{
+					reject("出错啦")
+				},1000)
+			})
+			p.then(value=>{},reason=>{console.error(reason)})//指定回调
+
+			p.catch(reason=>{//不指定第一个参数,那么catch = then
+				console.error(reason)
+			})
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

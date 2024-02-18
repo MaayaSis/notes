@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			class Person {
+				name;//公有属性
+				#age;//私有属性
+				#weight;//私有属性
+				constructor(name, age, weight) {//构造方法
+					this.name = name;
+					this.#age = age;
+					this.#weight = weight;
+				}
+				intro() {
+					console.log(this.name);
+					console.log(this.#age);
+					console.log(this.#weight);
+				}
+			}
+			const girl = new Person('晓红', 18, '45kg');//实例化
+			// console.log(girl.name);
+			// console.log(girl.#age);
+			// console.log(girl.#weight);
+			girl.intro();//必须调用在类里面的方法才能读取对应的私有属性
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

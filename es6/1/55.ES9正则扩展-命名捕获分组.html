@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			let str = '<a href="http://www.atguigu.co m">尚硅谷</a>';
+			const reg = /<a href="(.*)">(.*)<\/a>/;
+			const result = reg.exec(str);//执行
+			console.log(result);
+			console.log(result[1]);
+			console.log(result[2]);//这是无命名捕获分组使用的方法
+
+			
+			const reg = /<a href="(?<url>.*)">(?<text>.*)<\/a>/;//分组命名,即在原有的基础在,在通配的(.*)中添加?<对应的命名>
+			const result = reg.exec(str);
+			console.log(result.groups.url);
+			console.log(result.groups.text);
+
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

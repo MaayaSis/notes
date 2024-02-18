@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		ES6提供了Map数据结构,类似于对象,并且有iterator接口可以是哟个扩展运算符,和for of方法遍历
+		 */
+		window.onload = function () {
+			let m = new Map();
+			m.set('name', '尚硅谷');//添加元素
+			console.log(m.name)
+			m.set('change', function () {//键名是字符串,键值是一个函数
+				console.log("我们可以改变你!!");
+			});
+			let key = {
+				school: 'ATGUIGU'
+			};
+			m.set(key, ['北京', '上海', '深圳']);//键名是一个对象,键值是一个字符串
+
+			console.log(m.size)//长度
+			m.delete('name')//通过键名删除键
+			console.log(m.get('change'));//可以通过键名或者键值获取对应的另一个值
+			
+			for(let v of m){//遍历出的结果是一个 键名+键值的数组
+            console.log(v);
+        }
+
+
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

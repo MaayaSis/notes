@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			const p = new Promise((resolve, reject) => {
+				setTimeout(() => {
+					resolve("Maaya")
+				}, 1000)
+			})
+			const result = p.then(value => {//调用then方法,then方法的返回结果是Promise对象,对象状态由回调函数的执行结果决定
+				console.log(value)//如果不写下面的return , 那么我们应该知道函数中不写return返回值,那么默认返回的是一个undefined
+				return 123//如果回调函数中返回的结果是非promise类型的属性,状态为成功,返回值为对象的成功的值
+				return new Promise((resolve, reject) => {//这时候回调函数返回的promise类型的属性
+					reject("ok")//这时候的状态决定了回调函数的状态,返回值还是ok
+				})
+				throw new Error("我出错了")//如果是抛出一个错误的话,那么状态也是rejected,返回值是我出错啦
+				throw "我出错啦"//和上面的抛出错误是一样的结果
+			}, reason => {
+				console.log(reason)
+			})
+			console.log(result)
+
+			//链式调用
+			p.then(value => { }).then(value => { }, reason => { });//这就是链式调用,当然链式调用中也可以只写成功的value,不写失败的reason
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

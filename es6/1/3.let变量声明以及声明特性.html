@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		声明变量使用let就对了
+		 */
+		window.onload = function () {
+			//let声明变量
+			let a;
+			let b;
+			let f = 66423 , g = 'Maaya'
+			//1.变量不能重复声明
+			let star = 'Maaya'//let star = '姐姐'
+			{//2.块级作用域 ES5中有三种作用域:全局,函数,eval
+				//只在代码块中生效即块级作用域
+				var boy = 'my'
+				let boy = 'me'
+			}
+			console.log(boy)
+			//3.不存在变量提升
+			console.log(song)
+			var song = '姐姐'
+			console.log(sister)
+			let sister = '姐姐'
+			//不影响作用域链
+			{
+				let school = '尚硅谷'
+				function fn(){
+					console.log(school)//本作用域链找不到school
+				}
+				fn()
+			}
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

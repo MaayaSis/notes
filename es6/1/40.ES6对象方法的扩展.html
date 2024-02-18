@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			//1. Object.is 判断两个值是否完全相等 
+			console.log(Object.is(120, 120));// === 
+			console.log(Object.is(NaN, NaN));// true
+			console.log(NaN === NaN);// false
+			//2. Object.assign 对象的合并
+			const maaya = {
+				name: "姐姐",
+				age: "18",
+				basis: "基准"
+			}
+			const maaya1 = {
+				name: "如月",
+				age: "19",
+				sj: "1111"//对方没有的属性那么会合并
+			}
+			console.log(Object.assign(maaya, maaya1))//如果属性重名,后面的对象属性会覆盖前面的对象属性
+
+			//3. Object.setPrototypeOf 设置原型对象  Object.getPrototypeof
+			const school = {
+				name: '尚硅谷'
+			}
+			const cities = {
+				xiaoqu: ['北京', '上海', '深圳']
+			}
+			Object.setPrototypeOf(school, cities);//将cities添加为school的原型对象
+			console.log(Object.getPrototypeOf(school));//获取原型对象
+			console.log(school);
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Maaya</title>
+    <style type='text/css'>
+        /*
+		 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script type='text/javascript'>
+        /*
+    	
+         */
+        window.onload = function () {
+            //声明一个对象
+            const banji = {
+                name: "终极一班",
+                stus: [
+                    'xiaoming',
+                    'xiaoning',
+                    'xiaotian',
+                    'knight'
+                ],
+                [Symbol.iterator]() {
+                    let index = 0
+                    let _this = this//此时Symbol.iterator的this指向banji
+                    return {
+                        next: function () {
+                            if (index < _this.stus.length) {//因为stus.length是一个对象的属性,无法在这里直接使用,除非他是变量
+                                const result = { value: _this.stus[index], done: false };
+                                index++
+                                return result;
+                            } else {
+                                return { value: undefined, done: true };
+                            }
+                        }
+                    }
+                }
+            }
+            //遍历这个对象 
+            for (let v of banji) {
+                console.log(v);
+            }
+            for (let c of banji.stus) {
+                console.log(c);
+            }
+        }
+    </script>
+
+<body>
+    <!-- 
+	-->
+</body>
+
+</html>

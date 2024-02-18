@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		ES6允许使用「箭头」（=>）定义函数,
+		1.箭头函数的this静态的,thi始终指向函数声明时所在作用域下的this的值
+		2.普通定义方式是谁调用,就指向谁
+		 */
+		window.onload = function () {
+			let fn = function () {//一般定义方法的写法1,箭头函数的写法是将写法1中的 function()变成()=>
+			}
+			let fn1 = (a, b) => {//箭头定义方法的写法
+				return a + b;
+			}
+			fn1(1, 2)
+			//this实例
+			window.name = 'maaya'
+			const sister = {
+				name: 'sister'
+			}
+			function getName() {//一般定义方法的写法2
+				console.log(this.name)//输出是maaya
+			}
+			let getName1 = () => {
+				console.log(this.name)//输出是maaya
+			}
+			getName.call(sister)//call方法可以改变调用的对象,指向的变成了sister
+			getName1.call(sister)//执行的还是window
+
+			
+
+			//箭头函数中不能使用arguments变量,这个存疑
+			let fn2 = function () {
+				console.log(arguments)
+			}
+			fn2(1,2,3)
+
+			//箭头函数的简写 
+			let add = n => {//1)省略小括号,当形参有且只有一个的时候
+				return n;
+			}
+			let add1 = n => n;//等于 let add2 = (n) => {return n;} 当只有一条代码语句的时候可以省去花括号,如果此语句是return的话,return也可以去掉
+			let fun = n  => console.log(n)
+			fun(3)
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

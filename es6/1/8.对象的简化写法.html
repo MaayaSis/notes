@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		ES6 允许在大括号里面,直接写入变量和函数,作为对象的属性和方法,这样的书写更加简洁
+		 */
+		window.onload = function () {
+			let name = 'maaya'
+			let change  = function(){
+				console.log('姐姐')
+			}
+			const school = {
+				name,//直接使用上面的变量,等效于name:name,
+				change,
+				improve(){//省略了 : function
+					console.log("方法书写简化")
+				}
+			}
+			console.log(school)
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

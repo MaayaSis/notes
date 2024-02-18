@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			//向对象中添加方法up down
+			let game =  {
+				up:"姐姐",
+				down:"真绫"
+			}
+			let methods = {
+				up:Symbol(),
+				down:Symbol()
+			}
+			game[methods.up] = function(){//不确定game中有哪些变量,所以我创建了一个Symbol()函数,它具有唯一的值,然后代到game中用它创建
+				console.log('我可以改变形状')
+			}
+			game[methods.down] = function(){
+				console.log('我可以快速下降')
+			}
+			console.log(game)
+			//
+			let game1 = {
+				name:'姐姐',
+				[Symbol('如月')]:function(){//Symbol('如月')可以看作是一个变量,将变量名变成属性名所以加[]
+					console.log('真绫')
+				},
+				[Symbol('如月')]:function(){//使用Symbol的好处就是,这样属性名重复也没关系了
+					console.log('姐姐')
+				}
+			}
+			console.log(game1)
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		除了定义自己使用的Symbol值以外,ES6还提供了11个内置的Symbol值,指向语言内部使用的方法.可以称这些方法为魔术方法,因为它们会在特定的场景下自动执行
+		 */
+		window.onload = function () {
+			//Symbol.hasInstance
+			class Person{
+				static [Symbol.hasInstance](param){//当其他对象使用 instanceof 运算符，判断是否为该对象的实例时，会调用这个方法
+					console.log(param)
+					console.log('我被用来检测了')
+				}
+			}
+			let o = {
+				name:1
+			}
+			console.log(o instanceof Person)//在特定情况下Symbol.hasInstance,会将o传递成param参数
+			//Symbol.isConcatSpreadable
+			const arr = [1,2,3]
+			const arr1 = [4,5,6]
+			console.log(arr.concat(arr1));//将arr和arr1合并
+			arr1[Symbol.isConcatSpreadable] = false//设置arr1不可展开
+			console.log(arr.concat(arr1));
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

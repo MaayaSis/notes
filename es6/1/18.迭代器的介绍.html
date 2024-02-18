@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		遍历器（Iterator）就是一种机制。它是一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署 Iterator 接口，就可以完成遍历操作。
+		1) ES6 创造了一种新的遍历命令 for...of 循环，Iterator 接口主要供 for...of 消费
+		2) 原生具备 iterator 接口的数据(可用for of遍历):a) Array;b) Arguments;c) Set;d) Map;e) String;f) TypedArray;g) NodeList
+		接口就是对象里的一个属性(本节中)
+		 */
+		window.onload = function () {
+			//声明一个数组
+			const arr = ['m','a','a','y','a']
+			for(let v in arr){//使用for...in遍历数组,得到的是索引
+				console.log(arr[v])
+			}
+			for(let v of arr){//for of循环遍历得到的是键值
+				console.log(v)//因为数组里带有Symbol.iterator方法所以可以直接用for..of遍历数组,
+			}
+			let iterator = arr[Symbol.iterator]()//直接调用数组的Symbol属性,这是一个方法
+			console.log( typeof iterator)
+			console.log(iterator.next());//调用对象的next()方法,并且指针自动指向数据结构的第一个成员
+			console.log(iterator.next());//继续调用,指针指向下一个成员
+			console.log(iterator.next());
+			console.log(iterator.next());
+			console.log(iterator.next());//最后一个成员
+			console.log(iterator.next());//调用完之后,最后一个值会是undefined,done:true  , true代表遍历已经结束
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

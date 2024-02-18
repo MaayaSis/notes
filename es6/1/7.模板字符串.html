@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		模板字符串（template string）是增强版的字符串，用反引号（`）标识，
+		特点：1)字符串中可以出现换行符,2)可以使用${xxx}形式输出变量
+		 */
+		window.onload = function () {
+			const str = `我也是一个字符串`
+			console.log(str,typeof str) 
+			let sister = `<ul>
+							<li>Maaya</li>
+							<li>Maaya</li>
+							<li>Maaya</li>
+						  </ul>`//可以直接使用换行符
+			console.log(sister)
+			let lovest = 'Maaya'
+			let out = `${lovest}是我的姐姐`//可以直接进行变量拼接
+			console.log(out)
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

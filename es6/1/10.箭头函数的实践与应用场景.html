@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#ad {
+			width: 100px;
+			height: 100px;
+			background: brown;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		箭头函数适合与this无关的回调,例如定时器,数组的方法回调
+		不适合与shis油管的回调,事件回调,对象的方法
+		 */
+		window.onload = function () {
+			//点击div,2s后变为蓝色,用到的是this静态
+			let ad = document.getElementById('ad')//获取元素
+			ad.addEventListener('click', function () {//绑定事件
+				//let _this = this; 1.保存this的值
+				setTimeout(() => {//定时器,本行非箭头函数写法 setTimeout(function(){  这个写法的定时器是被window调用的,因为定时器是回调函数
+					//_this.style.background = 'blue'; 2.修改颜色
+					this.style.background = 'blue'//箭头函数的this静态的,thi始终指向函数声明时所在作用域下的this的值,此时setTimeout属于ad
+				}, 2000)
+			})
+
+			//从数组中返回偶数的元素,用到了简写方法
+			const arr = [1, 6, 9, 10, 100, 25]
+			// const result = arr.filter(item => {//非箭头函数写法 cosnst result = arr.filter(funtion(item){} )
+			// 	if (item % 2 === 0) {
+			// 		return true;
+			// 	} else {
+			// 		return false;
+			// 	}
+			// })//更简写的方法为: const result = arr.filter(item => item % 2 ===0 )
+
+			const result = arr.filter(item => item % 2 === 0 )
+			console.log(result)
+
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+	<div id="ad"></div>
+</body>
+
+</html>

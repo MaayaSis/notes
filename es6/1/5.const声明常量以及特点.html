@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		声明常量用const
+		 */
+		window.onload = function () {
+			const SCHOOL = '尚硅谷';//声明常量用const
+			// const A;  //false; 1. 一定要赋初始值
+			const a = 100; //2. 一般常量使用大写(潜规则),小写可以但不推荐
+			SCHOOL = 'ATGUIGU'; //3. 常量的值不能再次赋值修改
+			// {const PLAYER = 'UZI'} 
+			// console.log(PLAYER); //4. 是块儿级作用域
+			const TEAM = ['UZI', 'MXLG', 'Ming', 'Letme'];
+			TEAM.push('Meiko');//5. 对于数组和对象的元素修改,不算做对常量的修改,因为常量指向的地址没有变化,因此不会报错
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

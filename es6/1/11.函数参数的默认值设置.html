@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		ES6允许给函数参数赋值初始值
+		 */
+		window.onload = function () {
+			//形参初始值,具有默认值的参数,一般位置要靠后(默认规则),但会导致报错(无法理解的话看视频2:55)
+			function add(a,b,c=10){//设置初始值后,如果调用时有上传c,那么就用上传的c,没有就用初始值
+				return a+b+c;
+			}
+			let result = add(1,2)//如果没上传c,c也没有初始值,则报错NaN
+			console.log(result)
+
+			//与解构赋值结合
+			function connect({host='127.0.0.1',username}){//形参可以直接解构,并且设置初始值;
+				console.log(host)//非简化写法该行为 host = options.host () , console.log(host);
+				console.log(username)//同理
+			}
+			connect({
+				host:'localhost',
+				username:'Maaya'
+			})
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

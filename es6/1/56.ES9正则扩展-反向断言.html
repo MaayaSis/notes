@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			let str = 'JS5211314你知道么555啦啦啦';
+			const reg = /\d+(?=啦)/;//正向断言,d代表0-9 , ?代表逻辑是否
+			const result = reg.exec(str);
+			console.log(result);
+
+			const reg1 = /(?<=么)\d+/;//反向断言,在前面直接加 (?<=某个字符串) ?<=是固定写法
+			const result1 = reg1.exec(str);
+			console.log(result1);
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

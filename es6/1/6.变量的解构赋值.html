@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		ES6允许按照一定模式,从数组和对象中提取值,对变量进行赋值,这被称为解构赋值
+		 */
+		window.onload = function () {
+			//解构数组
+			const arr = ['张学友', '刘德华', '黎明', '郭富城']//创建数组
+			let  [zhang, liu, li, guo] = arr;//可以输出zhang的结果,因为上面是数组,所以这里使用[],如果上面是对象,则使用{}
+			console.log(zhang)
+			//解构对象
+			const ruyue = {
+				name:'Maaya',
+				age:'18',
+				sister:function(){//this是ruyue
+					console.log('姐姐')
+				}
+			}
+			let {sister} = ruyue//必须同名与上面对象,这里的this是window
+			sister()
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

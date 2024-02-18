@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		Rest 参数与 spread 扩展运算符在 ES6 中已经引入，不过 ES6 中只针对于数组，
+		在 ES9 中为对象提供了像数组一样的 rest 参数和扩展运算符
+		 */
+		window.onload = function () {
+			function connect({ host, port, ...user }) {//username和password以及type参数都会被存到user这个对象里,其他的就存在对应的变量里
+				console.log(host);
+				console.log(port);
+				console.log(user);
+			}
+			connect({
+				host: '127.0.0.1',
+				port: 3306,
+				username: 'root',
+				password: 'root',
+				type: 'master'
+			});
+
+			const skillOne = {
+				q: '天音波'
+			}
+			const skillTwo = {
+				q: '金钟罩',
+				w:"天雷破 "
+			}
+			
+			console.log({...skillOne, ...skillTwo})//进行对象的合并
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+</body>
+
+</html>

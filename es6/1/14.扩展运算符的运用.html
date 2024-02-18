@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*
+		
+		 */
+		window.onload = function () {
+			//数组的合并
+			const Sis = ['姐姐','如月']
+			const Ry = ['如月','真绫']
+			const love1 = Sis.concat(Ry)//ES5的合并数组方法
+			const love = [...Sis,...Ry]
+			console.log(love)
+			//数组的克隆
+			const SisClone = [...Sis]//如果拷贝的元素有引用数据类型的话,本克隆就是一个浅拷贝
+			console.log(SisClone)
+			//伪数组转化为真正的数组
+			const FalseArr = document.querySelectorAll('div')
+			const arr = [...FalseArr]
+			console.log(arr)
+
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+
+</html>
