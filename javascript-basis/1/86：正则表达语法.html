@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script >
+			/*
+			 * 
+			 * 使用字面量来创建正则表达式
+			 *  语法 var 变量= /正则表达式/匹配模式
+			 * 
+			 * 使用字面量创建更简单，使用构造函数则更灵活，因为构造函数的参数可以传一个对象
+			 * [ab] == a|b；
+			 * [a-z] 表示任意小写字母
+			 * [A-Z] 表示任意大写字母
+			 * [A-z] 表示任意字母
+			 * [^ab] 检查是否有除了ab以外的字符 ^（除了符号）
+			 * [0-9] 表示任意的数字
+			 * 
+			 */
+			 
+			 //
+			 var r = '姐姐我爱你';
+			 var reg = new RegExp('a','i');
+			 reg1 = /爱/i;
+			 console.log(reg.test(r));
+			 console.log(reg1.test(r));
+			 
+			 //创建一个正则表达式，检查一个字符串中有a或b.[ab]也是|的关系 
+			 reg2  = /c|D/;
+			 console.log(reg2.test(r));
+			 //检查是否有abc，adc，aec
+			 reg3  = /a[bde]c/;
+			 console.log(reg3.test(r));
+			 //
+			 reg4  = /[^ab]/;
+			 console.log(reg4.test(r));
+			 
+			/*
+			 *
+			 *  
+			 * 
+			 */
+			
+		</script>
+	<body>
+	</body>
+</html>

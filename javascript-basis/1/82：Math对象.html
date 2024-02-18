@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script >
+			/*
+			 * 
+			 * Math和其他对象不同，他不是一个构造函数
+			 *  -它属于一个工具类不用创建对象，它里面封装了数学运算相关的属性和方法
+			 *  -Math.PI 表示的是圆周率
+			 * abs()可以用来计算一个数的绝对值
+			 * Math.ceil()可以对一个数进行向上取等，只要小数位有值就自动进1
+			 * Math.floor()可以对一个数进行向下取等，小数位的值会被自动舍去
+			 * Math.round()可以对一个数进行四舍五入取等
+			 * Math.random()可以生成一个0-1之间的随机数
+			 *  -生成一个X-Y之间的随机数：Math.round(Math.random()*(Y-X)+x)
+			 * Math.max()可以获取多个数中的最大值
+			 * Math.min()可以获取多个数中的最小值
+			 * Math.pow(X,Y) 返回x的y次幂
+			 * Math.sqrt() 开方根
+			 * 
+			 */
+			 
+			 //
+			 console.log(Math.PI);
+			 console.log(Math.abs(5-100));
+			 console.log(Math.ceil(1.4));
+			 console.log(Math.floor(1.4));
+			 console.log(Math.round(1.4));
+			 console.log(Math.random());
+			 //可一生成一个0-10的随机数
+			 for(var i=0 ; i<100 ; i++){
+				 console.log(Math.random()*10);
+			 };
+
+			 //可一生成一个0-X的随机数
+			 for(var i=0 ; i<100 ; i++){
+				 //console.log(Math.random()*X);
+			 };
+
+			 //0-10的整数
+			 for(var i=0 ; i<100 ; i++){
+				 console.log(Math.round(Math.random()*10));
+			 };
+
+			 //
+			 var max = Math.max(10,35,5672,6,342);
+			 var min = Math.min(10,35,5672,6,342);
+			 console.log(max);
+
+			 //
+			 console.log(Math.pow(2,3))
+			 console.log(Math.sqrt(2))
+			 
+			/*
+			 *
+			 *  
+			 * 
+			 */
+			
+		</script>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+		 *{
+			 margin: 0px;
+			 padding: 0px;
+		 }
+		 #outer{
+			 width: 1920px;
+			 height: 1258px;
+			 margin: 0 auto;
+			 background-color: blue;
+			 padding: 10px 0;
+			 position: relative;
+			 overflow: hidden;
+		 }
+		 #imglist{
+			 list-style: none;
+			 position: absolute;
+		 }
+		 #imglist li{
+			 float:left;
+			 margin: 0 10px;
+		 }
+		 #nav{
+			 position: absolute;
+			 bottom: 0;
+		 }
+		 #nav a{
+			 float: left;
+			 width: 40px;
+			 height: 40px;
+			 background-color: red;
+			 margin: 0 10px;
+			 /*兼容IE的透明度*/
+			 opacity: 0.5;
+			 filter:alpha(opacity=50);
+		 }
+		 #nav a:hover{
+			 background-color: black;
+		 }
+	</style>
+	<script src="./tools.js"></script>
+	<script type='text/javascript'>
+		/*
+		 *
+		 */
+		 window.onload  = function (){
+			 var imglist = document.getElementById('imglist');
+			 var imgArr = document.getElementsByTagName('img');
+			 var nav = document.getElementById('nav')
+			 var outer = document.getElementById('outer')
+			 imglist.style.width = 2000 * imgArr.length + 'px';
+			 nav.style.left = (outer.offsetWidth - nav.offsetWidth)/2 + 'px';
+			 var index = 0;
+			 var allA = document.getElementsByTagName('a');
+			 allA[index].style.backgroundColor = 'black';
+			 for(var i=0 ; i<allA.length ; i++){
+				 //一个框里有100个苹果，选10个放到一个小框里，一起卖，而不是拿一个卖一个，那么这样全部放到框里后就找出苹果的顺序，所以没拿一个的时候就要打一次标签
+				 allA[i].num = i;
+				 allA[i].onclick = function(){
+					 //获取点击超链接的索引，并将其设置为index
+					 index = this.num;
+					 //切换图片
+					 imglist.style.left = index * -1920 + 'px';
+					 setA();
+					move(imglist,'left',-1920*index,10,function(){
+
+					});
+				 }
+			 }
+			 //创建一个方法用来设置选中的啊
+			 function setA(){
+				 for(var i=0 ; i<allA.length ; i++){
+					 //这一块自己思考以下，以为联系自发
+					 allA[i].style.backgroundColor = '';
+				 }
+				 allA[index].style.backgroundColor = 'black';
+			 }
+			 }
+	</script> 
+<body>
+	<!-- 
+		-->
+		<div id="outer">A
+			<ul id="imglist">
+				<li><img src="/img/1.png"></li>
+				<li><img src="/img/2.png"></li>
+				<li><img src="/img/3.png"></li>
+				<li><img src="/img/4.png"></li>
+				<li><img src="/img/5.png"></li>
+			</ul>
+			<div id="nav">
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+			</div>
+		</div>
+</body>
+</html>

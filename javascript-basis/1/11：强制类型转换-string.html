@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maaya</title>
+    <script>
+       /* 可以将其他数据类型转换为string
+       方式1、调用被转换数据类型的toString()方法，但是null和undefined没有toString值
+       方法2、调用String()函数,并将被转换的数据作为参数传递给函数：
+            对于number和boolean一样是调用toString函数，但是null和undefin不是
+       */
+      var a = 123;
+      // a = a.toString();
+      a = String(a);
+
+      a =null;
+      a = String(a);
+
+      console.log(typeof a);
+      console.log(a);
+
+      var c  = null
+      console.log(typeof toString(c))
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

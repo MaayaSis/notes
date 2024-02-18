@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script >
+			/*
+			 * 
+			 * 以后创建构造函数时，可以将这些对象共有的属性和方法，统一添加到构造函数的原型对象中
+			 * 这样不同分别为每一个对象添加，也不会影响到全局作用域，就可以使每个对象都具有这些属性和方法
+			 * 
+			 * 将函数定义在全局作用域，污染了全局作用域的命名空间
+			 * 而且定义在全局作用域中也很不安全
+			 * 
+			 * 原型 pototype
+			 * 我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype
+			 * 这个属性对应着一个对象，这个对象就是我们所谓的原型对象
+			 * 如果函数作为普通函数调用prototype没有任何用
+			 * 当函数以构造函数的形式调用时，他所创建的对象中都会有一个隐含的属性
+			 * 指向该构造函数的原型对象，我们可以通过__proto__来访问该属性
+			 * 
+			 * 原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象
+			 * 我们可以将对象中共有的内容，统一设置到原型对象中
+			 * 
+			 */
+			 
+			 //将sayName方法在全局作用域中定义
+			 function Person(name,age,gender){
+				 this.name = name;
+				 this.age = age;
+				 this.gender = gender;
+			 };
+			 Person.prototype.sayName = function(){
+				 alert('大家好，我是' + this.name);
+			 }
+			 var per = new Person('Maaya',18,'Female');
+			 var per1 = new Person('kisaragi',18,'male');
+			 per.sayName();
+			 console.log(per.sayName == per1.sayName);
+
+			 //我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype
+			 function prototype(){
+
+			 };
+			 console.log(prototype.prototype);
+
+			 //指向该构造函数的原型对象，我们可以通过__proto__来访问该属性
+			 function Test(){
+
+			 };
+			 var fun1 = new Test();
+			 console.log(fun1.__proto__ == Test.prototype);
+
+			 //向Myclss的原型中添加属性a，以及一个方法
+			 function Myclass(){
+
+			 };
+			 Myclass.prototype.a = '我是原型中的a';
+			 Myclass.prototype.sayHello = function(){
+				 alert('hello');
+			 };
+			 var Myclass = new Myclass();
+			 Myclass.a = '我是Myclass中的a';
+			 console.log(Myclass.a);
+			 Myclass.sayHello();
+			/*
+			 *
+			 *  当我们访问对象的一个属性或方法是，他会先在对象自身中寻找，如果有则直接使用
+			 * 如果没有则取原型对象中寻找，如果找到则直接使用
+			 * 
+			 */
+			
+		</script>
+	<body>
+	</body>
+</html>

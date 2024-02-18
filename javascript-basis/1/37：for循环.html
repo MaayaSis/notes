@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script type="text/javascript">
+			/*
+			 *
+			 * for语句，也是一个循环语句，也称为for循环
+			 *  -在for循环中有专门的位置放三要素，而while是随便放的
+			 *  -for（初始表达式；条件表达式；更新表达式）{ 语句 }
+			 *  -1、执行初始化表达式，初始化变量
+			 *  -2、执行条件表达式，判断是否执行循环，true执行，false不执行；
+			 *  -3、执行更新表达式，再继续重复2；
+			 *
+			 *   -for循环中的三个部分都可以省略，也可以写在外部；
+			 * 
+			 */
+			 
+			 var n = 0;
+			 while(n < 10){
+				 alert(n++);
+			 }
+			 /*
+			 循环三要素：初始表达式、条件表达式、更新表达式
+			 */
+			 
+
+			 for(i = 1 ; i < 5 ; i++ ){
+				 alert(i);
+			 }
+			
+
+			//  -for循环中的三个部分都可以省略，也可以写在外部；
+			var m = 1;
+			for(; i < 10 ; ){
+				alert(i++);
+			}
+			// 如果再for循环中只写两个分号，其它不写，这就是一个死循环会一直执行 
+
+
+
+			var sum = 0 ;
+
+			for(i = 1 ; i <= 100 ; i++){
+				if(i % 2 != 0){
+					console.log(i);
+					sum = sum + i;
+				}
+			}
+		</script>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script >
+			/*
+			 * 
+			 * 
+			 * 
+			 */
+			
+			 // arr是一个形参，因为下一回不一定还是提取perArr数组，这是老师的
+			 function Person(name,age){
+				 this.name = name;
+				 this.age = age;
+			 }
+			 Person.prototype.toString = function(){
+				 return 'Person[name' + this.name + ',age' + this.age + ']';
+			 }
+			 var per = new Person('零',10);
+			 var per1 = new Person('一',15);
+			 var per2 = new Person('二',20);
+			 var per3 = new Person('三',25);
+			 var perArr = [per,per1,per2,per3];
+			 function getAdult(arr){
+				 var newArr = [];
+				 for(var i=0 ; i<arr.length ; i++){
+					 var p = arr[i];
+					 if(p.age >= 18){
+						 newArr.push(p); 
+					 }
+				 }
+				 return newArr;
+			 }
+			 
+			 var result = getAdult(perArr);
+			 console.log('result=' + result);
+			 
+			 //自己做的,将老师做的删除掉再运行一遍自己的即可出现
+			 function Person(name,age){
+				 this.name = name;
+				 this.age = age;
+			 }
+			 Person.prototype.toString = function(){
+				 return 'Person[name]' + this.name + ',age' + this.age + ']';
+			 }
+			 var per = new Person('零',10);
+			 var per1 = new Person('一',15);
+			 var per2 = new Person('二',20);
+			 var per3 = new Person('三',25);
+			 var perArr = [per,per1,per2,per3];
+			 var arr = new Array();
+			 function fun(){
+				 for(var i=0 ; i<perArr.length ; i++){
+				      var k = perArr[i].age;
+					 if(k<18){
+						 arr.push(k);
+					 }
+				 }
+				 return arr;
+			 }
+			 fun();
+			 
+			 //
+			 //
+			 
+			/*
+			 *
+			 *  
+			 * 
+			 */
+			
+		</script>
+	<body>
+	</body>
+</html>

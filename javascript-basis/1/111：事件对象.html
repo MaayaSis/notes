@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/* 
+		 */
+		#areaDiv {
+			border: 1px solid black;
+			width: 300px;
+			height: 50px;
+			margin-bottom: 10px;
+		}
+
+		#showMsg {
+			border: 1px solid black;
+			width: 300px;
+			height: 20px;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*当鼠标在areaDiv中移动时，在showMsg中来显示鼠标的坐标
+		 *事件对象
+		 * -当事件的响应函数被触发时，浏览器会每次都将事件对象作为实参传递响应于函数
+		 * -在事件对象中封装了当前事件相关的一切信息，比如：鼠标的坐标，键盘哪个键被按下，鼠标滚轮滚动的方向
+		 *clientX，clientY可以获取鼠标水平和垂直的坐标
+		 *在IE8中，响应函数被触发时，浏览器不会传递事件对象，因为他们是将事件对象作为window对象的属性保存的
+		 *
+		 */
+		window.onload = function(){
+			var areaDiv = document.getElementById('areaDiv')
+			var showMsg = document.getElementById('showMsg')
+			areaDiv.onmousemove = function(event){
+				console.log(event)
+				if(!event){
+					event = window.event;
+				}//event = event || window.event也是可以的
+				var x = window.event.clientX;
+				var y = window.  event.clientY;
+				//alert(event);形参叫什么名字都没有关系，都可以正常使用
+				showMsg.innerHTML = ' x= ' + x +' y= ' + y;
+			}
+			var btn = document.getElementById("maaya")
+			btn.onclick = function(event){
+				console.log(event)
+			}
+		}
+	</script>
+
+<body>
+	<!--
+		-->
+	<div id="areaDiv"></div>
+	<div id="showMsg"></div>
+	<button id="maaya">dianyxia </button>
+</body>
+
+</html>

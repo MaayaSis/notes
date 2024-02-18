@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*clearInertval()可以接受任意参数，如果参数是一个有效的定时器的标识，则停止对应的定时器，如果不是一个有效的标识，那么什么都不会做
+		 *
+		 */
+		window.onload = function () {
+			var btn = document.getElementById('btn');
+			var timer;
+			/*目前每点击一次按钮，就会开启一个定时器
+			 *点击多次就会开启多个定时器，导致切换速度过快；
+			 *且我们只能关闭最后一次开启的定时器
+			 *
+			 *
+			 */
+			btn.onclick = function () {
+				var img = document.getElementById('img');
+				var imgArr = ['/img/1.png', '/img/2.png', '/img/3.png', '/img/4.png', '/img/5.png'];
+				var index = 0;
+				//再开启定时器之前，需要将当前元素上的其他定时器关闭
+				clearInterval(timer);
+				timer = setInterval(function () {
+					index++;
+					/*if(index >= imgArr.length){
+						index = 0;
+					}*/
+					index %= imgArr.length;
+					img.src = imgArr[index];
+				}, 1000);
+			}
+			var btn1 = document.getElementById('btn1');
+			btn1.onclick = function(){
+				clearInterval(timer);
+			}
+		}
+	</script>
+
+<body>
+	<!-- 
+		-->
+	<button id='btn'>开始</button>
+	<button id='btn1'>停止</button>
+	<img src="/img/1.png" id="img">
+</body>
+
+</html>

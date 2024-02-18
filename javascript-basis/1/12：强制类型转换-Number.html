@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maaya</title>
+    <script>
+       /* 可以将其他数据类型转换为number        
+       方法1、调用number()函数,并将被转换的数据作为参数传递给函数：
+              对于number和boolean一样是调用toString函数，但是null和undefin不是
+              如果是纯数字会转化成数字，非数字就转成NaN
+              null和空的为0
+              true为1，false为0
+              undefined也是NaN
+       方式2、用此方法针对字符串
+             parseInt()把一个字符串转换为一个整数，把字符串中的数字取出来
+             ParseFloat()转换成一个小数
+             必须是数字打头的字符串
+             对字符串外的数据类型，的做法是先将他们转换成String，再转换成Number
+       */
+      var a = "123.456px";
+      // a = a.toString();
+
+      // a = Number(a);
+       a = parseInt(a);
+
+      //  a = null;
+      // a = Number(a);
+       a = parseFloat(a);
+
+      console.log(typeof a);
+      console.log(a);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

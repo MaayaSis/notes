@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style>
+		/* 
+		 * 
+		 * 
+		 * 
+		 */
+		#box1 {
+			width: 200px;
+			height: 200px;
+			background-color: blue !important;
+		}
+	</style>
+	<script type="text/javascript">
+		/* 
+		 * 
+		 * 
+		 * 
+		 */
+		window.onload = function () {
+			var box1 = document.getElementById('box1');
+			var btn01 = document.getElementById('btn01');
+			btn01.onclick = function () {
+				/*
+				 * 通过JS修改元素的样式 语法：元素名.style.样式名 = 样式值
+				 * 注意：如果CSS的样式名中含有-号
+				 *  -这种名称在JS中时不符合的比如background-color
+				 *  -需要将这种样式名修改驼峰命名法
+				 *  -去掉-，然后-后的字母大写
+				 *  borderTopWidth
+				 * 通过style属性设置的样式都是内联样式：而内联样式有比较高的优先级，所以通过JS修改的样式往往会立即显示
+				 * 但是如果在样式中写了!improtant,则此时样式往往会有最高的优先级
+				 * 即使通过JS也不能覆盖该样式，此时将会导致JS修改样式失效
+				 * 所以尽量不要为样式添加!important
+				 */
+				
+				box1.style.width = '500px' ;
+				box1.style.height = '500px' ;
+				box1.style.backgroundColor = 'yellow';
+			}
+			var btn02 = document.getElementById('btn02');
+			btn02.onclick = function(){
+				//读取box1的样式
+				/* 语法：元素.sytle.样式名
+				 * 通过style读取的都是内联样式，无法读取到CSS
+				 */
+				alert(box1.style.backgroundColor);
+			}
+		}
+	</script>
+
+<body>
+	<!--
+		-->
+	<div id="box1"></div>
+	<button id="btn01">我是一个按钮</button>
+	<button id="btn02">我是第二个按钮</button>
+	<script type='text/javascript'>
+		/*
+		 *
+		 *
+		 *
+		 */
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*键盘事件：onkeydown和onkeyup,一般绑定给一些可以获取到焦点的对象
+		 * onkeydown:
+		 *  -如果一直按着某个按键不放，事件就会一直触发
+		 *  -当onkeydown连续触发时，第一次和第二次的间隔会稍微长一点，其它的都很快，是为了防止误操作
+		 * onkeyup：
+		 *  -不会连续触发
+		 * keyCode会返回按下按键的unicode编码，判断哪个按键被按下
+		 * 除了keyCode，事件对象中还提供了几个属性
+		 *  -altkey；ctrlkey；shiftkey
+		 *  -这三个用来判断alt，ctrl，shift是否被按下，如果按下则返回true，否则返回false
+		 */
+		window.onload = function () {
+			document.onkeydown = function (event) {
+				event = event || event.window
+				if (event.keyCode == 89 && event.ctrlKey) {
+					alert('y和ctrl被按下了');
+				}
+			}  
+			var input = document.getElementsByTagName('input')[0];
+			input.onkeydown = function (event) {
+				event = event || window.event;
+				if (event.keyCode > 48 && event.keyCode <= 57) {
+					//在文本框中输入内容，属于默认行为，如果取消默认行为，则输入的内容不会出现在文本框中
+					return false
+				}
+			}
+		}
+	</script>
+
+<body>
+	<!-- 
+		-->
+	<input type="text" />
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*JS的程序的执行速度是非常快的
+		 *如果希望一段程序，可以每间隔一段时间执行一次，可以使用定时调用
+		 *setInterval()
+		 * -定时调用
+		 * -可以将一个函数，每个一段时间调用一次
+		 * -参数：1、回调函数，该函数会每隔一段时间被调用一次 2、每次调用间隔的时间，单位是毫秒
+		 * -返回值：返回一个Number类型的数据，这个数字用来作为定时器的唯一标识
+		 * 
+		 * -clearInterval()可以用来关闭一个定时器，方法中需要传一个定时器的标识作为参数，这样将关闭标识对应的定时器
+		 *
+		 */
+		window.onload = function () {
+			var num = 1;
+			var count = document.getElementById("count")
+			//每1000ms=1s变动一次
+			var timer = setInterval(function () {
+				var num = 1;
+				count.innerHTML = num++;
+				if (num == 10) {
+					clearInterval(timer);
+				}
+			}, 1000)
+		}
+		console.log(timer);
+	</script>
+
+<body>
+	<!-- 
+		-->
+	<h1 id="count">1</h1>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script type="text/javascript">
+			 
+			console.time('test');
+			 for(var i=2 ; i<=100000 ; i++){
+				var flag=true;
+				 for(var j=2 ; j<Math.sqrt(i) ; j++){
+					if(i % j == 0){
+						flag=false;
+						break;
+					}
+				 }
+				 if(flag){
+					 console.log(i+'是一个质数');
+				 }
+			 }
+			 console.timeEnd('test');
+			 //打印出100以内的质数
+
+
+
+			//  Math.sqrt(Num);
+			//  可以将一个数字变成开方
+		</script>
+	<body>  
+	</body>
+</html>

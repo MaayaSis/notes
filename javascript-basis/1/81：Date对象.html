@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script >
+			/*
+			 * 
+			 * date对象：在JS中使用date对象表示时间
+			 * 日期格式 月/日/年  时:分:秒
+			 * getDate()返回对象中的日的值
+			 * getDay()返回对象中日期的是周几0-6 0是周天
+			 * getMonth()返回当前对象月份的值0-11 0是一月
+			 * getFullYear()返回当前对象年份的值
+			 * getTime()获取当前日期对象的时间戳
+			 *  -指格林威治时间1970年1月1日0时0分0秒到现在的毫秒数1s=1000ms
+			 * 计算机底层在保存时间时都是用的时间戳
+			 */
+			 
+			 //如果直接使用构造函数创造一个Date对象，则会封装当前代码执行的时间
+			 var d = new Date();
+			 console.log(d);
+			 //可以创建一个指定的时间对象,在构造函数中传递一个表示时间的字符串作为参数
+			 var d1 = new Date('12/03/2020')
+			 console.log(d1);
+			 var date = d1.getDate();
+			 console.log(date);
+			 var date1 = d1.getDay();
+			 console.log(date1);
+			 var date2 = d1.getMonth();
+			 console.log(date2);
+			 var date3 = d1.getFullYear();
+			 console.log(date3);
+			 var date4 = d1.getTime();
+			 console.log(date4);
+			
+			 var d1 = new Date('1/1/1970 0:0:0')
+			 time = d1.getTime();
+			 console.log(time); //负值是因为中国时间和英国时间
+
+			 //获取当前的时间戳
+			 time1 = Date.now();
+			 console.log(time1);
+
+			 //利用时间戳来测试代码的执行性能
+			 var strat = Date.now();
+			 for(var i=0 ; i<100 ; i++){
+				 console.log(i);
+			 };
+			 var end = Date.now();
+			 console.log(end - strat);
+			 
+			/*
+			 *
+			 *  
+			 * 
+			 */
+			
+		</script>
+	<body>
+	</body>
+</html>

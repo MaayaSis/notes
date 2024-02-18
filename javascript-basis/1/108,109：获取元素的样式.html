@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style>
+		/* 
+		 * 
+		 */
+		#box1 {
+			width:100px !important;
+			height: 100px;
+			background-color: yellow;
+		}
+	</style>
+	<script>
+		/* 
+		 * getComputersStyle()这个方法来获取当前的样式
+		 * 这个方法是windows的方法，可以直接使用
+		 * 需要两个参数：
+		 *  -第一个：要获取样式的元素
+		 *  -第二个：可以传递一个伪元素，一般都传null
+		 * 
+		 * 该方法会返回一个对象，对象中封装了当前元素对应的样式
+		 * 可以通过对象.样式名来读取样式
+		 * 如果获取的样式没有设置，则会获取到真是的值，而不是默认值
+		 * 比如：没有设置width，它不会获取到Auto，而是一个长度
+		 * 该方法不支持IE8及一下的浏览器
+		 * 
+		 * 通过currentStyle和getStyle得到的属性都是只读的
+		 */
+		window.onload = function () {
+			var box1 = document.getElementById('box1');
+			var btn01 = document.getElementById('btn01');
+			btn01.onclick = function () {
+				var obj = getComputedStyle(box1, null).width;
+				var obj1 = getComputedStyle(box1, null).backgroundColor;
+				//
+				var w = getStyle(box1, 'width')
+				console.log(obj);
+				console.log(obj1);
+				console.log(w);
+			};
+			function getStyle(obj, name) {
+				/*这个[name]是什么意思
+				 *必须要加windows，因为不加window，getComputerStyle是一个变量
+				 *变量要在作用域中寻找，没找到返回的是undefined
+				 *而属性找不到则是返回对错
+				 *window.getComputedStyle也可以换成obj.currentStyle
+				 */
+				if (window.getComputedStyle) {
+					return getComputedStyle(obj, null)[name];
+				} else { return obj.currentStyle[name]; };
+			};
+
+		}
+	</script>
+
+<body>
+	<!--
+		-->
+	<button id="btn01">我是一个代码</button>
+	<br /><br />
+	<div id="box1" style="width:1000px"></div>
+	<script type='text/javascript'>
+		/*
+		 *
+		 *
+		 *
+		 */
+	</script>
+</body>
+
+</html>

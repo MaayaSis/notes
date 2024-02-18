@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>switch练习2</title>
+	<script type="text/javascript">
+		/*
+		 *
+		 * 向页面中输出连续的数字
+		 * 
+		 * 循环语句，通过循环语句可以反复的执行一段代码多次；
+		 *  -while循环
+		 *  while(条件表达式){
+		 *     语句...
+		 *  }
+		 *  
+		 *  while语句在执行时，先对条件表达式进行求值判断
+		 *  如果为true，执行循环体，执行一次循环提后，继续对表达式进行判断
+		 *  如果为true，执行循环体，继续执行
+		 *  如果为false，终止循环;
+		 * 
+		 * do...while循环
+		 *  -语法
+		 *  do{ 
+		 *  语句...  
+		 *  }while表达式    与while的区别在与一个先判断才成立，一个先运行在判断；
+		 * 
+		 */
+
+		var n = 1;
+		document.write(n++ + '<br />');
+		document.write(n++ + '<br />');
+		document.write(n++ + '<br />');
+		while (true) {
+			alert(n++)//这是死循环，除非浏览器关闭，否则不会停止
+			if (n == 10) {
+				break;//可以用此命令打破循环
+			}
+		}
+		var i = 1;
+		while (i < 10) {
+			alert(i);
+			i++
+		}
+	</script>
+
+<body>
+</body>
+
+</html>

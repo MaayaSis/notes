@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+		 
+	</style>
+	<script type='text/javascript'>
+		/*代码部分请参考118，119，120合集
+		 *setCapture只支持IE8
+		 */
+		window.onload =function(){
+			var btn01 = document.getElementById('btn01')
+			var btn02 = document.getElementById('btn02')
+			btn01.onclick = function(){
+				alert(1);
+			}
+			btn02.onclick = function(){
+				alert(2);
+			}
+
+			//设置btn01对鼠标按下相关事件进行捕获， 当调用一个元素的setCapture()后，这个元素会将下一次所有的鼠标按下相关的事件捕获到自身上
+			//无论是什么地方，只要是点击事件就会触发btn01的点击事件
+			btn01.setCapture();
+		};
+	</script>
+<body>
+	<!-- 
+		-->
+		<button id="btn01">1</button>
+		<button id="btn02">2</button>
+</body>
+</html>

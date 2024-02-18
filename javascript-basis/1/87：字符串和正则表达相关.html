@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script >
+			/*
+			 * 
+			 * split()可以将一个字符串拆分为一个数组
+			 *  -方法中可以传递一个正则表达式作为参数，这样方法将会根据正则表达式去拆分字符串
+			 *  -默认全局匹配
+			 * 
+			 * search()可以搜索字符串中是否有指定内容,如果搜索到则会返回第一次出现的索引，没有返回-1
+			 *  -可以传递一个正则表达式作为参数，这样方法将会根据正则表达式去搜索字符串
+			 *  -无法全局匹配
+			 * 
+			 * match()可以传递一个正则表达式作为参数，从一个字符串中将符合条件的内容提取出来
+			 *  -默认情况下，match()只会提取出第一个符合要求的内容便停止，可以使用全局匹配继续查找
+			 *  -可以为match()使用多个怕匹配模式，且顺序无影响
+			 *  -会将匹配到的内容封装到一个数组返回，即使只查到一个结果
+			 * 
+			 * replace()
+			 *  -可以将字符串中指定内容替换为新的内容
+			 *  -参数1、被替换的内容,可以接受一个正则表达式作为参数 2、新的内容
+			 */
+			 
+			 //split()
+			 var str = '1a2b3caD';
+			 var result = str.split(/[A-z]/);
+			 console.log(result);
+			 //search(),全局模式不起用
+			 var result1 = str.search(/[abcd]/g);
+			 console.log(result1);
+			 //match
+			 var result2 = str.match(/[abcd]/gi);
+			 console.log(result2);
+			 console.log(result2[1]);
+			 //replace
+			 var result3 = str.replace(/[a]/g,'');
+			 console.log(result3);
+			/*
+			 *
+			 *  
+			 * 
+			 */
+			
+		</script>
+	<body>
+	</body>
+</html>

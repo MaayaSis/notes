@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<script>
+		/*
+		 *
+		 * 浏览器加载一个页面时，是从上向下的顺序加载的
+		 * 如果JS代码写在页面上边时，代码执行时，页面还没加载
+		 * 
+		 * onload事件会在整个棉业加载完成之后才触发
+		 * 最优性能写在下面
+		 *
+		 */
+
+		//为window绑定一个onload事件，保证在该事件对应的响应函数在页面加载完成之后执行，确保代码在执行时，所有的DOM都已经加载完成
+		window.onload = function () {
+			var btn = document.getElementById('btn');
+			btn.onclick = function () {
+				alert('hello');
+			}
+		}
+			 //
+			 //
+			 //
+
+	</script>
+
+<body>
+	<!--
+		-->
+	<button id="btn">我是一个按钮</button>
+
+	<script type='text/javascript'>
+		/*
+		 *
+		 *
+		 *
+		 */
+
+
+	</script>
+</body>
+
+</html>

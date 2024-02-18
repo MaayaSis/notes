@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maaya</title>
+  <script>
+    /* JS中提供了三种逻辑运算符
+    *!非
+    *  非可以对一个值进行非运算，可以对一个布尔值进行运算
+    *  做！运算时，如果原数据是num则先转变成boolean，可以将任意数据类型变成任一布尔值
+    *
+    *
+    *
+    *&&与
+    *  可以对符号两侧的值进行与运算并返回结果
+    *  只有都是true才会返回true，如果有一个false则是false
+    *  JS中的与是一个短路的与,只要第一个值为false，则不看第二个值，第一个是true时才会继续看
+    *  
+    *
+    *
+    *||或 只要两个值有true就返回true，两个都是false才返回false
+    *JS中的或是一个短路的或,只要第一个值为true，则不看第二个值，第一个是false时才会继续看
+    *
+    *
+    * 
+    * 
+    */
+    var a = true;
+    a = !a;
+    console.log(a);
+    var b = 10;
+    b = !b;
+    console.log('b= ' + b)
+    c = ' ';
+    c = !c;
+    console.log('c= ' + c);
+    var result = true && true;
+    console.log('result= ' + result );
+    var result1 = false || false;
+    console.log('result= ' + result1);
+    console.log(!-1);
+     /*
+      *
+      *
+      *
+      *
+      *
+      *
+      *
+      *
+      */
+
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

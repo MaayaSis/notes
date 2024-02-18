@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script >
+			/*
+			 * 
+			 * 我们在页面打印一个对象时，实际上时输出的对象的toString()方法的返回值
+			 * 如果我们希望在输出对象时不输出[Object Object]，可以为对象添加一个toString()方法
+			 * 
+			 */
+			 
+			 //
+			 function Person(name,age){
+				 this.name = name;
+				 this.age = age;
+			 }
+			 var per = new Person('Maaya',18);
+			 var per1 = new Person('Kisaragi',18);
+			 var result = per.toString();
+			 Person.prototype.toString = function(){
+				 return "Person[name=" + this.name + ",age=" + this.age + "]";
+			 }
+			 console.log(per)
+			 console.log(per.toString());
+			 console.log(per1.toString());
+			 console.log('result' + result);
+			 console.log(per.__proto__.__proto__.hasOwnProperty('toString'));
+			 //
+			 // 
+			 //
+			 
+			/*
+			 *
+			 *  
+			 * 
+			 */
+			
+		</script>
+	<body>
+	</body>
+</html>

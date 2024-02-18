@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<script type="text/javascript">
+
+		console.time('test');
+		var num = prompt('请输入一个大于1的整数');
+		var z = 2;
+		var flag = true;
+		if (num <= 1) {
+			while (num <= 1) {
+				var num = prompt('请重新输入一个大于1的整数');
+			}
+		} else {
+			for (; z < num; z++) {
+				if (num % z == 0) {
+					flag = false;
+					break;//可以用break来打破循环，节约性能;
+				}
+			}
+		}
+		if (flag) {
+			alert('是一个质数');
+		} else { alert('不是一个质数') }
+		console.timeEnd('test');
+
+
+
+	</script>
+
+<body>
+</body>
+
+</html>

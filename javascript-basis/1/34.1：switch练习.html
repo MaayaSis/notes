@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>switch练习1</title>
+	<script type="text/javascript">
+		/*
+		 * 对于成绩大于60分的，输出'合格'。低于60分的，输出'不合格'
+		 */
+
+		while (true) {
+			var score = + prompt('请输入成绩');
+			if (isNaN(score)){
+				alert('错误');
+			}else{
+				break;
+			}
+		}
+		switch (true) {
+			case score >= 60: alert('合格');
+				break;
+			default: alert('不合格');
+		}
+
+			//  switch(score){
+			// 	case(61):
+			// 	case(62):
+			// 	case(63): 
+			// 	case(64):alert('合格');
+			// 	 break;
+			// 	 default:alert('不合格');
+			//  }
+			// 这也是一种写法
+
+
+
+		/*switch(preseInt(score/10)){
+			 case(7):
+			 case(8):
+			 case(9):
+			 case(10):
+			 case(6):alert('合格');
+			 break;
+			 default:alert('不合格');
+		 }
+		*/
+	</script>
+
+<body>
+</body>
+
+</html>

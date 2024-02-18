@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<script type="text/javascript">
+		/*
+		 *
+		 * break关键字可以用来退出switch或循环语句
+		 * -break无法停止if语句，只是无法单独在if语句中使用；
+		 * 
+		 * continue关键字可以用来跳过当此循环；
+		 * continue也只对最近的一个循环产生影响，也可以用label进行改变；
+		 *  
+		 * 可以用break来打破循环，节约性能；
+		 * 测试性能，可以在程序执行前，开启计时器，使用console.time('计时器的名字')命令来开启
+		 * 他需要一个字符串作为参数，这个字符串作为计时器的标识
+		 * console.time('test')
+		 * console.timeEnd('test')
+		 * 
+		 */
+
+		for (var i = 1; i <= 9; i++) {
+			if (i == 2) {
+				break;
+			}
+			document.write(i);
+
+			document.write('<br />');
+		}
+		//if如果嵌套在其它循环语句中时，使用break不会报错，但是也不会起作用
+
+		for (var i = 2; i <= 5; i++) {
+			document.write(i);
+			for (var j = 2; j < 5; j++) {
+				break;
+				document.write(j);
+			}
+		}
+
+		//break语句时，只会会结束当前循环；
+
+		end:
+		for (var i = 2; i <= 5; i++) {
+			document.write('<br />');
+			document.write(i);
+			for (var j = 2; j < 5; j++) {
+				break end;
+				document.write(j);
+			}
+		}
+		// 	-可以为循环语句创建一个label，来表示当前寻黄
+		//  -使用break语句时，可以在break后加一个label，这样就会结束指定循环而不是当前循环；
+
+		for (var i = 1; i <= 5; i++) {
+			if (i == 2) {
+				continue;
+			}
+			document.write(i);
+		}
+	</script>
+
+<body>
+</body>
+
+</html>

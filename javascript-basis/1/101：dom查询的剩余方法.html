@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style>
+		/* 
+		 * 
+		 * 
+		 * 
+		 */
+	</style>
+	<script>
+		/* 
+		 * 
+		 * 在document中有一个属性body，它保存的是body的引用
+		 * document.documentElement保存的是html根标签
+		 * document.all表达的页面的中的所有元素
+		 * document.getElementsTagName('*')表达的也是页面的中的所有元素
+		 * getElementByClassName查找class属性
+		 * document.querySelector()
+		 *  -需要一个选择器的字符串作为参数，可以根据一个CSS选择器来查询一个元素节点对象
+		 *  -使用该方法总会返回唯一的一个元素，如果又多个满足，他只会返回第一个满足的元素
+		 * 为解决上面的问题使用document.querySelectorAll
+		 *  -符合的所有元素会被封装到一个类数组中：object Nodelist，即使是一个元素也会被封装到一个数组
+		 * 
+		 */
+			 //
+			 //
+			 //
+			 //
+			 window.onload = function(){
+				 var body = document.getElementsByTagName('body')[0];
+				 body = document.body;
+				 console.log(body);
+				 var all = document.all;
+				 for(var i=0 ; i<all.length ; i++){
+					 console.log(all[i]);
+				 }
+				 var box1 = document.getElementsByClassName('class');//兼容性很差，IE8及一下不兼容
+				 console.log(box1);
+				 //获取页面中class是class的div
+				 var div = document.querySelector('.class div');
+				 console.log(div.innerHTML);
+			 }
+	</script>
+
+<body>
+	<!--
+		-->
+		<div class="class">
+			<div>我是div中的div</div>
+		</div>
+	<script type='text/javascript'>
+		/* 
+		 * 
+		 * 
+		 * 
+		 */
+	</script>
+</body>
+
+</html>

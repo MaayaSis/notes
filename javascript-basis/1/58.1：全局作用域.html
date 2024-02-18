@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script >
+			/*
+			 * 
+			 * 作用域
+			 * -作用域值一个变量的作用的范围
+			 * -JS中一共有两种作用域：
+			 *   1、全局作用域
+			 *     -直接编写在script标签中的JS代码，都在全局作用域
+			 *     -全局作用域在页面打开时创建，关闭时销毁
+			 *     -在全局作用域中有一个全局对象window，我们可以直接使用
+			 *     -window代表的是一个浏览器的窗口，他由浏览器创建我们可以直接使用
+			 *     -在全局作用域中在：创建的变量都会作为window对象的属性保存
+			 *     -在全局作用域中在：创建的函数都会变成window对象的方法保存
+			 *
+			 *   2、函数作用域
+			 * 
+			 */
+			 
+			 //此为函数作用域
+		     /* function fun(){
+				 var a = 123;
+			 }
+			 fun();
+			 cosnole.log(a); */
+			
+			 //证明全局作用域中的对象都会变成widows属性保存；
+			 var a = 1;
+			 console.log(window.a);
+
+			 //以下是不同情况下的报错，c不存在
+			 console.log(window.c);
+			 console.log(c);
+
+			 //全局作用域中，函数都是window对象的方法
+			 function fun(){
+				 console.log("我是一个函数")
+			 }
+			 window.fun();
+			 
+			/*
+			 *
+			 *  
+			 * 
+			 */
+			
+		</script>
+	<body>
+	</body>
+</html>

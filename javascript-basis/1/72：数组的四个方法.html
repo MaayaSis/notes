@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script >
+			/*
+			 * 
+			 * Array常用的属性有：
+			 * push():可以向数组的末尾添加一个或多个元素，并返回数组的新的长度 
+			 *  -可以将要添加的元素作为方法的参数传递，元素自动添加到数组末尾
+			 *  -该方法会将数组新的长度作为返回值返回 
+			 * pop()：可以删除数组的最后一个参数,调用一次删除一次,并将最后一次删除的元素作为返回值返回
+			 * unshift()：向数组开头添加一个或多个元素，并返回新的数组长度,其它索引的顺序也会依次调整
+			 * shift():可以删除数组的第一个参数,调用一次删除一次,并将最后一次删除的元素作为返回值返回
+			 * 
+			 */
+			 
+			 //push()
+			 var arr = ['一','二','三'];
+			 var result = arr.push('四','五','六');
+			 console.log(arr);
+			 console.log('result=' + result);
+
+			 //pop()
+			 arr.pop();
+			 arr.pop();
+			 var result1 = arr.pop();
+			 console.log(arr);
+			 console.log('result1=' + result1);
+
+			 //unshift()
+			 arr.unshift('零');
+			 var result2 = arr.unshift();
+			 console.log(arr);
+			 console.log('result2=' + result2);
+
+			 //shift()
+			 arr.shift();
+			 var result3 = arr.shift();
+			 console.log(arr);
+			 console.log('result3=' + result3);
+			 
+			/*
+			 *
+			 *  
+			 * 
+			 */
+			
+		</script>
+	<body>
+	</body>
+</html>

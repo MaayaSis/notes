@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>全选练习</title>
+	<script type="text/javascript">
+
+		window.onload = function () {
+			//1.#checkedAllBtn
+			//2.#checkedNoBtn
+			//3.#checkedRevBtn
+			//4.#sendBtn
+			//5.#checkedAllBox
+			//6.items
+			var checkedAllBox = document.getElementById('checkedAllBox');
+			var items = document.getElementsByName('items');
+			var checkedAllBtn = document.getElementById('checkedAllBtn');
+			checkedAllBtn.onclick = function () {
+				for (var i = 0; i < items.length; i++) {
+					items[i].checked = true;
+					checkedAllBox.checked = true;
+				}
+			}
+			var checkedNoBtn = document.getElementById('checkedNoBtn');
+			checkedNoBtn.onclick = function () {
+				for (var i = 0; i < items.length; i++) {
+					items[i].checked = false;
+					checkedAllBox.checked = false;
+				}
+			}
+			var checkedRevBtn = document.getElementById('checkedRevBtn');
+			checkedRevBtn.onclick = function () {
+				checkedAllBox.checked = true;
+				for (var i = 0; i < items.length; i++) {
+					items[i].checked = !items[i].checked;
+					if (!items[i].checked) {
+						checkedAllBox.checked = false;
+					}
+				}
+			}
+			var sendBtn = document.getElementById('sendBtn');
+			sendBtn.onclick = function () {
+				for (var i = 0; i < items.length; i++) {
+					if (items[i].checked) {
+						alert(items[i].value)
+					}
+				}
+			}
+			//事件的响应函数中，响应函数是给谁绑定的那么this就是谁
+			checkedAllBox.onclick = function () {
+				for (var i = 0; i < items.length; i++) {
+					items[i].checked = this.checked;
+				}
+			}
+			for (var i = 0; i < items.length; i++) {//为四个多选框分别绑定点击事件
+				items[i].onclick = function () {
+					checkedAllBox.checked = true;
+					for (var j = 0; j < items.length; j++) {
+						if (!items[j].checked) {
+							checkedAllBox.checked = false;
+							//一旦进入判断，则已经的得出结果，不需要继续计算
+							break;
+						}
+					}
+				}
+			}
+		}
+
+	</script>
+</head>
+
+<body>
+
+		你爱好的运动是？<input type="checkbox" id="checkedAllBox" />全选/全不选
+
+		<br />
+		<input type="checkbox" name="items" value="足球" />足球
+		<input type="checkbox" name="items" value="篮球" />篮球
+		<input type="checkbox" name="items" value="羽毛球" />羽毛球
+		<input type="checkbox" name="items" value="乒乓球" />乒乓球
+		<br />
+		<input type="button" id="checkedAllBtn" value="全　选" />
+		<input type="button" id="checkedNoBtn" value="全不选" />
+		<input type="button" id="checkedRevBtn" value="反　选" />
+		<input type="button" id="sendBtn" value="提　交" />
+</body>
+
+</html>

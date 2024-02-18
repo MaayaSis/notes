@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maaya</title>
+    <script>
+       /* 运算符也叫操作符，通过运算符可以对一个或多个值进行运算，并获得计算结果
+          比如：typeof就是运算符，可以来获得一个值的类型,但是typeof会以字符串的形式返回
+          算数运算符：+ - * /:
+             当对非Number的值运算时，会先转换成Number才运行，除字符串的加法外都适用
+             任何值和字符串做加法运算，都会先转换成字符串
+          %这是取模运算（取余数）
+       */
+      var a = 123;
+      var result = typeof a;
+      console.log(typeof a);
+      result = a + 1;
+      // result = 1 +(- * /) NaN;任何值和NaN运算都是NaN
+      // result = "123" + "123"的结果是123123
+      // result = "姐姐" + "如月真绫"的结果是如月真绫
+      // result = 任意数据类型 + ""； 最后任意数据类型都可以转变成字符串
+      // console.log("C=" + a)；这样最后输出的就是C=123
+      // 任何值和- * /运算都转换成Number，则result = false - 0,false会变成0
+      // -0 *1 /1都可以变成Number
+      // result = 9 % 3 则result最后变成0
+      console.log(result);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

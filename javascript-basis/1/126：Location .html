@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*如果直接打印location，可以获取到地址栏的信息（当前页面的完整路径）
+		 *如果将location属性修改为一个完整的路径，或相对路径，则我们的页面会自动跳转到该路径，并生成相应的历史记录
+		 *assign，用来跳转到其他的页面，作用和直接修改location一摸一样
+		 *reload：用于刷新当前页面，和刷新一样，如果在方法中传递一个true，作为参数，则会强制清空缓存率先你页面
+		 *replace：可以用新的页面替换当前页面，调用完毕也会跳转页面，但是不会生成历史记录，不能使用回退按钮回退
+		 */
+		window.onload = function(){
+			var btn = document.getElementById('btn');
+			btn.onclick = function(){
+				// location = 'http://www.baidu.com';
+				// location.assign('https://www.baidu.com');
+				location.reload();//效果和刷新一样
+				//location.replace('www.taobao.com');
+			}
+		}
+	</script>
+<body>
+	<!-- 
+		-->
+		<input type="text" id="input" style="display: block; margin-bottom: 20px;" >
+		<button id="btn">按钮</button>
+		<h1>History</h1>
+		<a href="31.1：if练习一.html">去</a>
+</body>
+</body>
+</html>

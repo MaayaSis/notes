@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script type="text/javascript">
+			/*
+			 * 
+			 * 
+			 * 
+			 * 
+			 */
+			 
+			//  定义一个函数，判断一个数字是否为偶数，如果是返回true，否则false
+
+			function ou(num){
+				// if(num % 2 == 0){
+				// 	return true;
+				// }else{
+				// 	return false;
+				// }
+
+				return num % 2 == 0;
+
+			};
+
+			var result = ou(3);
+
+			console.log(result);
+
+			// 定义一个函数，可以根据半径计算一个圆的面积，并返回计算结果；
+
+			function mj(r){
+				return 3.14*r*r;
+			}
+
+			result = mj(10);
+
+			console.log('result' + result);
+
+			// 创建一个函数，可以在控制台输出一个人的信息
+
+			function Hello(o){
+				console.log('我是' + o.name,'年龄' + o.age, '性别' + o.gender,'地址' + o.address);
+			}
+
+			var obj = {
+				name: 'Maaya',
+				age:'18',
+				gender:'男',
+				address:'花果山'
+			};
+
+			Hello(obj);
+
+			//实参可以是任意的数据类型，也可以是一个对象，当我们的参数过多时，可以将参数封装到一个对象，通过对象传递
+
+			function fun(a){
+				// console.log('a = ' + a);
+				a(obj);
+			}
+
+			fun(Hello);
+
+			/*
+			 *
+			 * mj() -函数，相当于使用函数的返回值
+			 * 
+			 * mj -函数对象，相当于直接使用函数对象 
+			 *  
+			 * 
+			 */
+			
+		</script>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script >
+			/*
+			 *  
+			 * call()和apply()
+			 *  -这两个都是函数对象的方法，需要通过函数对象来调用
+			 *  -当对函数调用call()和apply()都会调用函数执行
+			 *  -在调用call()和apply()可以进一个对象指定为第一个参数,此时这个对象将会称为函数执行时的this
+			 *  -call()方法可以将实参在对象之后依次传递
+			 * 
+			 *  apply()需要将实参封装到一个数组中统一传递
+			 *  this
+			 *  1、函数形式调用时，this永远是windows
+			 *  2、方法调用时，this是调用方法的对象
+			 *  3、以构造函数调用时，this是新创建的对象
+			 *  4、使用call() apply()调用时，this是指定的那个对象
+			 */
+			 
+			 //
+			 function fun(){
+				 alert(this.name);
+			 }
+			 var obj = {
+				 name:'1',
+				 sayName:function(){
+					 alert(this.name);
+				 }
+			};
+			 var obj1 = {name:'2'};
+			 obj.sayName();
+			 obj.sayName.apply(obj1);
+			 //
+			 //
+			 //
+			 
+			/*
+			 *
+			 *  
+			 * 
+			 */
+			
+		</script>
+	<body>
+	</body>
+</html>

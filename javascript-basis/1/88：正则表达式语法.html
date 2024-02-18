@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script >
+			/*
+			 * 
+			 * 创建一个正则表达式检查一个字符串中是否含有aaa
+			 * 量词：通过量词可以设置一个内容出现的次数 
+			 *  -{n}正好出现n次，只对括号前的字符串起作用，但是可以加上一个()
+			 *  -{m,n}出现m-n次都行
+			 *  -{m,}出现m次以上
+			 *  -  +至少一个，相当于{1,}
+			 *  -  *0个或多个，相当于{0,}
+			 *  -  ？0个或一个，{0,1}
+			 *  -/^a/  检查一个字符串是否以a开头 
+			 *  -/a$/  检查一个字符串是否以a结尾
+			 * 
+			 */
+			 
+			 //{ }
+			 var reg = /(ab){3}/;
+			 console.log(reg.test('abababbabc'))
+			 var reg1 = /b{3}/;
+			 console.log(reg1.test('abbbababbabc'))
+			 var reg2 = /b{1,3}/;
+			 console.log(reg2.test('abababbabc'))
+			 var reg3 = /ab{3,}/;
+			 console.log(reg3.test('abababbbabc'))
+			 var reg4 = /ab+c/;
+			 console.log(reg4.test('abababbabc'))
+			 var reg5 = /ab*c/;
+			 console.log(reg5.test('abababbabc'))
+			 
+			 //^在字面量创建的正则表达式里的意思是 表示开头
+			 var reg6 = /^a/;
+			 console.log(reg6.test('abababbabc'))
+
+			 //$表示结尾
+			 var reg7 = /^a$/;
+			 console.log(reg7.test('aaaa'))
+			 var reg8 = /^a|a$/;
+			 console.log(reg8.test('1a0'))
+			 
+			 //
+			 var phoneStr = '13280753549'
+			 var reg9 = /^1[3-9][0-9]{9}$/;
+			 console.log(reg9.test(phoneStr));
+			/*
+			 *
+			 *  
+			 * 
+			 */
+			
+		</script>
+	<body>
+	</body>
+</html>

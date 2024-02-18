@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script >
+			/*
+			 * 
+			 * 可以通过工厂大批量的创建对象
+			 * 
+			 */
+			 
+			 //使用工厂创建对象
+			 function creatPerson(name,age,gender){
+				 var obj = new Object();
+				 obj.name = name;
+				 obj.age = age;
+				 obj.gender = gender;
+				 obj.sayName = function(){
+					 alert('this.name');
+				 };
+				 return obj;
+			 }
+			 var obj1 = creatPerson('Maaya',18,'Female');
+			 var obj2 = creatPerson('Yu',18,'male');
+			 //
+			 //
+			 //
+			 
+			/*
+			 *
+			 *  
+			 * 
+			 */
+			
+		</script>
+	<body>
+	</body>
+</html>

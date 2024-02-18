@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script type="text/javascript">
+			/*
+			 * 
+			 * 函数
+			 *  函数也是一个对象
+			 *  函数中可以封装一些功能（代码），在需要时可以执行
+			 *  
+			 * 函数的代码会在函数调用的时候执行
+			 * 函数调用语法：函数对象()
+			 * 调用函数时，函数中的代码会按照顺序执行
+			 * 
+			 * 
+			 */
+			 
+			//  创建一个函数对象
+
+
+			var fun = new Function("console.log('这是我的第一个函数');");
+			console.log(typeof fun);
+			
+			fun();
+
+			// 
+
+			function fun1(){
+				console.log('我是第二个函数');
+			};
+
+			var fun3 = function(){
+				console.log('我是匿名函数')
+			};
+
+			/*
+			 *
+			 * 使用函数声明来创建一个函数 
+			 *  语法： function 函数名([形参1，形参2，形参3]){
+			 *	语句...
+			 * }
+			 * 
+			 * 形参可写可不写，一般[]中括号中的都是不必须的（不确定是不是这样） 
+			 * 
+			 * 使用函数表达式创建一个函数
+			 * var 函数名 = function([形参1，形参2，形参3]){
+			 *	语句...
+			 * }
+			 *  
+			 * 
+			 */
+
+
+
+
+		</script>
+	<body>
+	</body>
+</html>

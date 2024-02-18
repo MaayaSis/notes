@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script type="text/javascript">
+			/*
+			 *
+			 * 引用数据类型：只有Object 
+			 * 
+			 * JS中的变量都是保存在栈内存中，栈内存分成两列，左列是变量名，右列是变量值；
+			 * 
+			 *  基本数据类型变量都是在栈内存中操作的，值与值之间是独立存在的，互相不会影响；
+			 * 
+			 *  引用数据类型（对象）是保存到堆内存中的；
+			 *  对象本身是没有名字的，变量会保存的是对象在堆内存的地址（0X123）；
+			 *  一个变量的值是保存的同一个对象，那么因为地址相同会 映射到同一个对象
+			 *   
+			 */
+			 
+			//  a变b不变
+
+			var a = 123,b = a
+			a++;
+			console.log(a,b);
+
+
+			var obj = new Object();
+			obj.name = 'Maaya';
+			var obj2 = obj;
+			obj.name = '姐姐';
+			console.log(obj.name);
+			console.log(obj2.name);
+			
+			// 这就是引用和基本，两种数据类型的区别；
+
+			var obj2 = new Object();
+			var obj3 = new Object();
+			obj2.name = 'Maaya';
+			obj3.name = 'Maaya';
+			console.log(obj3.name == obj2.name); // 这是true
+			console.log(obj3 == obj2); // 这是false
+
+			/*
+			 *
+			 * 比较两个基本数据类型，比较的是他们的值
+			 * 比较两个对象时，比的时他们的地址
+			 * 
+			 */
+
+
+
+
+		</script>
+	<body>
+	</body>
+</html>

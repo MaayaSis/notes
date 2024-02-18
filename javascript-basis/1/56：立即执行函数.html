@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script >
+			/*
+			 * 
+			 * 返回值可以是对象，也可以是函数，是任意的数据类型
+			 * 
+			 * 
+			 */
+			 
+			//  
+
+			
+			(function(){
+				alert('我是一个匿名函数，加括号后不报错');
+			})();
+
+			//匿名函数创建完后，立即调用，则会被执行，只执行一次；  这就是立即执行函数 
+
+			(function(a,b){
+				console.log(a + b);
+			})(1,2)
+			// 
+
+
+			
+			/*
+			 *function(){
+			*	alert('我是一个匿名函数，会直接报错');
+			 * }
+			 *
+			 * (function(){
+			 *	alert('我是一个匿名函数，加括号后不报错');
+			 * })
+			 * 
+			 *  
+			 * 
+			 */
+			
+		</script>
+	<body>
+	</body>
+</html>

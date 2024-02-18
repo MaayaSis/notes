@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+	</style>
+	<script type='text/javascript'>
+		/*History
+		 * -对象可以用来操作浏览器的向前向后翻页
+		 * -.back()，可以返回上一个界面
+		 * -.forward(),向前一个界面
+		 * 
+		 * go()
+		 *  -可以用来跳转到指定的页面，需要一个整数作为参数
+		 *  -1:表示向前跳转一个页面,相当于forward()
+		 *  -2:表示向前跳两个页面
+		 *  --1:表示向后跳转一个页面
+		 *  --2:表示向后跳转两个页面
+		 */
+		 alert(history.length)
+		 var btn = document.getElementById('btn');
+		 btn.onclick = function(){
+			//  history.back;
+			//  history.forward()
+			history.go(1);
+		 }
+	</script>
+<body>
+	<!-- 
+		-->
+		<button id="btn">按钮</button>
+		<h1>History</h1>
+		<a href="31.1：if练习一.html">去</a>
+</body>
+</html>

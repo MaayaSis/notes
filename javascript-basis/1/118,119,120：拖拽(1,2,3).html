@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style type='text/css'>
+		/*
+		 *
+		 */
+		#box1 {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+		}
+
+		#box2 {
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			position: absolute;
+			left: 200px;
+			top: 200px;
+		}
+	</style>
+	<script type='text/javascript'>
+		/*拖拽元素
+		 * 1、当鼠标在被拖拽元素上按下时，开始拖拽 onmousedown
+		 * 2、被拖拽的元素跟随鼠标移动 onmousemove
+		 * 3、当鼠标松开时，被拖拽的元素固定在当前元素 onmouseup
+		 */
+		window.onload = function () {
+			var box1 = document.getElementById('box1')
+			box1.onmousedown = function (event) {
+				//如果有则执行，没有就不执行
+				box1.setCapture && box1.setCapture()
+				//div的偏移量 = 鼠标.clientX - 元素.offsetLeft
+				event = event || window.event
+				var ol = event.clientX - box1.offsetLeft;
+				var ot = event.clientY - box1.offsetTop;
+				document.onmousemove = function (event) {
+					event = event || window.event
+					//如果不减去鼠标离box1的距离，那么接下来的便宜，将会全部便宜到鼠标上，而如果减去这段距离，那么实际偏离的就会小于鼠标的坐标的值
+					var x = event.clientX - ol;
+					var y = event.clientY - ot;
+					box1.style.left = x + 'px';
+					box1.style.top = y + 'px';
+				}
+				document.onmouseup = function () {
+					document.onmousemove = null;
+					document.onmouseup = null;
+					//取消捕获
+					box1.releaseCapture && box1.releaseCapture();
+				}
+				/*当我们拖拽一个网页中的内容时，浏览器会默认去搜索引擎中搜索内容
+				 *会导致拖拽功能的异常，这是浏览器提供的默认行为
+				 *如果不希望发生这个行为，则可以通过return false来取消默认行为
+				 *但是对IE8不起作用
+				 */
+				return false;
+			}
+		}
+	</script>
+
+<body>
+	<!-- 
+		-->
+	我是一段文字
+	<div id="box1"></div>
+	<div id="box2"></div>
+</body>
+
+</html>

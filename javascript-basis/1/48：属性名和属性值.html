@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script type="text/javascript">
+			/*
+			 *
+			 * 向对象中添加属性
+			 *  属性名：对象的属性不强制要求遵守标识符的规范
+			 *  obj.var = 'hello'是可以使用的
+			 *  
+			 *  如果需要特殊的属性名，不能呢采用.的方式来操作
+			 *   需要使用 语法： 对象['属性名'] = 属性值
+			 *   obj['123'] = 'hello'
+			 * 
+			 */
+			 
+			//  使用new关键字调用的函数，是构造函数constrcstor
+
+			var obj = new Object();
+
+			 obj[123] = '789';//这样是会报错的 
+			 console.log(obj['123']);//最后还是输出了789,或许是转化成了Number?
+
+			//  必须按这个格式才能读取
+
+			 obj['123'] = '789';
+			 obj['hello'] = '你好';
+			 var n = '123';
+			 console.log(obj[n]);
+			
+			// 这样n就会变成一个变量
+
+			obj.a = '姐姐';
+			obj.b = true;
+			obj.c = null;
+			obj.d = 1;
+			obj.e = undefined;
+			obj.f = null;
+
+			var obj2 = new Object();
+			obj2.test = 'Maaya';
+
+			obj.g = obj2.test;
+			
+			console.log(obj);
+			
+			var result=  'a' in obj ;
+			console.log(result)
+
+			/*
+			 *
+			 * 使用[]形式去操作属性 更加的灵活；在[]可以直接创建一个变量，这样变量值是多少就会读取那个属性
+			 * 
+			 * 属性值：JS对象的属性值，可以是任意的数据类型
+			 * 
+			 * in运算符，可以检查一个对象中是否含有指定的属性，如果有返回true；没有返回false；
+			 * 语法： '属性名' in 对象；
+			 * 
+			 * 
+			 */
+
+
+
+
+		</script>
+	<body>
+	</body>
+</html>

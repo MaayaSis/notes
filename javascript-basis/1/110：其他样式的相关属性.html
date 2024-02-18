@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<style>
+		/* 
+		 */
+		#box1 {
+			width: 200px;
+			height: 100px;
+			padding: 100px;
+			border: 10px solid red;
+			background-color: blue;
+		}
+
+		#box2 {
+			padding: 100px;
+			background-color: #bfa;
+		}
+
+		#box4 {
+			width: 200px;
+			height: 300px;
+			overflow: auto;
+			background: red;
+		}
+
+		#box5 {
+			width: 550px;
+			height: 500px;
+			background-color: yellow;
+		}
+
+		#info {
+			width: 300px;
+			height: 100px;
+			overflow: auto;
+			background-color: #bfa;
+		}
+	</style>
+	<script>
+		/* clientWidth和clinetHeight可以获取元素的可见高度和可见宽度，并且返回的是纯数字，可以直接计算
+		 *  -会获取的是内容区和内边距，不包括边框（border）
+		 *  -这些属性都是只读的，不能改，想改只能通过style
+		 * offsetWeight和offsetHeight获取元素的全部大小，包括边框
+		 * offsetParent可以获取当前元素的定位父元素
+		 *  -会获取到离当前元素最近的开启相对定位的祖先元素 
+		 *  -如果所有的祖先元素都没有开启定位，则返回body
+		 * offsetLeft当前元素相对于其定位父元素的水平偏移量
+		 * offsetTop当前元素相对于其定位父元素的垂直偏移量
+		 * scrollHeight和scrollWith可以获得整个滚动区域的宽度和高度
+		 * scrollLeft可以获取水平滚动条滚动的距离，scrollTop则是垂直滚动条
+		 * 当满足scorllHeight - scrollTop == clientHeight时说明滚动条滚动到底了，可以用在协议上，必须阅读完协议才可以进行下一步
+		 * 
+		 */
+		window.onload = function () {
+			var btn01 = document.getElementById('btn01');
+			var box1 = document.getElementById('box1');
+			var inputs = document.getElementsByTagName('input')//根据标签名获取
+			var info = document.getElementById('info')
+			btn01.onclick = function () {
+				console.log(typeof box1.offsetParent)
+				console.log(box1.clientWidth)
+				console.log(box1.offsetWidth);//会被滚动条的的宽度和高度占掉一定的位置
+				console.log(box1.offsetParent.id);
+				console.log(box1.offsetLeft);
+				console.log(box1.offsetTop);
+				console.log(box4.scrollHeight);
+				console.log(box4.scrollWidth);
+				console.log(box4.scrollLeft);
+				console.log(box4.scrollTop);
+				console.log(box4.scrollHeight - box4.scrollTop);//滚动条拖动到底部的时候，值等于clientHeight
+			}
+			info.onscroll = function () {
+				if (info.scrollHeight - info.scrollTop == info.clientHeight) {
+					inputs[0].disabled = false;//object.disabled=ture/false,可以设置一个元素是否被禁用
+					inputs[1].disabled = false;
+				}
+			}
+		}
+	</script>
+
+<body>
+	<!--如果为一个表单项添加一个disabled属性，那么这个标签就不能用
+		-->
+	<h3>Maaya</h3>
+	<p id="info">请阅读以下协议，如果不阅读就不要注册
+		请阅读以下协议，如果不阅读就不要注册
+		请阅读以下协议，如果不阅读就不要注册
+		请阅读以下协议，如果不阅读就不要注册
+		请阅读以下协议，如果不阅读就不要注册
+		请阅读以下协议，如果不阅读就不要注册
+		请阅读以下协议，如果不阅读就不要注册
+		请阅读以下协议，如果不阅读就不要注册
+		请阅读以下协议，如果不阅读就不要注册
+		请阅读以下协议，如果不阅读就不要注册
+		请阅读以下协议，如果不阅读就不要注册
+		请阅读以下协议，如果不阅读就不要注册
+		请阅读以下协议，如果不阅读就不要注册
+		请阅读以下协议，如果不阅读就不要注册
+		请阅读以下协议，如果不阅读就不要注册
+		请阅读以下协议，如果不阅读就不要注册
+	</p>
+	<input type="checkbox" disabled='disabled'>我已经阅读协议
+	<input type="submit" value="注册">
+	<button id="btn01" style="display: block;">我是一个按钮</button>
+	<div id="box4">
+		<div id="box5"></div>
+	</div>
+	<div id="box3" style="position: relative;">
+		<div id="box2" style="position: relative;">
+			<div id="box1" style="position: relative;"></div>
+		</div>
+	</div>
+	<script type='text/javascript'>
+		/*
+		 */
+	</script>
+</body>
+
+</html>

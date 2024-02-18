@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script type="text/javascript">
+		
+
+
+
+			for(i = 100 ; i < 1000 ; i++){
+				var b = parseInt(i/100);
+				var s = parseInt((i-b*100)/10);
+				var g = parseInt(i-b*100-s*10);
+				var sum = b*b*b + s*s*s + g*g*g;
+				if(sum == i){
+					console.log(i + "是水仙花数");
+				}
+			}
+
+			
+		</script>
+	<body>
+	</body>
+</html>

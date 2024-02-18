@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script >
+			/*
+			 * 
+			 * 在正则中.表示任意字符
+			 * 在正则表达式中，使用\作为转义字符
+			 * \.来表示.
+			 * \\表示\
+			 * 
+			 * 注意：使用构造函数时，由于它的参数是一个字符串，而\是字符串中的转义字符
+			 *  -如果要使用\则需要使用\\来代替,例子为构造函数的正则表达式
+			 * 
+			 * \W：表示除了任意字母，数字，下划线
+			 * \w：表示任意字母，数字，下划线 
+			 * \D：除了数字
+			 * \d：任意的数字
+			 * \S：除了空格
+			 * \s：空格
+			 * \B：除了单词边界(来表示是否是一个单独的单词)
+			 * \b：单词边界
+			 * 
+			 */
+			 
+			 //
+			 var reg = /\./;
+			 var reg1 = /\\/;
+			 reg2 = new RegExp('\.');
+			 console.log(reg.test('.'));
+			 console.log(reg1.test('b.\\'));
+			 console.log(reg2.test('b\\'));
+			 reg3 = new RegExp('\\\\');
+			 console.log(reg);
+
+			 //创建一个正则表达式来检查一个字符串中是否含有单词child,要找的是child但是children也算，这就要用到单词边界
+			 var reg4= /\bchild\b/;
+			 console.log(reg4.test('hello children'))
+
+			 //去掉字符串中的空格，使用''空串来替换,去除开头和结尾的空格
+			 var str = prompt('输入用户名：');
+			 str1 = str.replace(/^\s*|\s*$/g,'');
+			 console.log(str1);
+			 //
+			 
+			/*
+			 *
+			 *  
+			 * 
+			 */
+			
+		</script>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Maaya</title>
+	<script type="text/javascript">
+		/*
+		 *
+		 * 条件分支语句也叫Switch语句
+		 *  -语法
+		 *    switch（条件表达式）{
+		 *    case表达式：
+		 *    语句
+		 *    break
+		 *   }
+		 * 执行case命令后的条件，与switch的条件进行是否全等比对
+		 * 如果比对结果是true，则执行case后的语句，无论该case后有多少个case
+		 * 如果比较结果是false，则继续向下比较，如果所有结果都是false，则只执行default后的语句
+		 * 
+		 * 但是可以用 break 来打破循环；
+		 * 
+		 */
+		num = 1;
+		switch (true) {
+			case num == 1: alert('一');
+				break;
+			case num == 2: alert('二');
+				dafault: alert('非法数字');
+		}
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

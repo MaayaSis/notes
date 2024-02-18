@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script >
+			/*
+			 * 
+			 * 在调用函数时，浏览器每次都会传递进两个隐含的参数
+			 *  1、函数的上下文对象this
+			 *  2、封装实参的对象
+			 *   -arguments是一个类数组对象
+			 *   -在调用函数是，我们传递的实参都会在arguments中保存
+			 *   -即使不定义形参，也可以通过arguments使用实参
+			 *     -arguments[0]；表示第一个实参
+			 *   -即使加上形参也不影响实参和arguments
+			 *   -arguments里面有一个属性叫callee，它对应一个函数对象，就是当前正在执行的函数对象
+			 *  
+			 */
+			 
+			 // 证明arguments是一个类数组,length可以获得实参的长度,[索引]可以获得该参数
+			 function fun(){
+				 console.log(arguments instanceof Array);
+				 console.log(Array.isArray(arguments));
+				 console.log(arguments.length);
+				 console.log(arguments[0]);
+				 console.log(arguments.callee == fun);
+				 console.log(arguments)
+			 };
+			 fun('hello',0);
+			 //
+			 //
+			 //
+			 
+			/*
+			 *
+			 *  
+			 * 
+			 */
+			
+		</script>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maaya</title>
+    <script>
+       /* 在JS中，如果需要表示16进制的数字，则需要以0X开头
+          如果以表示八进制则以0开头
+          如果以二进制表示则以0b开头，但是兼容性不好
+       */
+      var a = 0X10;
+      // 这是表示16 
+
+      var a = "070";
+       // 我要表示的是70但是会被识别成56，变成八进制
+      a = parseInt(a,10);
+      // 这样转换就不会出问题了
+      console.log(typeof a);
+      console.log(a);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

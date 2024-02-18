@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script >
+			/*
+			 * 
+			 * 变量的声明提前
+			 *  -使用var关键字声明的变量，都会在所有代码执行前被声明，如果不用var变量声明；
+			 *  
+			 * 函数的声明提前
+			 *  -使用函数声明形式创建的函数function(){}会在所有的代码执行之前就被创建；
+			 *  -使用函数表达形式创建的函数function(){}不会在所有的代码执行之前就被创建；
+			 * 
+			 * 全局作用域中的变量都是全局变量，在页面的任意部分都可以访问的到；
+			 * 
+			 */
+			 
+			 //声明a是window的对象
+			 a = 123
+			 console.log('a=' + a);
+
+			 //var声明的变量会在所有代码执行之前执行；
+			 console.log('a=' + a);
+			 var a = 123;
+
+			 //相等于以上
+			 var a ;
+			 console.log('a=' + a);
+			 a = 123 ;
+
+			 //因为fun2被var先定义成为了window的对象的一个属性，fun2先为声明，但是赋值时在代码执行之后
+			 fun();
+			 fun2();
+			 function fun(){
+				 console.log('我是fun函数');
+			 }
+			 var fun2 = function(){
+				console.log('我是fun2函数');
+			 }
+
+			/*
+			 *
+			 *  
+			 * 
+			 */
+			
+		</script>
+	<body>
+	</body>
+</html>

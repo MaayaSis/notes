@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maaya</title>
+  <script>
+    /*
+     *
+     * 相等运算符比较两个值是否相等，相等返回true，不相等返回false；
+     * 使用 == 来做相等运算；
+     *  -当使用 == 来比较两个值是，如果不是同一类型的数值，则会先进行数值转化
+     * 
+     * 不相等运算符比较两个值是否不相等，相等返回true，不相等返回false；
+     *  -使用 != 来做不相等运算
+     * 
+     * ===
+     *  -判断是否全等，不会转换类型
+     * 
+     * !== 
+     *  -判断是否不全等，不会转换类型
+     *
+     */
+    var a = 10;
+    console.log(a == 4); //false
+    console.log('1' == 1); //true
+    console.log(true == '1'); //true
+    console.log(true == 'hellp') //false
+    console.log(null == 0) //false
+    console.log('abcd' != 'abcd') //false
+    var b = NaN;
+    console.log(isNaN(b));
+    /*
+     *
+     *undefined和null做相等运算时返回 true
+     *NaN不和任何值相等，包括它本身，但是可以通过isNaN()函数来判断一个值是不是NaN；
+     *
+     */
+  </script>
+</head>
+
+<body>
+ 
+</body>
+
+</html>

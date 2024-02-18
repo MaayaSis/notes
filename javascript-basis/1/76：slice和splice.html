@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Maaya</title>
+		<script >
+			/*
+			 * 
+			 * slice()从选定的数组提取指定的元素
+			 *  -数组.sclie(start,end)，start参数是开始的索引，end参数是结束的索引
+			 *  -不会影响原数组，包含开始索引，不包含结束索引
+			 *  -当第二个参数省略不写时，会截取第一个参数以后的所有元素
+			 *  -所有可以传递一个负值，如果传递一个负值，则从后往前计算，并且只有第二个参数可以是负值，且最后一个数是-1
+			 * 
+			 * splice()删除数组中的指定元素
+			 *  -数组.sclie(start,end,elemnet)，start参数是开始的索引，end参数是删除的数量
+			 *  -element会将替换到被删除的元素的位置上
+			 *  -会影响到原数组，会将删除后的元素作为返回值返回
+			 * 
+			 */
+			 
+			 //slcie()
+			 var arr = ['一','二','三','43'];
+			 var result = arr.slice(1,2);
+			 console.log(result);
+			 var result1 = arr.slice(0,-2);
+			 console.log(result1);
+
+
+			 //splice();
+			 var arr1 = ['a','b','c',2,3,4,5,6];
+			 var result2 = arr1.splice(2,4,'不删除添加');
+			 console.log(arr1)
+			 console.log(result2);
+			 //
+			 //
+			 
+			/*
+			 *
+			 *  
+			 * 
+			 */
+			
+		</script>
+	<body>
+	</body>
+</html>
