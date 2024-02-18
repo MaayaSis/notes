@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Maaya</title>
+	<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+	<style type='text/css'>
+		/*
+		*/
+	</style>
+	<script type='text/javascript'>
+		/*
+		拦截器:
+		1.请求拦截器:发送请求前通过函数对请求的内容进行检测,不满足则按函数内容进行处理
+		2.响应拦截器:当收到返回的结果之前,先对返回的内容进行检测,不满足则按函数内容进行处理
+		*/
+		window.onload = function () {
+			const btns = document.querySelectorAll('button');
+			//1.  类似Promise原理,当请求的return返回的是一个非Promise类型数据,则调用响应拦截成功,如果是抛出错误则调用响应拦截失败;如果是Promise(待学习)
+			axios.interceptors.request.use(function (config) {
+				console.log('请求拦截器 成功');
+				config.params = {a:100}//可以对请求参数进行修改
+				return config;
+			}, function (error) {
+				console.log('请求拦截器 失败');
+				return Promise.reject(error);
+			});
+			axios.interceptors.response.use(function (response) {
+				console.log('响应拦截器 成功');
+				return response.data;//可以对象返回的结果response:中的data属性单独进行返回
+				// return response;
+			}, function (error) {
+				console.log('响应拦截器 失败')
+				return Promise.reject(error);
+			});
+
+			//2.执行顺序: 请求成功2,请求成功1,拦截成功1,拦截成功2
+			axios.interceptors.request.use(function (config) {
+				console.log('请求拦截器 成功 - 1号');
+				//修改 config 中的参数
+				config.params = { a: 100 };
+
+				return config;
+			}, function (error) {
+				console.log('请求拦截器 失败 - 1号');
+				return Promise.reject(error);
+			});
+
+			axios.interceptors.request.use(function (config) {
+				console.log('请求拦截器 成功 - 2号');
+				//修改 config 中的参数
+				config.timeout = 2000;
+				return config;
+			}, function (error) {
+				console.log('请求拦截器 失败 - 2号');
+				return Promise.reject(error);
+			});
+
+			// 设置响应拦截器
+			axios.interceptors.response.use(function (response) {
+				console.log('响应拦截器 成功 1号');
+				return response.data;
+				// return response;
+			}, function (error) {
+				console.log('响应拦截器 失败 1号')
+				return Promise.reject(error);
+			});
+
+			axios.interceptors.response.use(function (response) {
+				console.log('响应拦截器 成功 2号')
+				return response;
+			}, function (error) {
+				console.log('响应拦截器 失败 2号')
+				return Promise.reject(error);
+			});
+			//发送请求
+			axios({
+				method: 'GET',
+				url: 'http://localhost:3000/posts'
+			}).then(response => {
+				console.log('自定义回调处理成功的结果');
+				console.log(response);
+			});
+		}
+	</script>
+
+<body>
+	<!-- 
+	-->
+	<div class="container">
+		<h2 class="page-header">基本使用</h2>
+		<button class="btn btn-primary"> 发送GET请求 </button>
+		<button class="btn btn-warning"> 发送POST请求 </button>
+		<br>
+	</div>
+</body>
+
+</html>
