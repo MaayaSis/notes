@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1{
+            border: 10px red solid;
+
+            /* overflow: hidden; */
+        }
+
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: #bfa;
+            float: left;
+        }
+
+        .box3{ 
+            clear: both;
+        }
+/* 相当于在box2后面加上了一个块元素,当如果未浮动时,这个块元素应该在box2底下一行,如果设置一个空的伪类,并且设置为块元素,在让清除掉浮动对它的影响,那么就可以解决高度塌陷的问题了 */
+        .box1::after{
+            content: '';/* 加上一个伪元素的内容 */
+            display: block;/* 让这个伪元素变成块元素 */
+            clear: both;/* 清除掉之前 */
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="box1">
+        <div class="box2"></div>
+        <!-- <div class="box3"></div> -->
+    </div>
+    
+</body>
+</html>
