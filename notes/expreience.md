@@ -7,12 +7,6 @@
 
 # feature 
 
-## return
-
-```JavaScript
-// Array.map,Array.forEach无法使用return打破循环
-```
-
 ## vnode
 
 ```JavaScript
@@ -27,12 +21,6 @@ handler(){
     ])
   })
 }
-```
-
-## number计算
-
-```JavaScript
-// bigDecimal用来解决计算的精度问题,如0.2*0.3
 ```
 
 ## v-model实现
@@ -144,12 +132,6 @@ handler(){
   // 其中使用Infinity作为flat的参数，使得无需知道被扁平化的数组的维度
   let member = Object.values(deps).flat(Infinity) 
 </script>
-```
-
-## vue标签style绑定对象
-
-```javascript
-// vue中可以给标签的style绑定一个对象来设置样式
 ```
 
 
@@ -403,11 +385,3 @@ ua.match(/version\/([\d.]+).*safari/)) // safari
 | 503    | Service Unavailable             | 由于超载或系统维护，服务器暂时的无法处理客户端的请求。延时的长度可包含在服务器的Retry-After头信息中 |
 | 504    | Gateway Time-out                | 充当网关或代理的服务器，未及时从远端服务器获取请求           |
 | 505    | HTTP Version not supported      | 服务器不支持请求的HTTP协议的版本，无法完成处理               |
-
-# life
-
-## 交通
-
-1. 做鉴定的时候去事故发生地所在区的物价局。然后坚决不调节，必须全额赔偿。修车期间就打出租车，每次都保留好发票。
-2. 把视频发给交警和对方的保险公司，一旦这个人被拘留，那么保险公司就会拒赔，然后你就向你投保的保险公司申请代位赔偿。假设修车需要一万块，物价局的鉴定结果很可能是两万。修车费用+误工费+路费+鉴定费，对方大概要配两万五左右。
-3. 因为你申请了代位赔偿，所以后续打官司啥的不用你操心，省心又省力。因为是在物价局做的鉴定，所以定损价格会比四儿子店都高，还多了一笔按照百分比来决定鉴定费。物价局做鉴定还有个好处就是法院和保险公司百分百会认可。

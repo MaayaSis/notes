@@ -2836,4 +2836,7 @@ const createApp = (rootComponent) =>{
    1. `createVNode`:将在创建`app`对象时通过闭包保留下的`rootComponent`根组件对象变成一个`VNode`(应该是闭包)
    2. `render`:`baseCreateRenderer`传入的`render`函数进行渲染
       1. 如果`VNode`是空,则代表卸载
-      2. 非空则调用`patch`函数进一步挂载:
+      2. 非空则调用`patch`函数进一步挂载
+      3. 判断`VNode`类型,执行匹配的挂载组件逻辑
+      4. 如果是组件类型的`VNode`,则执行`processComponent`函数
+      5. 对组件鞥可以
