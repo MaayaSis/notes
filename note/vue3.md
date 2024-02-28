@@ -2840,3 +2840,11 @@ const createApp = (rootComponent) =>{
       3. 判断`VNode`类型,执行匹配的挂载组件逻辑
       4. 如果是组件类型的`VNode`,则执行`processComponent`函数
       5. 对组件鞥可以
+
+**待后期梳理补充**
+
+
+
+# vue3 源码阅读和前端路由原理
+
+## 
