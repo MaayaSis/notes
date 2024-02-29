@@ -2847,4 +2847,12 @@ const createApp = (rootComponent) =>{
 
 # vue3 源码阅读和前端路由原理
 
-## 
+## vue3 的整个创建及更新渲染逻辑
+
+1. `vue.createApp()`中`createApp`的引用值指向`createAppAPI`函数执行后返回的`createApp`函数
+2. `createApp`接收用户定义的含有`template`及`options`属性的对象后执行返回`app`对象
+3. `app.mount`函数中先执行`createVNode`函数创建`VNode`,再调用`render`函数渲染`VNode`
+4. `render`渲染函数位于`baseCreateRenderer`函数中,其中挂载的代码逻辑:
+   1. `patch`:进行新旧节点的对比
+   2. 判断新旧节点是否相同与新节点的`VNode`类型,再依类型调用对应的挂载函数
+   3. 如果`VNode`是`Element`类型:
