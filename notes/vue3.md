@@ -2855,4 +2855,7 @@ const createApp = (rootComponent) =>{
 4. `render`渲染函数位于`baseCreateRenderer`函数中,其中挂载的代码逻辑:
    1. `patch`:进行新旧节点的对比
    2. 判断新旧节点是否相同与新节点的`VNode`类型,再依类型调用对应的挂载函数
-   3. 如果`VNode`是`Element`类型:
+   3. `VNode`是`Element`类型时,进入`processElement`函数,进行针对元素的遍历与操作(例如:设置`props`等)
+   4. `VNode`是`component`类型时,无论是单根(多根)组件都将进入`processComponent`函数进行组件挂载
+   5. `processComponent`函数判断是更改还是新增
+      1. 更改:调用`updateComponent`函数,在函数中通过`shouldUpdateComponent`函数判断是否是需要调用`VNode.update`更新
