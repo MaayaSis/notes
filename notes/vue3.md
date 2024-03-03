@@ -2824,31 +2824,6 @@ const createApp = (rootComponent) =>{
 
 # vue3 源码精度和调试技巧
 
-1. `const app = Vue.createApp(App)`:为了得到一个包含`use`,`mixin`,`mount`等方法的对象,并赋值
-   1. `createApp`:最终目的是拿到`app`对象
-      1. `ensureRenderer`:渲染器函数,包含了所有的渲染逻辑
-      2. `createRenderer`
-      3. `baseCreateRenderer`渲染器函数:返回含有`render`,`hydrate`,`createApp`属性的对象;其中`creatApp`属性是调用了`createAppAPI()`的返回值,这是一个函数
-   2. 对`app`对象的`mount`函数进行重写
-      1. 调用`normalizeContainer`函数保证,`mount`方法中传入的选择器支持各种场景及平台
-      2. 其他逻辑
-2. `app.mount(selector)`:
-   1. `createVNode`:将在创建`app`对象时通过闭包保留下的`rootComponent`根组件对象变成一个`VNode`(应该是闭包)
-   2. `render`:`baseCreateRenderer`传入的`render`函数进行渲染
-      1. 如果`VNode`是空,则代表卸载
-      2. 非空则调用`patch`函数进一步挂载
-      3. 判断`VNode`类型,执行匹配的挂载组件逻辑
-      4. 如果是组件类型的`VNode`,则执行`processComponent`函数
-      5. 对组件鞥可以
-
-**待后期梳理补充**
-
-
-
-# vue3 源码阅读和前端路由原理
-
-## vue3 的整个创建及更新渲染逻辑
-
 1. `vue.createApp()`中`createApp`的引用值指向`createAppAPI`函数执行后返回的`createApp`函数
 2. `createApp`接收用户定义的含有`template`及`options`属性的对象后执行返回`app`对象
 3. `app.mount`函数中先执行`createVNode`函数创建`VNode`,再调用`render`函数渲染`VNode`
@@ -2859,3 +2834,24 @@ const createApp = (rootComponent) =>{
    4. `VNode`是`component`类型时,无论是单根(多根)组件都将进入`processComponent`函数进行组件挂载
    5. `processComponent`函数判断是更改还是新增
       1. 更改:调用`updateComponent`函数,在函数中通过`shouldUpdateComponent`函数判断是否是需要调用`VNode.update`更新
+      2. 新增:
+         1. 调用`createComponentInstance`创建组件实例对象,此时对象的所有属性均为`null`
+         2. 调用`setupComponent`,先通过`instance.vnode.shapeFlag`判断是否是有状态的组件
+         3. 如果组件标识字段显示为有状态,则调用`setupStatefulComponent`函数设置有状态的组件
+         4. 取出组件对象`component`,并将`component.setup`函数传入`callWithErrorHandling`进行执行
+         5. 判断`setup`执行后返回的`setupResult`值的类型,正常场景将会是`Object`类型并进入对应的逻辑,对`setupResult`执行代理操作赋值至`instance.setupState`
+         6. 之后调用`finishComponentSetup`函数,执行`render`逻辑
+         7. `render`函数指向的是将模板`template`传递给`compileToFunction`函数,在执行后返回的值
+         8. 并且`render`函数通过闭包引用了外层作用的静态`VNode`节点,而动态的可能会改变的节点则是通过`createVNode`重新创建
+         9. 最终调用`setupRenderEffect`函数添加响应式的副作用渲染,将会在页面的响应式数据更新时重新渲染整个页面
+
+# vue3 源码阅读和前端路由原理
+
+## blockTree 提升性能
+
+1. `vue3`的`block`树:
+   1. 在首次创建组件,会在`baseComplile`函数中先创建部分静态`VNode`(例如文本)
+   2. `baseComplile`函数的返回值是一个接受多个参数(静态`VNode`会作为参数传入),在执行后会生成一个`VNode`树的`render`函数
+   3. `render`函数执行时,由于对静态的`VNode`通过闭包继续引用,可以不用重新创建
+      1. 只要重新创建使用了响应式数据的`VNode`,节约开销提升性能
+      2. 再将动态的`VNode`存入数组(`dynamicChildren`),`patch`的`diff`算法只用对比此数组中的元素,节约开销提升性能
