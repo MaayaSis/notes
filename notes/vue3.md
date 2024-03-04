@@ -2849,9 +2849,17 @@ const createApp = (rootComponent) =>{
 
 ## blockTree 提升性能
 
-1. `vue3`的`block`树:
-   1. 在首次创建组件,会在`baseComplile`函数中先创建部分静态`VNode`(例如文本)
-   2. `baseComplile`函数的返回值是一个接受多个参数(静态`VNode`会作为参数传入),在执行后会生成一个`VNode`树的`render`函数
-   3. `render`函数执行时,由于对静态的`VNode`通过闭包继续引用,可以不用重新创建
-      1. 只要重新创建使用了响应式数据的`VNode`,节约开销提升性能
-      2. 再将动态的`VNode`存入数组(`dynamicChildren`),`patch`的`diff`算法只用对比此数组中的元素,节约开销提升性能
+1. 在首次创建组件,会在`baseComplile`函数中先创建部分静态`VNode`(例如文本)
+2. `baseComplile`函数的返回值是一个接受多个参数(静态`VNode`会作为参数传入),在执行后会生成一个`VNode`树的`render`函数
+3. `render`函数执行时,由于对静态的`VNode`通过闭包继续引用,可以不用重新创建
+   1. 只要重新创建使用了响应式数据的`VNode`,节约开销提升性能
+   2. 再将动态的`VNode`存入数组(`dynamicChildren`),`patch`的`diff`算法只用对比此数组中的元素,节约开销提升性能
+
+## 生命周期
+
+在`applyOptions`函数中,实现了对`2.x options`的支持
+
+1. `beforeCreated`和`created`将会直接在此过程中执行
+2. 而其余的已定义的声明周期函数将执行`registerLifecycleHook`函数注入到`hook`中
+3. 在首次挂载组件时,会在`setupRenderEffect`响应式副作用渲染函数中取出`beforeMounted(映射:BM)`与`mounted(映射:M)`执行
+4. 在更新组件与卸载组件时也会调用对应的生命周期函数
