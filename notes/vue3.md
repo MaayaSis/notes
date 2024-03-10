@@ -2861,5 +2861,26 @@ const createApp = (rootComponent) =>{
 
 1. `beforeCreated`和`created`将会直接在此过程中执行
 2. 而其余的已定义的声明周期函数将执行`registerLifecycleHook`函数注入到`hook`中
-3. 在首次挂载组件时,会在`setupRenderEffect`响应式副作用渲染函数中取出`beforeMounted(映射:BM)`与`mounted(映射:M)`执行
-4. 在更新组件与卸载组件时也会调用对应的生命周期函数
+3. 在首次挂载组件时,会在`setupRenderEffect`响应式副作用渲染函数中取出`beforeMounted(映射:BM)`与`mounted(映射:M)`
+4. `beforeMounted`将会直接执行,而`mounted`会传入`queuePostRenderEffect`函数执行然后放入队列中
+5. 在`render`函数结束,完成组件及子组件的挂载后,调用`flushPostFlushCbs`函数结束`mounted`阶段
+6. 更新与卸载生命周期的逻辑也和挂载周期相似 
+
+## template 模板的取值顺序
+
+取值是`render`渲染函数从传入的`_ctx`指向的传入的`proxyToUse(instance.proxy)`中获取的;而`_ctx`是`PublicInstanceProxyHandlers`代理函数执行后返回的一个`proxy`对象
+
+`PublicInstanceProxyHandlers`中的代理`get`方法以下列顺序取值
+
+1. 缓存`accessCache`中有值,则取缓存中的值
+2. `setupState`中有值,取`setupState`中的值并缓存改值
+3. 取`data`中的值
+4. 取`props`中的值
+5. 去`ctx(methods,computed...)`等的值
+
+## 理解前端路由
+
+浏览器的`url`地址改变:`https://www.baidu.com/home` -> `https://www.baidu.com/about`,浏览器将会去服务器中请求资源
+
+1. `vue`是`SMP`单页面应用,所以需要阻止`url`改变就会去服务器请求资源的操作
+2. 可以通过`hash`模式和`history`模式来阻止
