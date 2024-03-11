@@ -2884,3 +2884,5 @@ const createApp = (rootComponent) =>{
 
 1. `vue`是`SMP`单页面应用,所以需要阻止`url`改变就会去服务器请求资源的操作
 2. 可以通过`hash`模式和`history`模式来阻止
+3. `hash`模式:通过监听`hashchange`事件触发时,执行页面重渲染的逻辑
+4. `history`模式:通过监听将会更改页面`url`的路径的行为并劫持,然后调用`html5`新增的六个`api`特性,更改`url`路径但阻止向服务器请求资源的行为,执行页面重渲染的逻辑
