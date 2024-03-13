@@ -1212,7 +1212,7 @@
        }
      }
    </script>
-   
+
    <!-- slotComponent.vue -->
    <template>
    	<div>
@@ -2979,4 +2979,21 @@
    </script>
    ```
 
-   
+# vue-router 知识补充和 vuex 起步
+
+## router-link 自定义插槽
+
+```vue
+<!-- props:href 跳转的链接 -->
+<!-- props:route 对象 -->
+<!-- props:navigate 导航函数 -->
+<!-- props:isActive 是否当前处于活跃的状态 -->
+<!-- props:isExactActive 是否当前处于精确的活跃状态 -->
+<router-link to="/home" v-slot="props" custom>
+<button click="props.navigate">{{props.href}}</button>
+<button @click="props.navigate">test</button>
+<span :class="{active: props.isActive}">{{props.isActive}}</span>
+<span :class="{active: props.isExactActive}">{{props.isExactActive}}</span>
+</router-link>
+```
+
