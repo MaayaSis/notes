@@ -2997,3 +2997,76 @@
 </router-link>
 ```
 
+## router-view 自定义插槽
+
+```vue
+<!-- 缓存路由组件,并在路由切换时添加过渡东湖 -->
+<router-view v-slot="props"> <!-- props的两个属性  : { component, route } -->
+  <transition name="why">
+    <keep-alive>
+      <component :is="props.Component"></component>
+    </keep-alive>
+  </transition>
+</router-view>
+```
+
+## 动态添加路由
+
+```JavaScript
+const routes = [  // 定义公共无需判断权限的路由表
+  {
+    path: 'home',
+    name: 'homeName'
+    component: () => import("../home")
+  }
+]
+const router = createRouter(routes) // 创建路由对象
+// 定义动态路由
+const adminRoutes = [
+  {
+    path: 'admin'
+    component: () => import("../admin")
+  }
+]
+// 判断用户角色
+if(user === 'admin') {
+  router.addRoute(adminRoutes) // 添加管理员可用的动态路由至顶级路由对象(与 home 平级)
+	router.addRoute('homeName', adminRoutes) // 通过路由的 name 名称添加该路由的子路由
+}
+```
+
+## 动态删除路由
+
+1. 添加一个`name`相同的路由
+2. 通过`removeRoute`方法,传入路由的名称
+3. 通过`addRoute`方法添加路由的返回值回调
+
+```JavaScript
+const removeRoute = router.addRoute(adminRoute)
+removeRoute() // 删除 adminRoute 动态路由
+```
+
+## 路由导航守卫
+
+全局前置守卫`beforeEach`
+
+```JavaScript
+// 1. to: 即将跳转的 route 对象
+// 2. from: 来自的 route 对象
+router.beforEach((to, from) => {
+// 1. false: 不进行导航
+// 2. undefined 或者不写返回值: 进行默认导航
+// 3. 字符串: 路径,跳转到对应的路径中
+// 4. 对象: 类似于 router.push({path:"/login"，query:...·)
+  return 
+})
+```
+
+
+
+1. `to`:即将跳转的`route`对象
+2. `from`:来自的`route`对象
+3. `false`:不进行导航
+4. `undefined`或者不写返回值:进行默认导航
+5. 字符串:路径，跳转到对应的路径中
+6. 对象:类似于`router.push({path:"/login"，query:...  )`
