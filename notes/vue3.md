@@ -3062,11 +3062,24 @@ router.beforEach((to, from) => {
 })
 ```
 
-
-
 1. `to`:即将跳转的`route`对象
 2. `from`:来自的`route`对象
 3. `false`:不进行导航
 4. `undefined`或者不写返回值:进行默认导航
 5. 字符串:路径，跳转到对应的路径中
 6. 对象:类似于`router.push({path:"/login"，query:...  )`
+
+## 完整的导航解析流程
+
+1. 导航被触发
+2. 在失活的组件里调用`beforeRouteLeave`守卫
+3. 调用全局的`beforeEach`守卫
+4. 在重用的组件里调用`beforeRouteUpdate`守卫
+5. 在路由配置里调用`beforeEnter`
+6. 解析异步路由组件
+7. 在被激活的组件里调用`beforeRouteEnter`
+8. 调用全局的`beforeResolve`守卫
+9. 导航被确认
+10. 调用全局的`afterEach`钩子
+11. 触发`DOM`更新
+12. 调用`beforeRouteEnter`守卫中传给`next`的回调函数,创好的组件实例会作为回调函数的参数传入
