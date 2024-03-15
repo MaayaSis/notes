@@ -3083,3 +3083,76 @@ router.beforEach((to, from) => {
 10. 调用全局的`afterEach`钩子
 11. 触发`DOM`更新
 12. 调用`beforeRouteEnter`守卫中传给`next`的回调函数,创好的组件实例会作为回调函数的参数传入
+
+# vuex 核心 state-getters-mutations
+
+## 封装 useState 函数
+
+```JavaScript
+// setup 中使用 vuex 状态管理
+import { mapState, useStore } from 'vuex'
+import { computed } from 'vue'
+
+setup() {
+  const store = useStore()
+  const name = computed(() => store.state.name)
+  
+  // 取出多个 store.state 的值
+  const storeStateFuns = mapState(['age', 'gender'])
+  const storeState = {}
+  Object(storeStateFuns).keys.forEach(key => {
+    const fn = storeStateFuns[keys].bind({ $store: useStore })
+    storeState[key] = computed(fn)
+	})
+  
+ 	return {
+    name,
+    ..storeState
+  }
+}
+```
+
+## vuex-getter 的常见用法
+
+```JavaScript
+const store = createStore({
+  state() {
+    return {
+      books: [
+        {
+          name: 'm',
+          price: '1'
+        },
+        {
+          name: 'm',
+          price: '1'
+        },
+      ]
+    }
+  },
+  getter: {
+    totalPrice(state,getters){
+      let totalPrice = 0
+      for(const book of state.books) {
+        totalPrice += book.count * book.price
+      }
+      return totalPrice * getters.currentDiscount
+    },
+    currentDiscount(state) {
+      return state.discount * 0.9
+    },
+    totalPriceCountGreaterN(state,getters){
+      return function(n) {
+        let totalPrice = 0
+        for(const book of state.books) {
+          if(book.count>n){
+            totalPrice += book.count * book.price
+          }
+        }
+        return totalPrice *getters.currentDiscount
+      }
+    }
+  }
+})
+```
+
