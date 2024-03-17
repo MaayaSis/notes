@@ -1,355 +1,355 @@
-1. # vue3 和 typescript 公开课
+# vue3 和 typescript 公开课
 
-   1. `Vue3`的改变
-      1. `Vue3`使用了`monorrepo`的形式来管理源代码,即每一个功能模块其实都是一个单独的项目
-      2. `Vue3`使用了`TypeScript`记性了重写
-      3. 使用了`proxy`替代`Object.defineProperty`进行劫持
-      4. 从`Options API`到`Composition API`
-      5. `mixin`的缺陷是重复命名冲突,且本身也是由许`Options API`组成,因此被`hooks`函数替代
-   2. `TpyeScript`的作用:`JavaScript`是弱类型语言,因此可能导致许多危险及报错的推迟
+1. `Vue3`的改变
+   1. `Vue3`使用了`monorrepo`的形式来管理源代码,即每一个功能模块其实都是一个单独的项目
+   2. `Vue3`使用了`TypeScript`记性了重写
+   3. 使用了`proxy`替代`Object.defineProperty`进行劫持
+   4. 从`Options API`到`Composition API`
+   5. `mixin`的缺陷是重复命名冲突,且本身也是由许`Options API`组成,因此被`hooks`函数替代
+2. `TpyeScript`的作用:`JavaScript`是弱类型语言,因此可能导致许多危险及报错的推迟
 
-   
 
-   # vue3 **基础知识**
 
-   ## vue 的引入方式
+# vue3 **基础知识**
 
-   1. `CDN`引入
-   2. 下载`vue3`的`JavaScript`文件并且手动引入
-   3. 通过`npm`安装使用
-   4. `vue-cli`创建项目
+## vue 的引入方式
 
-   ## CDN 引入
+1. `CDN`引入
+2. 下载`vue3`的`JavaScript`文件并且手动引入
+3. 通过`npm`安装使用
+4. `vue-cli`创建项目
 
-   1. 它是指通过相互连接的网络系统,利用最靠近每个用户的服务器
-   2. 更快,更可靠地将音乐,图片,视频,应用程序及其他文件发送给用户
-   3. 来提供高性能,可扩展性及低成本的网络内容传递给用户
+## CDN 引入
 
-   ```vue
-   <script src="https://unpkg.com/vue@next"></script>
-   
-   <script>
-     const app = vue.createApp({  // 传入 app 对象,返回整个项目的源码
-       template: `<h2>Hello World<h2>`
-     })
-     app.mount('#app') // 将所有源码挂载到 public/index.html 中 id 为 app 的标签上
-   </script>
-   ```
+1. 它是指通过相互连接的网络系统,利用最靠近每个用户的服务器
+2. 更快,更可靠地将音乐,图片,视频,应用程序及其他文件发送给用户
+3. 来提供高性能,可扩展性及低成本的网络内容传递给用户
 
-   ## 下载和引入
+```vue
+<script src="https://unpkg.com/vue@next"></script>
 
-   ## 计数器 vue 实现
+<script>
+  const app = vue.createApp({  // 传入 app 对象,返回整个项目的源码
+    template: `<h2>Hello World<h2>`
+  })
+  app.mount('#app') // 将所有源码挂载到 public/index.html 中 id 为 app 的标签上
+</script>
+```
 
-   1. 原生`innerHTML`实现
-   2. `vue`的响应式实现
+## 下载和引入
 
-   ## 声明式和命令式
+## 计数器 vue 实现
 
-   1. 声明式关注结果
-   2. 命令式关注过程
+1. 原生`innerHTML`实现
+2. `vue`的响应式实现
 
-   ## MVVM 模型
+## 声明式和命令式
 
-   `Model-View-ViewModel`:`Model`是`script`,`View`是`template`,`vue`则是`viewModel`黑盒
+1. 声明式关注结果
+2. 命令式关注过程
 
-   ## template 属性
+## MVVM 模型
 
-   ## template 写法
+`Model-View-ViewModel`:`Model`是`script`,`View`是`template`,`vue`则是`viewModel`黑盒
 
-   1. `template`标签及标签中的内容不会被浏览器渲染
-   2. 依靠上面的特性, 将`template`传入`vue`中,浏览器只会出现一份内容
-   3. 如果将非`template`标签传入`createApp`中那么页面将会出现两份内容
+## template 属性
 
-   ## data 属性
+## template 写法
 
-   1. `vue3`中`data`属性必须传入一个函数,并且需要有返回值,否则将在浏览器中报错
-   2. `data `中返回的数据会被`vue`响应式系统劫持
+1. `template`标签及标签中的内容不会被浏览器渲染
+2. 依靠上面的特性, 将`template`传入`vue`中,浏览器只会出现一份内容
+3. 如果将非`template`标签传入`createApp`中那么页面将会出现两份内容
 
-   ## methods 属性
+## data 属性
 
-   `methods`中的方法不能是箭头函数
+1. `vue3`中`data`属性必须传入一个函数,并且需要有返回值,否则将在浏览器中报错
+2. `data `中返回的数据会被`vue`响应式系统劫持
 
-   ## 其他属性
+## methods 属性
 
-   `props`,`computed`,`watch`,`emits`,`setup`
+`methods`中的方法不能是箭头函数
 
-   ## vue 的源码
+## 其他属性
 
-   1. `github`下载`vue-next`
-   2. `yarn install`安装依赖
-   3. `yarn dev`编译项目:执行前修改`package.json`中的脚本为`"dev": "node script/dev.js --sourcemap"`,方便断点调试映射本地文件
-   4. 编译后
-   5. 通过`packages/vue/dist/vue.global.js`调试代码
+`props`,`computed`,`watch`,`emits`,`setup`
 
-   
+## vue 的源码
 
-   # vue3 模板语法的常见命令
+1. `github`下载`vue-next`
+2. `yarn install`安装依赖
+3. `yarn dev`编译项目:执行前修改`package.json`中的脚本为`"dev": "node script/dev.js --sourcemap"`,方便断点调试映射本地文件
+4. 编译后
+5. 通过`packages/vue/dist/vue.global.js`调试代码
 
-   ## methods 方法绑定 this
 
-   - [this指向规则](https://mp.weixin.qq.com/s/hYm0JgBI25grNG_2sCRlTA)
-   - `vue`创建组件实例时,将`methods`的方法进行遍历通过`bind`绑定到组件实例上
 
-   - 当`methods`的方法是箭头函数时由于箭头函数绑定了父级作用域的上下文,因此`this`不会按期望指向组件实例,this.a`将是`undefined`
+# vue3 模板语法的常见命令
 
-   - 严格模式下,普通函数输出`this`,且`this`没有被对象调用,或被`call`,`apply`方法重定向`this`,将会返回`undefined`
-   - 非严格模式下`this`执行调用此函数的对象
+## methods 方法绑定 this
 
-   ```javascript
-   const fun = function() {
-     return this
-   }
-   
-   // 严格模式
-   fun() === 'undefined' // expected output:true
-   
-   // 非严格迷失
-   fun() === window // expected output:true
-   ```
-
-   - 箭头函数没有自己的指向,因此它会去找上一层的`this`,一直找到`window`
-
-   ```javascript
-   const name = 'sis'
-   
-   // 1. 外层无 this,则一直向上找直到 window 为止
-   const test = {
-     name: 'maaya', 
-     fun: () => this.name
-   }
-   console.log(test.fun()) // expected output: 'sis'
-   
-   // 2. 外层有 this,则箭头函数的 this 就是外层的 this
-   const test = {
-     name: 'maaya', 
-     fun: function() {
-       var x = (() => this.name) // 自执行函数
-       return x // 
-     }
-   }
-   console.log(test.fun()) // expected output:'maaya'
-   ```
-
-   ## vscode 代码片段
-
-   1. 复制需要生成代码片段的代码
-   2. [通过此网站格式化代码片段](https://snippet-generator.app/)
-   3. 在`vscode`设置中的代码片段中配置
-
-   ## 模板语法
-
-   1. `React`使用的是`jsx`语法,`babel`将`jsx`编译成`React.createElement`函数调用
-   2. `Vue`也支持`jsx`的开发模式,但大多数情况下,使用基于`HTML`的模板语法
+- [this指向规则](https://mp.weixin.qq.com/s/hYm0JgBI25grNG_2sCRlTA)
+- `vue`创建组件实例时,将`methods`的方法进行遍历通过`bind`绑定到组件实例上
 
-   ## Mustache 双括号大语法
+- 当`methods`的方法是箭头函数时由于箭头函数绑定了父级作用域的上下文,因此`this`不会按期望指向组件实例,this.a`将是`undefined`
 
-   `Mustache`中不仅仅可以是`data`中的属性,也可以是一个`JavaScript`的表达式
+- 严格模式下,普通函数输出`this`,且`this`没有被对象调用,或被`call`,`apply`方法重定向`this`,将会返回`undefined`
+- 非严格模式下`this`执行调用此函数的对象
 
-   1. 不支持赋值语句
-   2. `if`控制流也不支持
+```javascript
+const fun = function() {
+  return this
+}
 
-   ## v-once
+// 严格模式
+fun() === 'undefined' // expected output:true
 
-   1. `v-once`用于指定元素或者组件只渲染一次
-   2. 当数据发生变化时,元素或者组件以及其所有的子元素将视为静态内容并且跳过
-   3. 该指令可以用于性能优化
-   4. 子节点,也只会渲染一次
+// 非严格迷失
+fun() === window // expected output:true
+```
 
-   ```html
-   <div>
-     <h2>{{ count }}</h2>
-     <button @click="increment">count增加1</button>
-   </div>
-   ```
+- 箭头函数没有自己的指向,因此它会去找上一层的`this`,一直找到`window`
 
-   ## v-text
+```javascript
+const name = 'sis'
 
-   相当于`Mustache`语法,因此此指令几乎不使用
+// 1. 外层无 this,则一直向上找直到 window 为止
+const test = {
+  name: 'maaya', 
+  fun: () => this.name
+}
+console.log(test.fun()) // expected output: 'sis'
 
-   ## v-html
-
-   1. 默认情况下,如果展示的内容是`HTML`片段,`vue`是不会对其进行特殊的解析的
-   2. 如果希望进行特殊解析,那么可以使用`v-html`表示
-
-   ```vue
-   <span v-html="info" />
-   
-   <script>
-     export default {
-       data() {
-         return {
-           info: '<span>我是HTML标签<span>'
-         }
-       }
-     }
-   </script>
-   ```
-
-   ## v-pre
-
-   `v-pre`用于跳过元素和它的子元素的编译过程,显示原始的`Mustache`标签
-
-   ## v-cloak
-
-   1. 编译时小概率出现编译时`Mustache`语法模板未解析完全就在浏览器上显示即`{{ count }}`,之后才替换为`count`变量对应值的情况
-   2. `DOM`节点添加`v-cloak`后相当于`vue`给此`DOM`添加了`css`属性`dispaly: none`,并在编译完成后关闭隐藏
-   3. 基本不会出现未编译就显示的情况
-
-   ## v-bind
-
-   - `v-bind`用于绑定一个或多个属性值,或者向另一个组件传递`props`值
-   - 语法糖缩写:`:`
-   - 修饰符:`.camel`将`kebab-case`,`attribute`属性名转换为`camelCase`(横杠转小驼峰)
-
-   ## 绑定 class
-
-   - `CSS property`名可以用驼峰式`camelCase`或短横线分隔`'kebab-case'`但需要用引号括起来
-
-   - 对象语法:通过一个布尔值控制是否绑定此类名
-
-   ```vue
-   <!-- 控制 active 类名是否使用 -->
-   <span :class="{active: true}">test</span>
-   
-   <!-- 默认 class 和动态 class 的结合 -->
-   <span class="test" :class="{active: true}">test</span> 
-   ```
-
-   - 数组语法:默认激活
-
-   ```vue
-   <!-- 在数组中嵌套对象语法可实现动态绑定 -->
-   <span :class="['test',  'temp',  {active: true}]">test</span> 
-   ```
-
-   ## 绑定 style
-
-   - 对象语法
+// 2. 外层有 this,则箭头函数的 this 就是外层的 this
+const test = {
+  name: 'maaya', 
+  fun: function() {
+    var x = (() => this.name) // 自执行函数
+    return x // 
+  }
+}
+console.log(test.fun()) // expected output:'maaya'
+```
 
-   ```vue
-   <!-- 可使用: 1. 驼峰语法; 2. kebab-case 语法(需要用引号括起来) -->
-   <span :style="{color: 'red',  fontSize: width + '30px',  'margin-top': '10px'}"></span>
-   ```
+## vscode 代码片段
 
-   - 数组语法
+1. 复制需要生成代码片段的代码
+2. [通过此网站格式化代码片段](https://snippet-generator.app/)
+3. 在`vscode`设置中的代码片段中配置
 
-   ```vue
-   <!-- 多个对象引用到同一元素上 -->
-   <span :style="[styleProp1,  styleProp2]" />
-   ```
+## 模板语法
 
-   ## 动态绑定属性
+1. `React`使用的是`jsx`语法,`babel`将`jsx`编译成`React.createElement`函数调用
+2. `Vue`也支持`jsx`的开发模式,但大多数情况下,使用基于`HTML`的模板语法
 
-   某些情况下,属性的名称可能也不固定
+## Mustache 双括号大语法
 
-   ```vue
-   <span :[name]="value" />
-   ```
+`Mustache`中不仅仅可以是`data`中的属性,也可以是一个`JavaScript`的表达式
 
-   ## 绑定一个对象
+1. 不支持赋值语句
+2. `if`控制流也不支持
 
-   将一个对象的所有属性,绑定到元素上的所有属性
+## v-once
 
-   ```vue
-   <!-- object 对象会被拆分成 span 的各个属性 -->
-   <span v-bind="object" />
-   
-   <!-- 可读性较差 -->
-   <span :="object" /> 
-   ```
+1. `v-once`用于指定元素或者组件只渲染一次
+2. 当数据发生变化时,元素或者组件以及其所有的子元素将视为静态内容并且跳过
+3. 该指令可以用于性能优化
+4. 子节点,也只会渲染一次
 
-   ## v-on
+```html
+<div>
+  <h2>{{ count }}</h2>
+  <button @click="increment">count增加1</button>
+</div>
+```
 
-   - 缩写: `@`
-   - 预期: `Function` | `Inline statement` | `Object`
-   - 参数: `event`
-   - 修饰符:
-     - `stop`:调用`event.stopPropagation()`阻止冒泡
-     - `.prevent`:调用`event.preventDefault()`
-     - `.capture`:添加事件侦听器时使用`capture`模式
-     - `.self`:只当事件是从侦听器绑定的元素本身触发时才触发回调
-     - `.{keyAlias}`:仅当事件是从特定键触发时才触发回调
-     - `.once`:只触发一次回调
-     - `.left`:只当点击鼠标左键时触发
-     - `.right`:只当点击鼠标右键时触发
-     - `.middle`:只当点击鼠标中键时触发
-     - `.passive`:`{ passive: true }`模式添加侦听器
+## v-text
 
-   ```vue
-   <!-- 语法糖 -->
-   <span @click="handlerClick">点击事件</span>
-   
-   <!-- 绑定内联表达式 -->
-   <span @click="count++">点击事件</span>
-   
-   <!-- 绑定对象:同时绑定多个事件 -->
-   <span v-on="{click: handlerClick,  mouseMove: handlerMouseMove}">点击事件</span>
-   
-   <!-- v-on 参数传递 -->
-   <span @click="handlerClick">点击事件</span> <!-- 不要额外参数,则默认传入原生事件event -->
-   <span @click="handlerClick($event,  'why')">点击事件</span> <!-- 要额外参数,则使用 $event -->
-   ```
+相当于`Mustache`语法,因此此指令几乎不使用
 
-   
+## v-html
 
-   # diff 算法
+1. 默认情况下,如果展示的内容是`HTML`片段,`vue`是不会对其进行特殊的解析的
+2. 如果希望进行特殊解析,那么可以使用`v-html`表示
 
-   ## 条件渲染
+```vue
+<span v-html="info" />
 
-   1. `v-if`:不会被创建, 切换开销大, 创建开销小
-   2. `v-else`:与`v-if`是配套的
-   3. `v-show`:会被创建但不被渲染, 是通过`css`的`dispaly`控制显隐的;切换开销小,创建开销大
-   4. `template`:在`vue`中只有里面的标签会被渲染,小程序中的`block`相当于`template`
+<script>
+  export default {
+    data() {
+      return {
+        info: '<span>我是HTML标签<span>'
+      }
+    }
+  }
+</script>
+```
 
-   ## 列表渲染
+## v-pre
 
-   从服务器拿到数据,并对其渲染,可以使用`v-for`
+`v-pre`用于跳过元素和它的子元素的编译过程,显示原始的`Mustache`标签
 
-   1. `v-for`的基本格式是`item in data`
-   2. `data`可以是`String`,`Number`,`Object`,`Array`
-   3. 需要注意的是,遍历出的值始终在前, 索引在后
-   4. 可以使用`template`元素循环渲染一段包含多个元素的内容
+## v-cloak
 
-   ```vue
-   <!-- v-for 遍历对象也能拿到索引 -->
-   <span v-for="(value, key, index) in Object">点击事件</span>
-   ```
+1. 编译时小概率出现编译时`Mustache`语法模板未解析完全就在浏览器上显示即`{{ count }}`,之后才替换为`count`变量对应值的情况
+2. `DOM`节点添加`v-cloak`后相当于`vue`给此`DOM`添加了`css`属性`dispaly: none`,并在编译完成后关闭隐藏
+3. 基本不会出现未编译就显示的情况
 
-   ## 数组更新检测
+## v-bind
 
-   仅用以下方法更新数组,才会触发视图更新:`push`,`pop`,`shift`,`unshift`,`splice`,`sort` `reverse`
+- `v-bind`用于绑定一个或多个属性值,或者向另一个组件传递`props`值
+- 语法糖缩写:`:`
+- 修饰符:`.camel`将`kebab-case`,`attribute`属性名转换为`camelCase`(横杠转小驼峰)
 
-   ## v-for 中 key 的作用
+## 绑定 class
 
-   `key`属性主要用在`Vue`的虚拟`DOM`算法,在新旧`nodes`对比时辨识`VNodes`
+- `CSS property`名可以用驼峰式`camelCase`或短横线分隔`'kebab-case'`但需要用引号括起来
 
-   使用`key`时,它会基于`key`的变化重新排列元素顺序,并且会移除/销毁`key`不存在的元素
+- 对象语法:通过一个布尔值控制是否绑定此类名
 
-   ## 认识 v-node
+```vue
+<!-- 控制 active 类名是否使用 -->
+<span :class="{active: true}">test</span>
 
-   - `v-node`:虚拟节点
-   - 事实上,无论是组件还是元素,它们最终在`vue`中表示出来的都是一个个`v-node`
-   - `v-node`:本质是一个`JavaScript`的对象
+<!-- 默认 class 和动态 class 的结合 -->
+<span class="test" :class="{active: true}">test</span> 
+```
 
-   - `template` => `v-node` => `DOM`:`vue`将模板转给对象,再将对象渲染成`DOM`节点
+- 数组语法:默认激活
 
-   ## 虚拟 DOM
+```vue
+<!-- 在数组中嵌套对象语法可实现动态绑定 -->
+<span :class="['test',  'temp',  {active: true}]">test</span> 
+```
 
-   1. 如果不只是一个简单的`div`,而是有一大堆的元素,那么会形成一个`v-node Tree`
-   2. 因此虚拟`DOM`就是许多`v-node`组成的节点树
+## 绑定 style
 
-   ## 案例
+- 对象语法
 
-   `vue`事实上针对有没有`key`会调用两个不同的方法
+```vue
+<!-- 可使用: 1. 驼峰语法; 2. kebab-case 语法(需要用引号括起来) -->
+<span :style="{color: 'red',  fontSize: width + '30px',  'margin-top': '10px'}"></span>
+```
 
-   - 有`key`:使用效率较高的`diff`算法,直接在已存在的`DOM`节点中间插入新生成的`'f'`
-   - 没有`key`:使用效率较低的`diff`算法, `'c' => 'f'`, `'d' => 'c'`,最后再生成一个`'d'`
-     1.  使用`patchUnkeyedChildren()`对新旧`node`进行遍历对比直到已无法从新旧`node`其中一个取出值
-     2.  旧`node`无值:将新`node`多出的值挂载至旧`node`   
-     3.  新`node`无值:将旧`node`中多出的`node`删除
+- 数组语法
 
+```vue
+<!-- 多个对象引用到同一元素上 -->
+<span :style="[styleProp1,  styleProp2]" />
+```
 
-   ```vue
+## 动态绑定属性
+
+某些情况下,属性的名称可能也不固定
+
+```vue
+<span :[name]="value" />
+```
+
+## 绑定一个对象
+
+将一个对象的所有属性,绑定到元素上的所有属性
+
+```vue
+<!-- object 对象会被拆分成 span 的各个属性 -->
+<span v-bind="object" />
+
+<!-- 可读性较差 -->
+<span :="object" /> 
+```
+
+## v-on
+
+- 缩写: `@`
+- 预期: `Function` | `Inline statement` | `Object`
+- 参数: `event`
+- 修饰符:
+  - `stop`:调用`event.stopPropagation()`阻止冒泡
+  - `.prevent`:调用`event.preventDefault()`
+  - `.capture`:添加事件侦听器时使用`capture`模式
+  - `.self`:只当事件是从侦听器绑定的元素本身触发时才触发回调
+  - `.{keyAlias}`:仅当事件是从特定键触发时才触发回调
+  - `.once`:只触发一次回调
+  - `.left`:只当点击鼠标左键时触发
+  - `.right`:只当点击鼠标右键时触发
+  - `.middle`:只当点击鼠标中键时触发
+  - `.passive`:`{ passive: true }`模式添加侦听器
+
+```vue
+<!-- 语法糖 -->
+<span @click="handlerClick">点击事件</span>
+
+<!-- 绑定内联表达式 -->
+<span @click="count++">点击事件</span>
+
+<!-- 绑定对象:同时绑定多个事件 -->
+<span v-on="{click: handlerClick,  mouseMove: handlerMouseMove}">点击事件</span>
+
+<!-- v-on 参数传递 -->
+<span @click="handlerClick">点击事件</span> <!-- 不要额外参数,则默认传入原生事件event -->
+<span @click="handlerClick($event,  'why')">点击事件</span> <!-- 要额外参数,则使用 $event -->
+```
+
+
+
+# diff 算法
+
+## 条件渲染
+
+1. `v-if`:不会被创建, 切换开销大, 创建开销小
+2. `v-else`:与`v-if`是配套的
+3. `v-show`:会被创建但不被渲染, 是通过`css`的`dispaly`控制显隐的;切换开销小,创建开销大
+4. `template`:在`vue`中只有里面的标签会被渲染,小程序中的`block`相当于`template`
+
+## 列表渲染
+
+从服务器拿到数据,并对其渲染,可以使用`v-for`
+
+1. `v-for`的基本格式是`item in data`
+2. `data`可以是`String`,`Number`,`Object`,`Array`
+3. 需要注意的是,遍历出的值始终在前, 索引在后
+4. 可以使用`template`元素循环渲染一段包含多个元素的内容
+
+```vue
+<!-- v-for 遍历对象也能拿到索引 -->
+<span v-for="(value, key, index) in Object">点击事件</span>
+```
+
+## 数组更新检测
+
+仅用以下方法更新数组,才会触发视图更新:`push`,`pop`,`shift`,`unshift`,`splice`,`sort` `reverse`
+
+## v-for 中 key 的作用
+
+`key`属性主要用在`Vue`的虚拟`DOM`算法,在新旧`nodes`对比时辨识`VNodes`
+
+使用`key`时,它会基于`key`的变化重新排列元素顺序,并且会移除/销毁`key`不存在的元素
+
+## 认识 v-node
+
+- `v-node`:虚拟节点
+- 事实上,无论是组件还是元素,它们最终在`vue`中表示出来的都是一个个`v-node`
+- `v-node`:本质是一个`JavaScript`的对象
+
+- `template` => `v-node` => `DOM`:`vue`将模板转给对象,再将对象渲染成`DOM`节点
+
+## 虚拟 DOM
+
+1. 如果不只是一个简单的`div`,而是有一大堆的元素,那么会形成一个`v-node Tree`
+2. 因此虚拟`DOM`就是许多`v-node`组成的节点树
+
+## 案例
+
+`vue`事实上针对有没有`key`会调用两个不同的方法
+
+- 有`key`:使用效率较高的`diff`算法,直接在已存在的`DOM`节点中间插入新生成的`'f'`
+- 没有`key`:使用效率较低的`diff`算法, `'c' => 'f'`, `'d' => 'c'`,最后再生成一个`'d'`
+  1.  使用`patchUnkeyedChildren()`对新旧`node`进行遍历对比直到已无法从新旧`node`其中一个取出值
+  2.  旧`node`无值:将新`node`多出的值挂载至旧`node`   
+  3.  新`node`无值:将旧`node`中多出的`node`删除
+
+
+```vue
    <li v-for="item in letters" />
    <span @click="handlerInsert">insert f</span>
    
@@ -365,9 +365,9 @@
        }
      }
    </script>
-   ```
+```
 
-   ## 有 key 的 diff 算法
+## 有 key 的 diff 算法
 
    - 比较是否存在相同`node`
 
@@ -3141,6 +3141,7 @@ const store = createStore({
     currentDiscount(state) {
       return state.discount * 0.9
     },
+    // 让 getter 能够接收参数
     totalPriceCountGreaterN(state,getters){
       return function(n) {
         let totalPrice = 0
@@ -3154,5 +3155,195 @@ const store = createStore({
     }
   }
 })
+```
+
+## vuex-mutations 
+
+```javascript
+// 两种 mutations 的提交风格
+methods: {
+  add() {
+    // 1
+    this.$store.commit('increment', {
+      name: 'Maaya', 
+      age: '17'
+    })
+    // 方法2
+    this.$store.commit({
+      type: 'increment', // vuex 会自动解析 type 作为 key 值从 mutations 中调用对应方法
+      name: 'Maaya',
+      age: '18'
+    })
+  }
+}
+```
+
+```javascript
+// 为了避免变量名敲错,有很好的解决办法
+// 定义: mutations-type.js
+export default {
+  INCREAMENT: 'increment'
+}
+
+// 定义: store.js
+import { INCREAMENT } from 'mutations-type.js'
+mutations: {
+  // increament(state) {
+  //   console.log(state.age++)
+  // }
+  // 使用变量作为 key
+  [INCREAMENT](state, playload) {
+    console.log(state.age + playload.age) 
+  }
+}
+```
+
+```javascript
+// mapMutations 的用法
+import { INCREAMENT } from 'mutations-type.js'
+import { mapMutations } from 'vuex'
+
+// Options API
+methods: {
+  mapMutations['increment', 'decrement', INCREAMENT]
+  add(n) {
+    this[INCREAMENT]({ age: n })
+  }
+}
+
+// Composition API
+setup() {
+  const storeMutations = mapMutations(['increment', 'decrement', INCREAMENT])
+  return {
+    ...storeMutations
+  }
+}
+```
+
+# vuex 核心概念和 nexttick 知识补充
+
+## actions 的基本使用
+
+1. `context`是一个和`store`实例均有相同方法和属性的`context`对象
+2. 所以我们可以从其中获取到`commit`方法来提交一个`mutation`,或者通过`context.state`和`context.getters`来
+3. 获取`state`和`getters`
+4. `context`相比起`store`实例,还会多提供几个属性,例如`rootState`,`rootGetters`等`root`根组件中的状态及方法
+
+```javascript
+// store.js
+actions: {
+  getHomeMultidata(context, payload) {
+    console.log(payload.num)
+    axios
+      .get("http://123.207.32.32:8000/home/multidata")
+      .then(res => {
+      context.COMMIT("addBannerData", res.data.data.banner.list)
+      )}
+  }
+}
+  
+// app.vue
+methods: {
+  get() {
+    // dispatch 方式1
+    this.$store.dispatch("getHomeMultidata", { num: 30 })
+    // dispatch 方式2
+    this.$store.dispatch({
+      type: "getHomeMultidata",
+      num: 30
+    })
+  }
+}
+```
+
+## module 的基本使用
+
+```javascript
+// store.js
+import { createStore } from "vuex.js"
+import moduleA from "moduleA.js"
+import moduleB from "moduleB.js"
+
+const store = createStore({
+  modules: {
+    a: moudleA,
+    b: moudleb,
+  }
+})
+
+// moduleA.js
+const moduleA = {
+  nameSpace: true // 开启命名空间
+  state() {
+    return {
+      name: 'Maaya'
+    }
+  },
+  actions: {},
+  mutations: {},
+  getters: {}
+}
+export default moduleA 
+
+// app.vue
+// 取 moudleA 中的 name
+this.store.state.a.name
+```
+
+## module 的命名空间
+
+1. 默认情况下,模块内部的`action`和`mutation`仍然是注册在全局的命名空间中的,只有`state`里的数据会按模块区分:
+   1. 这样使得多个模块能够对同一个`action` 或`mutation`作出响应
+   2. `Getter`同样也默认注册在全局命名空间
+2. 如果希望模块具有更高的封装度和复用性,可以添加`namespaced: true`的方式使其成为带命名空间的模块
+3. 当模块被注册后,它的所有`getter`,`action`及`mutation`都会自动根据模块注册的路径调整命名
+
+```javascript
+// 开启全局命名空间后的 commit 及 getters 的用法
+methods: {
+  add() {
+    this.$store.commit("moduleA/dispatchName")
+    this.$store.getter["moduleA/getterName"]
+  }
+}
+```
+
+```javascript
+// 1. actions 定义的属性方法能接受到的参数
+// 2. 模块中的 actions 修改 root 的 state
+// moduleA.js
+actions: {
+  increment({ context, dispatch, state, rootState, getters, rootGetters}) {
+    commit("increment")
+    commit("increment", payload || null, { root: true }) // 第三个参数表示提交到 root 的 increment
+  }
+}
+```
+
+## module 的辅助函数
+
+```javascript
+computed: {
+  // 写法1
+  ...mapState(["home/state1", "home/state2"]),
+  ...mapGetters(["home/getter1", "home/getter2"]),
+  // 写法2 
+  ...mapState({
+    state1: state => state.home.state1,
+    state2: state => state.home.state2,
+  }),
+  ...mapGetters({
+    getter1: 'home/getter1',
+    getter1: 'home/getter1',
+  }),
+  // 写法3
+  ...mapState("home", ['state1', 'state2'])
+  ...mapGetters("home", ['getter1', 'getter2'])
+  // 写法4
+  import { createNamespaceHelpers } from 'vuex'
+  const { mapState, mapGetters, mapActions, mapGetters } = createNamespaceHelpers('home')
+  ...mapState(["state1", "state2"]),
+  ...mapGetters(["getter1", "getter2"]),
+}
 ```
 
