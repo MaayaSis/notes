@@ -3353,3 +3353,13 @@ computed: {
 2. `vue`中的`watch`(放入队列`preQue`),组件的更新(放入队列`jobQue`),生命周期回调(放入队列`psotQueue`);这些队列都会被`vue`放进微任务中
 3. 在`vue`将需要更新的放入微任务队列中的函数全部存放之后
 4. `nextTick`中的回调才会执行变成一个`promise`回调的逻辑,从而放在微任务中的最后执行
+
+# 知识补充和 TypeScript
+
+## historyApiFullBack
+
+1. 在`history`模式下,假设用户进入了`www.chiyubank.com`页面跳转到`www.chiyubank.com/xib/main`路径下
+2. 如果此时用户刷新了页面,浏览器将会向服务器中不存在的路径`www.chiyubank.com/xib/main`请求资源,导致404报错
+3. 远端服务器通过在`nginx`的`try_files`文件中进行配置解决此问题
+4. 本地的服务器则需要在`webpack`中配置`historyApiFullback`属性配置为`true`,当然`vue`对`webpack`默认已经配置为开启 
+5. `webpack`的`historyApiFullback`是依赖于`connect-history-api-fallback`库实现的
