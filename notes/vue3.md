@@ -2367,6 +2367,8 @@ console.log(test.fun()) // expected output:'maaya'
 
    `jsx`写法参照视频
 
+
+
    # vue3 的高级语法补充和 vue3 的源码1
 
    ## 自定义指令基础
@@ -2822,6 +2824,8 @@ console.log(test.fun()) // expected output:'maaya'
    </body>
    ```
 
+
+
    # vue3 源码精度和调试技巧
 
    1. `vue.createApp()`中`createApp`的引用值指向`createAppAPI`函数执行后返回的`createApp`函数
@@ -2884,6 +2888,8 @@ console.log(test.fun()) // expected output:'maaya'
 
    1. `vue`是`SMP`单页面应用,所以需要阻止`url`改变就会去服务器请求资源的操作
    2. 可以通过`hash`模式和`history`模式来阻止
+
+
 
    # vue-router 深入解析
 
@@ -2978,6 +2984,8 @@ console.log(test.fun()) // expected output:'maaya'
      }
    </script>
    ```
+
+
 
 # vue-router 知识补充和 vuex 起步
 
@@ -3220,6 +3228,8 @@ setup() {
 }
 ```
 
+
+
 # vuex 核心概念和 nexttick 知识补充
 
 ## actions 的基本使用
@@ -3354,6 +3364,8 @@ computed: {
 3. 在`vue`将需要更新的放入微任务队列中的函数全部存放之后
 4. `nextTick`中的回调才会执行变成一个`promise`回调的逻辑,从而放在微任务中的最后执行
 
+
+
 # 知识补充和 TypeScript
 
 ## historyApiFullBack
@@ -3363,3 +3375,222 @@ computed: {
 3. 远端服务器通过在`nginx`的`try_files`文件中进行配置解决此问题
 4. 本地的服务器则需要在`webpack`中配置`historyApiFullback`属性配置为`true`,当然`vue`对`webpack`默认已经配置为开启 
 5. `webpack`的`historyApiFullback`是依赖于`connect-history-api-fallback`库实现的
+
+## 搭建能编译 typescript 的本地 webpack 环境
+
+配合`26`节视频搭建
+
+
+
+# typescript 数据类型和类型操作
+
+## 基本类型
+
+```typescript
+// 1. 字符串
+const name: string = 'Maaya'
+// const name = 'Maaya' // 可倒推出 age 的类型, 因此可省略定义
+
+// 2. 数字
+const age: number = 18
+// const age = 18 // 可倒推出 age 的类型, 因此可省略定义
+
+// 3. boolean
+const flag: boolean = 16 > 15
+
+// 4. 数组
+// 定义一个数组类型的常量,并且此数组中的元素仅允许是 string
+const arr: Array<string> = [] // 不推荐
+const arr1: string[] = [] // 推荐
+// arr.push(1)
+arr1.push('11')
+console.log(name, age, flag, arr1)
+
+// 5. 对象
+// const complex: object = {
+const complex = {
+  name: '姐姐',
+  age: 16
+}
+console.log(complex.name) // 如果定义 complex 时有加类型符,将会导致本行报错,因为 object 中不存在 name 属性
+
+// 6. null
+let n: null = null
+let n1 = null  // 不指定类型, 将会是 any 可接收任意类型数据的赋值
+
+// 7. undefined
+let u: undefined = undefined
+let u1 = undefined // 不指定类型, 将会是 any 可接收任意类型数据的赋值
+
+// 8. symbol
+const s1 = Symbol("title")
+const s2 = Symbol("title")
+const person = {
+  [s1]: "程序员",
+  [s2]: "老师"
+}
+
+export default {}
+```
+
+## typescript 的独有类型
+
+```typescript
+// 1. any 类型: 可以赋值给任意类型
+let message: any = 'hello world'
+message = '姐姐'
+message = 16
+message = {}
+
+// 2. unknown 类型
+function foo1() {
+  return '姐姐'
+}
+function foo2() {
+  return 16
+}
+let flag = true
+let result: unknown // let result: any
+result = flag ? foo1() : foo2()
+
+// any 可以赋值给任意类型
+// let info: string = result
+// let num: number = result
+
+// unknown 只能赋值给 any 和 unknown
+let info: unknown = result
+let num: unknown = result
+
+// 3. void 类型
+// 没有返回值时, 相当于函数定义成 void 类型
+// function sum(num1: number, num2: number): void {
+function sum(num1: number, num2: number): void {
+  console.log(num1 + num2)
+  // void 函数的返回值可以是 undefined 
+  return undefined
+}
+
+// 4. never 类型
+function fun1(): never {
+  while (true) {
+    throw new Error('姐姐我爱你')
+  }
+}
+fun1()
+
+// never 的实际运用场景是对新添加的并且没有处理到的边界问题进行错误提示
+function handleMessage(message: string | number | boolean) { // 初始: message: string | number => 更改: message: string | number | boolean
+  switch (typeof message) {
+    case 'string':
+      console.log("string处理方式处理message")
+      break
+    case 'number':
+      console.log("number处理方式处理message")
+      break
+    // 如果未添加此行逻辑, 导致进入 default 后便会给开发者提示
+    case 'boolean':
+      console.log("boolean处理方式处理message")
+      break
+    default:
+      const check: never = message
+  }
+}
+
+handleMessage("abc")
+handleMessage(123)
+// 更改
+handleMessage(true)
+
+// 5. tuple 类型
+const list: [string, number, number] = ["why", 18, 1.88]
+const name = list[0]
+console.log(name.length)
+//const age= list[l]
+//console.log(age.length)
+
+function useState<T>(state: T) {
+  let currentState = state
+  const changeState = (newState: T) => {
+    currentState = newState
+  }
+  const tuple: [T, (newState: T) => void] = [currentState, changeState]
+  return tuple
+}
+const [counter, setCounter] = useState(10)
+setCounter(1000)
+const [title, setTitle] = useState("abc")
+const [flag1, setFlag1] = useState(true)
+
+export default {}
+```
+
+## 函数及对象类型
+
+```typescript
+// 1. 函数参数一般需要添加注解, 除非参数的类型能够通过函数上下文推导得出, 才能省略
+const list = ['1', '2', '3']
+list.forEach(item => console.log(item))
+
+// 2. 函数返回值注解一般只有提供服务的第三方依赖库才会写
+function fun(name: string): boolean {
+  return !name
+}
+console.log(fun(''))
+
+// 3. 对象类型及可选类型
+function printPoint(point: { x: number, y: number, z?: number }) {
+  console.log(point.x)
+  console.log(point.y)
+  console.log(point.z)
+}
+printPoint({ x: 123, y: 321 })
+printPoint({ x: 123, y: 321, z: 111 })
+
+export { }
+```
+
+## 联合类型,可选类型的本质,定义类型别名
+
+```typescript
+// 1. 联合类型
+function printID(id: number | string | boolean) {
+  // console.log(id.length) // 本行会报错, 因此使用联合类型的值时, 需要特别小心
+  // 专业名词: narrow(缩小范围)
+  if (typeof id === 'string') {  // typescript 帮助确定 id 一定是 string
+    console.log(id)
+  } else {
+    console.log(id);
+
+  }
+}
+printID(123)
+printID("abc")
+printID(true)
+
+// 2. 让一个参数是可选时, 其实它的本质表示的这个参数是 类型 | undefined 的联合类型
+function fun(message?: string) {
+  console.log(message)
+}
+
+function fun1(message: string | undefined) {
+  console.log(message)
+}
+
+fun()
+// fun1() // 必须传入 undefined
+
+// 3. 定义类型别名
+type IDType = string | number | boolean
+type pointType = {
+  x: number,
+  y: number,
+  z?: number
+}
+function test(point: pointType) {
+  console.log(point.x);
+  console.log(point.y);
+  console.log(point.z);
+}
+// test({ x: 'name', y: true }) // 监视报错
+```
+
