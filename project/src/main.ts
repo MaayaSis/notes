@@ -38,3 +38,23 @@ function test(point: pointType) {
   console.log(point.z);
 }
 // test({ x: 'name', y: true }) // 监视报错
+
+5. // 类型断言
+class Person { } // 定义 Person 类
+class Student extends Person {
+  studying() { }
+}
+function foo(p: Person) {
+  // p.studying()  // 无法执行,因为不使用断言转换类型,则此时 p 为 Person
+  console.log((p as Student).studying);
+
+  (p as Student).studying()
+}
+const student = new Student()
+foo(Student)
+
+// 强制类型转换
+const message: string = 'MaayaSis'
+// const number: number = message // 不能强行赋值
+// 使用断言强制转换
+const number: number = (message as unknown) as number

@@ -3594,3 +3594,103 @@ function test(point: pointType) {
 // test({ x: 'name', y: true }) // 监视报错
 ```
 
+# typescript 函数详解
+
+## 类型断言 as 的使用
+
+`typescript`只允许类型断言转换为更具体或者不太具体(`any || unknow`)的类型版本,此规则可防止不可能的强制转换
+
+```typescript
+// 类型断言
+class Person {} // 定义 Person 类
+class Student extends Person {
+  studying() {}
+}
+function foo(p: Person) {
+  p.studying()  // 无法执行,因为不使用断言转换类型,则此时 p 为 Person
+  (p as Student).studying()
+}
+const student = new Student()
+foo(Student)
+
+// 强制类型转换
+const message: string = 'MaayaSis'
+const number: number = message // 不能强行赋值
+// 使用断言强制转换
+const number: number = (message as unknown) as number
+```
+
+## 非空类型断言 
+
+```typescript
+function printMessageLength(message?: string) {
+  console.log(message.length) // message 可能为空,所有此行将会报错
+  console.log(message!.length) // 但如果 developer 可以确认一定会传入一个字符串, 则可以使用 !(非空类型断言来跳过 ts 校验)
+}
+```
+
+## 可选链的使用
+
+```typescript
+ console.log(info.friend?.girlFriend)
+```
+
+## !! 与 && 运算符
+
+```typescript
+// 非布尔值转换
+const message = 'Maaya'
+let bool = !!message
+
+// 空值合并操作符: 当操作符左侧是 null 或者 undefined 时,返回其右侧的操作数 
+const message: string|null = null
+const content = message ?? '姐姐'
+```
+
+## 字面量
+
+```typescript
+// 字面量类型结合联合类型
+let width: '150px' | '160px' = '150px'
+width = '160px'
+width = '170px' // 将会报错
+
+// 字面量推理
+type Method = 'GET' || 'POST'
+function request(url: string, method: Method) {
+  method(url)
+}
+const options = {
+  url: 'https://www.baidu.com',
+  method: 'POST'
+}
+request(options.url, options.method) // method 参数为字面量类型,但 options.method 可能是任何时,会引起报错
+
+// 解决方案1: 直接限制变量属性的类型
+type REQUEST = {
+  url: string,
+  method: Method
+}
+const options: REQUEST = {
+  url: 'https://www.baidu.com',
+  method: 'POST'
+}
+
+// 解决方案2: 断言 as
+request(options.url, options.method as Method) 
+
+// 解决方案3: 将参数指定为具体类型
+// url 的类型将会是它的值
+// method 的类型也将会是它的值 
+const options: REQUEST = {
+  url: 'https://www.baidu.com',
+  method: 'POST'
+} as const 
+```
+
+## 类型缩小
+
+1. `instance of`
+2. `typeof`
+3. `in`
+4. 平等的类型缩小(`===`,`==`,`!==`,`!=`,`switch`)
