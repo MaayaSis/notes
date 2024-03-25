@@ -3568,6 +3568,7 @@ printID("abc")
 printID(true)
 
 // 2. 让一个参数是可选时, 其实它的本质表示的这个参数是 类型 | undefined 的联合类型
+// 可选参数一定需要位于必选参数后面
 function fun(message?: string) {
   console.log(message)
 }
@@ -3694,3 +3695,51 @@ const options: REQUEST = {
 2. `typeof`
 3. `in`
 4. 平等的类型缩小(`===`,`==`,`!==`,`!=`,`switch`)
+
+## typescript 函数类型
+
+```typescript
+// 注解中参数名可以和函数中的参数名不同,但必须有
+// 返回值是 void 时,也可理解为返回值可以是任意
+type Foo = (num1: number, num2: number) => number 
+function foo: Foo = (attr1: number, attr2: number) => {
+  retrun attr1 + attr2
+}
+```
+
+## 函数参数的默认值
+
+```typescript
+function foo(name: String = '姐姐', age: number = 17) {
+  console.log(`${name}的年龄:${age}岁`)
+}
+```
+
+## this 的指向问题
+
+```typescript
+// 1. 正常函数一定会有 this 的场景中 ts 会对函数中的 this 进行推导
+type Info = {
+  name: string,
+  handlerPrintName: (name: string) => void
+}
+const info: Info = {
+  name: '姐姐',
+  handlerPrintName() {
+    console.log(this.name)
+  }
+}
+
+// 2. 函数可能在任意地方使用, 不一定会有 this 时,就一定要定义 this 参数的注解,保证不会抛错
+type NameType = {
+  name: string
+}
+function handlerThis(this: NameType) {
+  console.log(this.name);
+
+}
+const guideThis = {
+  name: '姐姐',
+  handlerThis
+}
+```
