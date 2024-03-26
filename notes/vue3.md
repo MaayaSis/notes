@@ -3473,7 +3473,7 @@ function sum(num1: number, num2: number): void {
 // 4. never 类型
 function fun1(): never {
   while (true) {
-    throw new Error('姐姐我爱你')
+    throw new Error('姐姐')
   }
 }
 fun1()
@@ -3743,3 +3743,48 @@ const guideThis = {
   handlerThis
 }
 ```
+
+# typescript 的类和接口
+
+##  函数的重载
+
+1. 函数的重载:函数的名称相同,但是参数不同的几个函数,就是函数的重载
+2. 在函数的重载中,实现函数不能直接被调用
+
+```typescript
+// 重载函数
+function add(num1: number, num2: number): number // 没有函数体
+function add(num1: string, num2: string): string
+// 实现函数
+function add(num1: any, num2: any): any {
+  return num1 + num2
+}
+// 执行
+add(1, 290)
+add({name: 'Maaya'}, true) // 没有匹配到重载函数,即使满足实现函数的参数定义,也不会执行重载函数 
+```
+
+```typescript
+// 获取长度的两种实现,但尽量使用联合类型
+// 1. 联合类型
+function getLength(args: stirng | any[]); number {
+  return args.length
+}
+// 2. 重载
+function getLength(args: string): number
+function getLength(args: any[]): number
+function getLength(args: string | any[]): number {
+  return args.length
+}
+getLength('adb')
+getLength([1, 2, 3])
+```
+
+
+
+
+
+
+
+
+
