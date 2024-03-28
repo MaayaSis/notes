@@ -3780,11 +3780,312 @@ getLength('adb')
 getLength([1, 2, 3])
 ```
 
+## 类
 
+```typescript
+// 1. 类的定义
+class Person {
+  // 必须步骤 - 定义属性
+  name: string
+  age: number
+  // 必须步骤 - 属性初始化
+  // 方式1: 在定义属性时就进行初始化赋值
+  name: string = 'maaya'
+  age: number = 16
+  // 方式2: 构建函数实例时执行构造器初始化赋值
+  constructor(name: string, age: number) {
+    this.name = name
+    this.age = age
+  }
+  print() {
+    console.log(this.name + this.age)
+  }
+}
+const person = new Person('test', 176)
+console.log(person.name)
+console.log(person.age)
+```
 
+```typescript
+// 2. 类的继承
+class Student extends Person {
+  level: string
+  constructor(name: string, age: number, level: string) {
+    // 必须先构造父类才能使用 this
+    super(name, age)
+    this.level = level
+  }
+  print() {
+    super.print()
+    console.log("student's print");
 
+  }
+  studying() {
+    console.log(this.name + this.age + this.level);
 
+  }
+}
+const student = new Student('student', 18, '六年级')
+console.log(student.print());
+console.log(student.studying);
+```
 
+```typescript
+// 3. 类的多态
+class Animal {
+  action() {
+    console.log("Animal's action");
 
+  }
+}
+class Dog extends Animal {
+  action() {
+    console.log("Dog's action");
+  }
+}
+class Fish extends Animal {
+  action() {
+    console.log("Fish's action");
+  }
+}
+function handlerAction(animals: Animal[]) {
+  animals.forEach(animal => {
+    animal.action()
+  })
+}
+handlerAction([new Dog(), new Fish()])
+```
 
+```typescript
+// TypeScript 类的属性和方法支持三种修饰符:
+// 1. public:修饰的是在任何地方可见,公有的属性或方法,默认编写的属性就是 public 的
+// 2. private:修饰的是仅在同一类中可见,私有的属性或方法
+// 3. protected:修饰的是仅在类自身及子类中可见,受保护的属性或方法
+
+// 4. 类的成员修饰符
+class Test {
+  private status: string = ''
+  getStatus() {
+    console.log(this.status)
+  }
+  setStatus(newStatus: string) {
+    this.status = newStatus
+  }
+}
+const test = new Test()
+test.status // 报错提示: 属性 status 为私有属性,只能在类 Test 中访问
+```
+
+```typescript
+// 4. 属性的只读 readOnly
+class Human {
+  // 只读属性是可以在构造器中赋值,赋值之后就不可以修改
+  // 属性本身不能进行修改,但是如果它是对象类型,对象中的属性是可以修改
+  readonly name: string
+  age?: number
+  readonly friend?: Human
+  constructor(name: string, friend?: Human) {
+    this.name = name
+    this.friend = friend
+  }
+}
+const p = new Human("why", new Human("kobe"))
+console.log(p.name)
+console.log(p.friend)
+// 不可以直接修改friend
+// p.friend = new Human("james")
+if (p.friend) {
+  p.friend.age = 30
+}
+```
+
+```typescript
+// 5. getters 和 setters
+class Update {
+  private _name: string
+  constructor(name: string) {
+    this._name = name
+  }
+  //访问器setter/getter
+  // setter
+  set name(newName) {
+    this._name = newName
+  }
+  // getter
+  get name() {
+    return this._name
+  }
+}
+const update = new Update("sis")
+update.name = "maaya"
+console.log(update.name)
+```
+
+```typescript
+// 6. 类的静态成员
+class Static {
+  static time: string = '20:00'
+  static print() {
+    console.log("上课时间" + this.time);
+  }
+}
+Static.print()
+```
+
+```typescript
+// 7. abstract 抽象类
+function makeArea(shape: Shape) {
+  return shape.getArea()
+}
+// 7.1. 抽象属性必须在抽象类中
+// 7.2. 抽象方法不能有实现
+abstract class Shape {
+  abstract getArea(): number
+}
+// 7.3. 继承至抽象类的子类,必须有抽象方法(getArea)的实现
+class Rectangle extends Shape {
+  private width: number
+  private height: number
+  constructor(width: number, height: number) {
+    super()
+    this.width = width
+    this.height = height
+  }
+  getArea() {
+    return this.width * this.height
+  }
+}
+class Circle extends Shape {
+  private r: number
+  constructor(r: number) {
+    super()
+    this.r = r
+  }
+  getArea() {
+    return this.r * this.r * 3.14
+  }
+}
+// 7.4. 抽象类无法创建实例
+// new Shape()
+const rectangleArea = makeArea(new Rectangle(100, 200))
+const circleArea = makeArea(new Circle(3))
+console.log(rectangleArea, circleArea);
+```
+
+```typescript
+// 8. 类的类型
+class ClassTest {
+  name: string = 'Test'
+  handlerTest() {
+    console.log(this.name)
+  }
+}
+// 直接声明创建的对象时 ClassTest 类的实例
+const classTest1: ClassTest = {
+  name: '姐姐',
+  handlerTest() {
+    return 'my name'
+  }
+}
+function printClassTest(attr: ClassTest) {
+  attr.handlerTest();
+}
+printClassTest(classTest1)
+printClassTest({
+  name: 'Maaya',
+  handlerTest() {
+    console.log('姐姐');
+  }
+})
+```
+
+## 接口的使用
+
+```typescript
+// 1. 通过类型(type)别名来声明对象类型
+type InfoType = {
+  name: string,
+  age: number
+}
+
+// 2. 另外一种方式声明对象类型: 接口interface
+// 在其中可以定义可选类型
+// 也可以定义只读属性
+interface IInfoType {
+  readonly name: string
+  age: number
+  friend?: {
+    name: string
+  }
+}
+const info: IInfoType = {
+  name: "why",
+  age: 18,
+  friend: {
+    name: "kobe"
+  }
+}
+console.log(info.friend?.name)
+console.log(info.name)
+// info.name = "123"
+info.age = 20
+```
+
+```typescript
+// 2. 索引类型
+// 通过 interface 来定义索引类型
+interface IndexLanguage {
+  [index: number]: string
+}
+const frontLanguage: IndexLanguage = {
+  0: "HTML",
+  1: "CSS",
+  2: "JavaScript",
+  3: "Vue"
+}
+interface ILanguageYear {
+  [name: string]: number // 索引的名称可以随意设置: [language: string]: number 
+}
+const languageYear: ILanguageYear = {
+  "C": 1972,
+  "Java": 1995,
+  "JavaScript": 1996,
+  "TypeScript": 2014,
+}
+```
+
+```typescript
+// 3. 通过 interface 来定义函数类型
+interface CalcFunc {
+  (num1: number, num2: number): number
+}
+const add: CalcFunc = (num1, num2) => {
+  return num1 + num2
+}
+const sub: CalcFunc = (num1, num2) => {
+  return num1 - num2
+}
+```
+
+```typescript
+// 4. 接口的继承
+// 4.1 接口和类一样可以使用 extends 关键字进行继承
+// 4.2 接口是支持多继承的(类不支持多继承)
+interface Person {
+  name: string
+  eating: () => void
+}
+interface Animal {
+  running: () => void
+}
+interface Student extends Person, Animal {
+  sno: number
+}
+const stu: Student = {
+  sno: 110,
+  name: "why",
+  eating: function() {},
+  running: function() {}
+}
+```
 
